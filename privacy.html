@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Asqend</title>
+    <meta name="description" content="Privacy Policy for Asqend, your AI-powered productivity assistant.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 85C30 85 15 72 15 55C15 38 30 25 50 25C55 25 60 26 64 28L64 22C64 22 64 15 58 15C52 15 45 18 40 22L32 12C40 5 50 0 60 0C75 0 82 10 82 25L82 82L64 82L64 78C58 83 54 85 50 85ZM52 68C58 68 64 63 64 55L64 45C60 42 56 40 52 40C42 40 35 46 35 55C35 64 42 68 52 68Z' fill='%231E1B4B'/%3E%3Cpath d='M75 28L85 8L95 28L88 25L88 40L82 40L82 25Z' fill='%23F59E0B'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            line-height: 1.7; 
+            color: #334155; 
+            background: #FAFBFC; 
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header { 
+            background: white; 
+            padding: 16px 0; 
+            border-bottom: 1px solid #E2E8F0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            backdrop-filter: blur(12px); 
+            background: rgba(255,255,255,0.95); 
+        }
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 700; 
+            font-size: 22px; 
+            color: #1E1B4B; 
+            text-decoration: none;
+        }
+        .nav-back { 
+            color: #64748B; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            transition: color 0.2s; 
+        }
+        .nav-back:hover { color: #1E1B4B; }
+
+        /* Main content */
+        .legal-content { 
+            background: white; 
+            margin: 40px auto; 
+            padding: 60px; 
+            border-radius: 16px; 
+            border: 1px solid #E2E8F0; 
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04); 
+        }
+
+        .legal-title { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: #1E1B4B; 
+            margin-bottom: 8px; 
+            letter-spacing: -0.02em; 
+        }
+        
+        .legal-updated { 
+            font-size: 0.95rem; 
+            color: #64748B; 
+            margin-bottom: 48px; 
+            padding-bottom: 24px; 
+            border-bottom: 1px solid #F1F5F9; 
+        }
+
+        h2 { 
+            font-size: 1.4rem; 
+            font-weight: 700; 
+            color: #1E1B4B; 
+            margin: 48px 0 16px 0; 
+            letter-spacing: -0.01em; 
+        }
+
+        h3 { 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: #374151; 
+            margin: 32px 0 12px 0; 
+        }
+
+        h4 { 
+            font-size: 1rem; 
+            font-weight: 600; 
+            color: #374151; 
+            margin: 24px 0 8px 0; 
+        }
+
+        p { 
+            margin-bottom: 16px; 
+            font-size: 1rem; 
+        }
+
+        p strong { 
+            color: #1E1B4B; 
+            font-weight: 600; 
+        }
+
+        ul { 
+            margin: 16px 0; 
+            padding-left: 24px; 
+        }
+
+        li { 
+            margin-bottom: 8px; 
+        }
+
+        .warning { 
+            background: #FEF3C7; 
+            border: 1px solid #F59E0B; 
+            border-radius: 8px; 
+            padding: 16px; 
+            margin: 24px 0; 
+        }
+
+        .warning p { 
+            margin: 0; 
+            color: #92400E; 
+            font-weight: 600; 
+        }
+
+        .important { 
+            background: #FEE2E2; 
+            border: 1px solid #F87171; 
+            border-radius: 8px; 
+            padding: 16px; 
+            margin: 24px 0; 
+        }
+
+        .important p { 
+            margin: 0; 
+            color: #991B1B; 
+            font-weight: 600; 
+        }
+
+        .info { 
+            background: #DBEAFE; 
+            border: 1px solid #6366F1; 
+            border-radius: 8px; 
+            padding: 16px; 
+            margin: 24px 0; 
+        }
+
+        .info p { 
+            margin: 0; 
+            color: #1E1B4B; 
+            font-weight: 600; 
+        }
+
+        /* Footer */
+        footer { 
+            background: white; 
+            border-top: 1px solid #E2E8F0; 
+            padding: 32px 0; 
+            margin-top: 80px; 
+        }
+        
+        .footer-content { 
+            text-align: center; 
+            font-size: 0.85rem; 
+            color: #64748B; 
+        }
+        
+        .footer-content a { 
+            color: #6366F1; 
+            text-decoration: none; 
+        }
+        
+        .footer-content a:hover { 
+            text-decoration: underline; 
+        }
+
+        @media (max-width: 768px) {
+            .legal-content { 
+                margin: 20px auto; 
+                padding: 32px 24px; 
+            }
+            .legal-title { 
+                font-size: 2rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="/logo.svg" alt="Asqend" height="44" style="height:44px;">
+            </a>
+            <a href="https://asqend.com" class="nav-back">← Back to asqend.com</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="legal-content">
+            <h1 class="legal-title">Privacy Policy</h1>
+            <p class="legal-updated">
+                <strong>Effective Date:</strong> February 13, 2026<br>
+                <strong>Last Updated:</strong> February 13, 2026
+            </p>
+
+            <h2>1. INTRODUCTION</h2>
+            <p>SD Consulting LLC ("Company," "we," "us," or "our") operates the Asqend service ("Service"), an AI-powered task management and productivity assistant platform available at asqend.com and app.asqend.com. This Privacy Policy describes how we collect, use, process, and protect your personal information when you use our Service.</p>
+            
+            <div class="info">
+                <p><strong>BY USING OUR SERVICE, YOU CONSENT TO THE COLLECTION, USE, AND DISCLOSURE OF YOUR PERSONAL INFORMATION AS DESCRIBED IN THIS PRIVACY POLICY.</strong></p>
+            </div>
+
+            <h2>2. INFORMATION WE COLLECT</h2>
+
+            <h3>2.1 Account Information</h3>
+            <p>When you create an account, we collect:</p>
+            <ul>
+                <li>Name and email address</li>
+                <li>Password (encrypted and hashed)</li>
+                <li>Profile information you choose to provide</li>
+                <li>Account preferences and settings</li>
+                <li>Subscription and billing information (when payment features are implemented)</li>
+            </ul>
+
+            <h3>2.2 Connected Service Data</h3>
+            <p>With your explicit permission, we access and collect data from your connected services:</p>
+
+            <h4>Email Data:</h4>
+            <ul>
+                <li>Email messages, headers, and metadata</li>
+                <li>Sender and recipient information</li>
+                <li>Email attachments and content</li>
+                <li>Folder organization and labels</li>
+                <li>Read/unread status and timestamps</li>
+            </ul>
+
+            <h4>Calendar Data:</h4>
+            <ul>
+                <li>Event titles, descriptions, and locations</li>
+                <li>Attendee information</li>
+                <li>Meeting times and schedules</li>
+                <li>Calendar metadata and settings</li>
+                <li>Recurring event patterns</li>
+            </ul>
+
+            <h4>Contact Information:</h4>
+            <ul>
+                <li>Names, email addresses, and phone numbers</li>
+                <li>Contact photos and profile information</li>
+                <li>Relationship and organization data</li>
+                <li>Contact interaction history</li>
+                <li>Notes and custom fields</li>
+            </ul>
+
+            <h4>Task and Productivity Data:</h4>
+            <ul>
+                <li>Task lists, titles, and descriptions</li>
+                <li>Due dates, priorities, and completion status</li>
+                <li>Project information and categorization</li>
+                <li>Notes and comments</li>
+                <li>File attachments and links</li>
+            </ul>
+
+            <h4>Financial Transaction Data:</h4>
+            <ul>
+                <li>Transaction descriptions and amounts</li>
+                <li>Merchant information and categories</li>
+                <li>Account balances and transaction history</li>
+                <li>Budget and spending categorizations</li>
+                <li>Bank and credit card metadata (not account credentials)</li>
+            </ul>
+
+            <h3>2.3 AI Conversation Data</h3>
+            <p>We collect and store:</p>
+            <ul>
+                <li>All messages and prompts you send to our AI assistant</li>
+                <li>AI-generated responses and recommendations</li>
+                <li>Conversation context and history</li>
+                <li>User feedback on AI responses</li>
+                <li>Usage patterns and interaction metrics</li>
+            </ul>
+
+            <h3>2.4 Usage Analytics</h3>
+            <p>We automatically collect:</p>
+            <ul>
+                <li>Device information (type, operating system, browser)</li>
+                <li>IP addresses and general location data</li>
+                <li>Service usage patterns and feature interactions</li>
+                <li>Performance metrics and error logs</li>
+                <li>Referral sources and marketing attribution</li>
+                <li>Session duration and frequency of use</li>
+            </ul>
+
+            <h3>2.5 Cookies and Similar Technologies</h3>
+            <p>We use cookies, web beacons, and similar tracking technologies to:</p>
+            <ul>
+                <li>Maintain user sessions and authentication</li>
+                <li>Remember user preferences and settings</li>
+                <li>Analyze usage patterns and improve our Service</li>
+                <li>Provide personalized content and recommendations</li>
+                <li>Measure marketing effectiveness</li>
+            </ul>
+            <p>See Section 10 for detailed cookie information.</p>
+
+            <h2>3. HOW WE USE YOUR INFORMATION</h2>
+
+            <h3>3.1 Service Operation</h3>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Provide, maintain, and improve the Asqend Service</li>
+                <li>Process and respond to your requests and communications</li>
+                <li>Authenticate your identity and manage your account</li>
+                <li>Enable AI-powered features and recommendations</li>
+                <li>Sync data across your connected services</li>
+                <li>Provide customer support and technical assistance</li>
+            </ul>
+
+            <h3>3.2 AI Processing and Enhancement</h3>
+            <p>We use your data to:</p>
+            <ul>
+                <li>Process your inputs through AI providers solely to generate responses and perform requested tasks</li>
+                <li>Generate personalized recommendations and insights</li>
+                <li>Analyze usage patterns to improve Service features and user experience (without training AI models on your data)</li>
+                <li>Develop new AI-powered features and capabilities</li>
+            </ul>
+
+            <h3>3.3 Communication</h3>
+            <p>We may use your contact information to:</p>
+            <ul>
+                <li>Send service-related notifications and updates</li>
+                <li>Respond to your inquiries and support requests</li>
+                <li>Provide important security and privacy notices</li>
+                <li>Share product updates and new feature announcements</li>
+                <li>Send marketing communications (with your consent)</li>
+            </ul>
+
+            <h3>3.4 Legal and Safety Purposes</h3>
+            <p>We may process your information to:</p>
+            <ul>
+                <li>Comply with applicable laws, regulations, and legal processes</li>
+                <li>Protect our rights, property, and the safety of our users</li>
+                <li>Prevent fraud, abuse, and security threats</li>
+                <li>Enforce our Terms of Service and other policies</li>
+                <li>Respond to legal requests from authorities</li>
+            </ul>
+
+            <h2>4. HOW WE SHARE YOUR INFORMATION</h2>
+
+            <h3>4.1 Third-Party AI Providers</h3>
+            <p>We share your data with our AI service providers:</p>
+
+            <h4>OpenAI:</h4>
+            <ul>
+                <li>Conversation data and prompts for AI processing</li>
+                <li>Context information needed for accurate responses</li>
+                <li>Usage patterns for model improvement (if not opted out)</li>
+                <li>Data is processed according to OpenAI's privacy policies</li>
+            </ul>
+
+            <h4>Anthropic:</h4>
+            <ul>
+                <li>Similar data sharing as described for OpenAI</li>
+                <li>Processing occurs under Anthropic's data handling terms</li>
+                <li>May include conversation history for context</li>
+            </ul>
+
+            <h3>4.2 Infrastructure and Service Providers</h3>
+            <p>We share data with trusted service providers:</p>
+
+            <h4>Vercel (Hosting and Deployment):</h4>
+            <ul>
+                <li>Application data and user interactions</li>
+                <li>Performance metrics and error logs</li>
+                <li>Geographic usage patterns</li>
+            </ul>
+
+            <h4>Supabase (Database and Authentication):</h4>
+            <ul>
+                <li>Account information and user data</li>
+                <li>Database queries and transaction logs</li>
+                <li>Authentication and session management</li>
+            </ul>
+
+            <h4>Cloudflare (Security and CDN):</h4>
+            <ul>
+                <li>IP addresses and request data</li>
+                <li>Security threat intelligence</li>
+                <li>Performance optimization data</li>
+            </ul>
+
+            <h4>Google APIs (Service Integration):</h4>
+            <ul>
+                <li>Data necessary for calendar, email, and contact synchronization</li>
+                <li>OAuth tokens and authentication data</li>
+                <li>Service usage metrics</li>
+            </ul>
+
+            <h3>4.3 Business Transfers</h3>
+            <p>In the event of a merger, acquisition, or sale of assets, your personal information may be transferred to the acquiring party. We will notify you of any such transfer and any changes to this Privacy Policy.</p>
+
+            <h3>4.4 Legal Requirements</h3>
+            <p>We may disclose your information when required by law or when we believe disclosure is necessary to:</p>
+            <ul>
+                <li>Comply with legal obligations, court orders, or government requests</li>
+                <li>Protect and defend our rights and property</li>
+                <li>Prevent or investigate fraud, security breaches, or illegal activities</li>
+                <li>Protect the personal safety of users or the public</li>
+            </ul>
+
+            <h3>4.5 What We Do NOT Do</h3>
+            <div class="info">
+                <p>We will never:</p>
+            </div>
+            <ul>
+                <li>Sell your personal information to third parties</li>
+                <li>Share your data for marketing purposes without consent</li>
+                <li>Provide your information to data brokers</li>
+                <li>Use your personal data to train third-party AI models</li>
+                <li>Use your data for purposes unrelated to the Service</li>
+            </ul>
+
+            <h2>5. DATA RETENTION</h2>
+
+            <h3>5.1 Active Account Data</h3>
+            <p>We retain your personal information for as long as your account is active or as needed to provide the Service, typically including:</p>
+            <ul>
+                <li>Account information: Retained while account is active</li>
+                <li>Connected service data: Retained with periodic refresh cycles</li>
+                <li>AI conversation history: Retained to maintain context and improve responses</li>
+                <li>Usage analytics: Retained for up to 2 years for service improvement</li>
+            </ul>
+
+            <h3>5.2 Deleted Account Data</h3>
+            <p>When you delete your account:</p>
+            <ul>
+                <li>Personal identifying information is deleted within 30 days</li>
+                <li>Anonymized usage data may be retained for analytics</li>
+                <li>Some data may be retained longer for legal compliance</li>
+                <li>Cached data in third-party services may persist according to their retention policies</li>
+            </ul>
+
+            <h3>5.3 Legal and Safety Data</h3>
+            <p>We may retain certain information longer when required for:</p>
+            <ul>
+                <li>Legal compliance and regulatory requirements</li>
+                <li>Fraud prevention and security investigations</li>
+                <li>Resolving disputes and enforcing agreements</li>
+                <li>Protecting the safety and security of our users</li>
+            </ul>
+
+            <h2>6. DATA SECURITY</h2>
+
+            <h3>6.1 Security Measures</h3>
+            <p>We implement comprehensive security measures including:</p>
+
+            <h4>Encryption:</h4>
+            <ul>
+                <li>Data encrypted in transit using TLS 1.3</li>
+                <li>Data encrypted at rest using AES-256</li>
+                <li>Database encryption for sensitive information</li>
+                <li>Secure key management practices</li>
+            </ul>
+
+            <h4>Access Controls:</h4>
+            <ul>
+                <li>Multi-factor authentication for internal systems</li>
+                <li>Role-based access controls and least privilege principles</li>
+                <li>Regular access reviews and deprovisioning procedures</li>
+                <li>Secure development and deployment practices</li>
+            </ul>
+
+            <h4>Infrastructure Security:</h4>
+            <ul>
+                <li>Security monitoring and incident response procedures</li>
+                <li>Regular security assessments and penetration testing</li>
+                <li>Vulnerability management and patch procedures</li>
+                <li>Secure cloud infrastructure with reputable providers</li>
+            </ul>
+
+            <h3>6.2 Third-Party Security</h3>
+            <p>Our service providers are required to maintain appropriate security measures and are contractually obligated to protect your data according to industry standards.</p>
+
+            <h3>6.3 Security Limitations</h3>
+            <div class="warning">
+                <p><strong>Important:</strong> No method of transmission or storage is 100% secure. While we strive to protect your personal information, we cannot guarantee absolute security. You acknowledge and accept the inherent risks of transmitting and storing data electronically.</p>
+            </div>
+
+            <h2>7. YOUR PRIVACY RIGHTS</h2>
+
+            <h3>7.1 General Rights</h3>
+            <p>Depending on your location, you may have the following rights:</p>
+            <ul>
+                <li><strong>Access:</strong> Request information about what personal data we have about you</li>
+                <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal limitations)</li>
+                <li><strong>Portability:</strong> Request a copy of your data in a machine-readable format</li>
+                <li><strong>Objection:</strong> Object to certain types of data processing</li>
+                <li><strong>Restriction:</strong> Request limitation of data processing in certain circumstances</li>
+            </ul>
+
+            <h3>7.2 California Privacy Rights (CCPA)</h3>
+            <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act:</p>
+
+            <ul>
+                <li><strong>Right to Know:</strong> You can request information about the categories and specific pieces of personal information we collect, use, disclose, and sell</li>
+                <li><strong>Right to Delete:</strong> You can request deletion of your personal information (subject to exceptions)</li>
+                <li><strong>Right to Opt-Out:</strong> You can opt-out of the "sale" of personal information (we do not sell personal information)</li>
+                <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your privacy rights</li>
+            </ul>
+
+            <h4>Categories of Personal Information We Collect:</h4>
+            <ul>
+                <li>Identifiers (name, email, IP address)</li>
+                <li>Commercial information (transaction data, usage patterns)</li>
+                <li>Internet activity (browsing behavior, interactions)</li>
+                <li>Professional information (work-related data from connected services)</li>
+                <li>Inferences (preferences, characteristics derived from data analysis)</li>
+            </ul>
+
+            <h3>7.3 Exercising Your Rights</h3>
+            <p>To exercise your privacy rights:</p>
+            <ul>
+                <li>Email us at hello@asqend.com</li>
+                <li>Include your full name and email address</li>
+                <li>Specify which rights you wish to exercise</li>
+                <li>Provide sufficient detail for us to locate your information</li>
+                <li>We will respond within 30 days (or as required by applicable law)</li>
+            </ul>
+
+            <h2>8. INTERNATIONAL DATA TRANSFERS</h2>
+            <p>Our Service is operated from the United States, and your information may be transferred to, stored, and processed in the United States and other countries where our service providers operate. These countries may have different data protection laws than your country of residence.</p>
+
+            <p>When we transfer personal information internationally, we implement appropriate safeguards such as:</p>
+            <ul>
+                <li>Standard contractual clauses</li>
+                <li>Adequacy decisions by relevant authorities</li>
+                <li>Other legally recognized transfer mechanisms</li>
+            </ul>
+
+            <h3>8.1 Geographic Scope</h3>
+            <div class="info">
+                <p>The Service is intended for use within the United States. We do not specifically target, market to, or monitor the behavior of individuals in the European Union, European Economic Area, or United Kingdom. If you access the Service from outside the United States, you do so at your own risk and are responsible for compliance with your local laws. We do not represent that the Service complies with the EU General Data Protection Regulation (GDPR) or similar international data protection frameworks.</p>
+            </div>
+
+            <h2>9. CHILDREN'S PRIVACY</h2>
+            <p>Our Service is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children under 18. If we become aware that we have collected personal information from a child under 18, we will take steps to delete such information promptly.</p>
+
+            <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us at hello@asqend.com.</p>
+
+            <h2>10. COOKIES AND TRACKING TECHNOLOGIES</h2>
+
+            <h3>10.1 Types of Cookies We Use</h3>
+
+            <h4>Essential Cookies:</h4>
+            <ul>
+                <li>Authentication and session management</li>
+                <li>Security and fraud prevention</li>
+                <li>Basic website functionality</li>
+            </ul>
+            <p><em>These cannot be disabled without affecting Service functionality</em></p>
+
+            <h4>Analytics Cookies:</h4>
+            <ul>
+                <li>Usage statistics and performance monitoring</li>
+                <li>Feature usage and user behavior analysis</li>
+                <li>Error tracking and debugging</li>
+            </ul>
+            <p><em>You can opt-out of these in your account settings</em></p>
+
+            <h4>Preference Cookies:</h4>
+            <ul>
+                <li>User interface preferences and settings</li>
+                <li>Language and accessibility options</li>
+                <li>Personalization features</li>
+            </ul>
+            <p><em>You can manage these in your account settings</em></p>
+
+            <h3>10.2 Third-Party Cookies</h3>
+            <p>We may allow certain third-party services to place cookies:</p>
+            <ul>
+                <li>Google Analytics (if implemented)</li>
+                <li>AI provider analytics and optimization</li>
+                <li>Infrastructure monitoring and performance</li>
+            </ul>
+
+            <h3>10.3 Managing Cookies</h3>
+            <p>You can control cookies through:</p>
+            <ul>
+                <li>Your browser settings and preferences</li>
+                <li>Account settings within our Service</li>
+                <li>Third-party opt-out mechanisms where applicable</li>
+            </ul>
+            <p>Note that disabling certain cookies may limit Service functionality.</p>
+
+            <h2>11. DATA BREACH NOTIFICATION</h2>
+
+            <h3>11.1 Our Commitment</h3>
+            <p>We take data security seriously and have implemented incident response procedures to address potential data breaches promptly and effectively.</p>
+
+            <h3>11.2 Notification Procedures</h3>
+            <p>In the event of a data breach that poses a risk to your personal information:</p>
+            <ul>
+                <li>We will investigate and contain the breach</li>
+                <li>We will assess the risk to affected individuals</li>
+                <li>We will notify relevant authorities as required by law</li>
+                <li>We will notify affected users via email without unreasonable delay, and in any event within the timeframes required by applicable law</li>
+                <li>We will provide information about what happened and what we're doing about it</li>
+            </ul>
+
+            <h3>11.3 Your Response</h3>
+            <p>If you believe your account has been compromised:</p>
+            <ul>
+                <li>Change your password immediately</li>
+                <li>Review your account activity for suspicious behavior</li>
+                <li>Contact us at hello@asqend.com</li>
+                <li>Monitor your connected services for unauthorized access</li>
+            </ul>
+
+            <h2>12. UPDATES TO THIS PRIVACY POLICY</h2>
+
+            <h3>12.1 Policy Changes</h3>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will provide notice of material changes by:</p>
+            <ul>
+                <li>Posting the updated policy on our website</li>
+                <li>Sending email notification to your registered email address</li>
+                <li>Displaying prominent notice within the Service</li>
+                <li>For material changes, providing at least 30 days advance notice</li>
+            </ul>
+
+            <h3>12.2 Continued Use</h3>
+            <p>Your continued use of the Service after the effective date of any changes constitutes acceptance of the revised Privacy Policy. If you do not agree with the changes, you should stop using the Service and may delete your account.</p>
+
+            <h2>13. CONTACT INFORMATION</h2>
+
+            <h3>13.1 Privacy Questions</h3>
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:</p>
+
+            <p><strong>Privacy Contact:</strong><br>
+            SD Consulting LLC<br>
+            Longmont, CO 80504<br>
+            Email: hello@asqend.com<br>
+            Subject Line: Privacy Policy Inquiry</p>
+
+            <h3>13.2 Response Time</h3>
+            <p>We will respond to privacy-related inquiries within 30 days, or sooner as required by applicable law. For urgent security concerns, please mark your email as "URGENT - SECURITY."</p>
+
+            <h2>14. ADDITIONAL STATE-SPECIFIC PRIVACY RIGHTS</h2>
+
+            <h3>14.1 Nevada Residents</h3>
+            <p>Nevada residents may request that we do not sell their personal information. We do not sell personal information, but you can still make this request by emailing hello@asqend.com.</p>
+
+            <h3>14.2 Virginia Residents (VCDPA)</h3>
+            <p>Virginia residents have rights similar to California residents, including the right to access, correct, delete, and obtain a copy of personal information, as well as opt-out of targeted advertising and profiling.</p>
+
+            <h3>14.3 Other States</h3>
+            <p>As additional state privacy laws take effect, we will update this policy to ensure compliance and inform residents of their rights.</p>
+
+            <h2>15. BUSINESS CONTEXT AND DATA CONTROLLER INFORMATION</h2>
+
+            <h3>15.1 Data Controller</h3>
+            <p>SD Consulting LLC acts as the data controller for personal information collected through the Asqend Service. We determine the purposes and means of processing your personal information.</p>
+
+            <h3>15.2 Service Providers vs. Controllers</h3>
+            <p>Our third-party service providers (OpenAI, Anthropic, Vercel, Supabase, Cloudflare) act as data processors when processing your information on our behalf. However, they may also act as independent data controllers under their own privacy policies for certain data processing activities.</p>
+
+            <h3>15.3 Joint Processing</h3>
+            <p>In some cases, we may engage in joint processing activities with third parties. When this occurs, we will inform you of the arrangement and how it affects your privacy rights.</p>
+
+            <hr style="margin: 48px 0; border: none; height: 1px; background: #E2E8F0;">
+            
+            <p style="text-align: center; font-style: italic; color: #64748B;">
+                <strong>This Privacy Policy is effective as of the date listed above and applies to all information collected by SD Consulting LLC through the Asqend Service.</strong>
+            </p>
+            
+            <p style="text-align: center; font-style: italic; color: #64748B; margin-top: 16px;">
+                <strong>By using our Service, you acknowledge that you have read and understood this Privacy Policy and consent to the collection, use, and disclosure of your personal information as described herein.</strong>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 SD Consulting LLC. All rights reserved. | 
+                <a href="/terms.html">Terms of Service</a> | 
+                <a href="https://asqend.com">Back to Asqend</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
