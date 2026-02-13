@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asqend — Your AI assistant that actually does things</title>
+    <meta name="description" content="Asqend connects to your email, calendar, CRM, and tools — then does the work. Not answers. Work.">
+    <meta property="og:title" content="Asqend — Your AI assistant that actually does things">
+    <meta property="og:description" content="While you slept, your assistant noticed things, made decisions, and got work done.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://asqend.com">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 85C30 85 15 72 15 55C15 38 30 25 50 25C55 25 60 26 64 28L64 22C64 22 64 15 58 15C52 15 45 18 40 22L32 12C40 5 50 0 60 0C75 0 82 10 82 25L82 82L64 82L64 78C58 83 54 85 50 85ZM52 68C58 68 64 63 64 55L64 45C60 42 56 40 52 40C42 40 35 46 35 55C35 64 42 68 52 68Z' fill='%231E1B4B'/%3E%3Cpath d='M75 28L85 8L95 28L88 25L88 40L82 40L82 25Z' fill='%23F59E0B'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tally Popup -->
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #1E293B; overflow-x: hidden; background: #FAFBFC; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        header { background: white; padding: 16px 0; border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); background: rgba(255,255,255,0.9); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 22px; color: #1E1B4B; }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .nav-login { color: #64748B; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+        .nav-login:hover { color: #1E1B4B; }
+        .cta-button { background: #6366F1; color: white; padding: 10px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; cursor: pointer; border: none; }
+        .cta-button:hover { background: #4F46E5; }
+        .cta-lg { padding: 14px 36px; font-size: 1rem; }
+
+        .hero { padding: 80px 0 40px; text-align: center; }
+        .hero h1 { font-size: 3rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; line-height: 1.1; letter-spacing: -0.03em; }
+        .hero p { font-size: 1.15rem; color: #64748B; max-width: 540px; margin: 0 auto 16px; }
+        .hero-sub { font-size: 0.85rem; color: #94A3B8; margin-bottom: 40px; }
+
+        /* === FEED === */
+        .mock-ui { max-width: 820px; margin: 0 auto 80px; background: white; border-radius: 16px; border: 1px solid #E2E8F0; box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden; }
+        .mock-titlebar { background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
+        .mock-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .mock-dot.r { background: #FCA5A5; } .mock-dot.y { background: #FDE68A; } .mock-dot.g { background: #86EFAC; }
+        .mock-title { margin-left: 12px; font-size: 0.85rem; color: #94A3B8; font-weight: 500; }
+        .mock-stats { margin-left: auto; display: flex; gap: 20px; }
+        .mock-stat { font-size: 0.75rem; color: #94A3B8; }
+        .mock-stat strong { color: #6366F1; font-weight: 700; }
+
+        .feed-item { border-bottom: 1px solid #F1F5F9; cursor: pointer; transition: background 0.15s; }
+        .feed-item:last-child { border-bottom: none; }
+        .feed-item:hover { background: #FAFBFC; }
+        .feed-item.expanded { background: #F8FAFC; }
+        .feed-header { display: flex; gap: 14px; padding: 14px 24px; align-items: center; }
+        .feed-time { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #94A3B8; width: 52px; flex-shrink: 0; }
+        .feed-icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; }
+        .feed-summary { flex: 1; font-size: 0.9rem; color: #334155; }
+        .feed-summary strong { font-weight: 600; color: #1E1B4B; }
+        .feed-tag { display: inline-block; font-size: 0.65rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+        .t-done { background: #D1FAE5; color: #065F46; }
+        .t-email { background: #DBEAFE; color: #1D4ED8; }
+        .t-content { background: #FCE7F3; color: #BE185D; }
+        .t-crm { background: #D1FAE5; color: #065F46; }
+        .t-intel { background: #FEF3C7; color: #92400E; }
+        .t-lead { background: #FEE2E2; color: #991B1B; }
+        .t-pipeline { background: #E0E7FF; color: #4338CA; }
+        .t-action { background: #FEF3C7; color: #92400E; }
+        .feed-chevron { color: #CBD5E1; font-size: 0.8rem; transition: transform 0.2s; flex-shrink: 0; }
+        .feed-item.expanded .feed-chevron { transform: rotate(90deg); }
+
+        .feed-detail { display: none; padding: 0 24px 16px 90px; }
+        .feed-item.expanded .feed-detail { display: block; }
+        .dc { background: white; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px 20px; font-size: 0.85rem; color: #475569; line-height: 1.6; }
+        .dc + .dc { margin-top: 8px; }
+        .dl { font-size: 0.7rem; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+        .dl:not(:first-child) { margin-top: 14px; }
+        .dr { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #F8FAFC; font-size: 0.85rem; }
+        .dr:last-of-type { border-bottom: none; }
+        .dr .muted { color: #94A3B8; }
+        .draft { background: #F8FAFC; border-radius: 6px; padding: 10px 14px; margin-top: 8px; font-style: italic; border-left: 3px solid #6366F1; font-size: 0.85rem; line-height: 1.5; }
+        .draft-alt { border-left-color: #F59E0B; }
+        .action-btn { display: inline-block; background: #6366F1; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; margin-top: 10px; cursor: pointer; }
+        .action-btn.amber { background: #F59E0B; }
+        .done-list { list-style: none; padding: 0; }
+        .done-list li { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid #F8FAFC; font-size: 0.85rem; align-items: flex-start; }
+        .done-list li:last-child { border-bottom: none; }
+        .done-check { color: #22C55E; font-weight: 700; flex-shrink: 0; }
+        .social-preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .social-var { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; font-size: 0.78rem; color: #475569; line-height: 1.4; }
+        .social-var .var-label { font-size: 0.65rem; font-weight: 700; color: #6366F1; margin-bottom: 4px; }
+        .cma-preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .cma-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; text-align: center; }
+        .cma-card .cma-price { font-size: 1.1rem; font-weight: 800; color: #1E1B4B; }
+        .cma-card .cma-label { font-size: 0.7rem; color: #94A3B8; margin-top: 2px; }
+        .cma-card .cma-detail { font-size: 0.75rem; color: #64748B; margin-top: 6px; line-height: 1.4; }
+
+        /* Sections */
+        .section { padding: 80px 0; }
+        .section-alt { background: white; }
+        .section h2 { text-align: center; font-size: 2rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; }
+        .section .sub { text-align: center; font-size: 1.05rem; color: #64748B; max-width: 550px; margin: 0 auto 48px; }
+
+        .connects-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 700px; margin: 0 auto; }
+        .connect-chip { background: white; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 22px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #334155; font-size: 0.9rem; transition: all 0.2s; }
+        .connect-chip:hover { border-color: #6366F1; }
+
+        .prose-block { max-width: 640px; margin: 0 auto; }
+        .prose-block p { font-size: 1.05rem; color: #475569; margin-bottom: 16px; }
+        .prose-block p strong { color: #1E1B4B; }
+
+        .comp-table { max-width: 680px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0; }
+        .comp-row { display: grid; grid-template-columns: 1fr 90px 90px; }
+        .comp-head { background: #1E1B4B; color: white; font-weight: 600; font-size: 0.85rem; }
+        .comp-head > div, .comp-row > div { padding: 12px 18px; }
+        .comp-row > div { border-bottom: 1px solid #F1F5F9; font-size: 0.88rem; }
+        .comp-row > div:nth-child(2), .comp-row > div:nth-child(3) { text-align: center; font-size: 1rem; }
+        .comp-row:last-child > div { border-bottom: none; }
+
+        .final-cta { padding: 100px 0; text-align: center; background: linear-gradient(180deg, #FAFBFC 0%, #E0E7FF 100%); }
+        .final-cta h2 { font-size: 2.2rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; }
+        .final-cta p { font-size: 1.05rem; color: #64748B; margin-bottom: 32px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .feed-detail { padding-left: 24px; }
+            .mock-stats { display: none; }
+            .social-preview, .cma-preview { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg width="30" height="30" viewBox="0 0 100 100" fill="none"><path d="M50 85C30 85 15 72 15 55C15 38 30 25 50 25C55 25 60 26 64 28L64 22C64 22 64 15 58 15C52 15 45 18 40 22L32 12C40 5 50 0 60 0C75 0 82 10 82 25L82 82L64 82L64 78C58 83 54 85 50 85ZM52 68C58 68 64 63 64 55L64 45C60 42 56 40 52 40C42 40 35 46 35 55C35 64 42 68 52 68Z" fill="#1E1B4B"/><path d="M75 28L85 8L95 28L88 25L88 40L82 40L82 25Z" fill="#F59E0B"/></svg>
+                asqend
+            </div>
+            <div class="nav-right">
+                <a href="https://app.asqend.com" class="nav-login">Log In</a>
+                <a href="#" class="cta-button" onclick="openWaitlist(); return false;">Get Early Access</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>You went to bed.<br>It kept going.</h1>
+            <p>While you slept, your AI assistant noticed things, made decisions, and got work done. Here's what you woke up to.</p>
+            <div class="hero-sub">↓ Click any item to see what it did</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="mock-ui">
+            <div class="mock-titlebar">
+                <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+                <span class="mock-title">Asqend — Overnight Activity</span>
+                <div class="mock-stats">
+                    <span class="mock-stat"><strong>4</strong> workflows completed</span>
+                    <span class="mock-stat"><strong>31</strong> emails handled</span>
+                    <span class="mock-stat"><strong>~2hrs</strong> saved</span>
+                </div>
+            </div>
+
+            <!-- 1: OVERNIGHT REPORT — ALREADY OPEN -->
+            <div class="feed-item expanded">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">6:30a</span>
+                    <span class="feed-icon">🌙</span>
+                    <span class="feed-summary"><strong>While you slept, I got a few things done</strong> <span class="feed-tag t-done">overnight recap</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Here's what happened overnight</div>
+                        <ul class="done-list">
+                            <li><span class="done-check">✓</span> <span><strong>Noticed you have a listing appointment tomorrow</strong> — pulled comps, built 3 CMA variations for the Hendersons so you're ready to walk in cold</span></li>
+                            <li><span class="done-check">✓</span> <span><strong>Caught a rate drop overnight</strong> — 30Y hit 6.09%. Drafted social posts for 3 platforms and personalized texts for your 4 pre-approved buyers with their exact payment savings</span></li>
+                            <li><span class="done-check">✓</span> <span><strong>Saw you have an open house Saturday</strong> — put together the marketing package: social teaser, neighborhood one-pager, and a sign-in sheet with your QR code</span></li>
+                            <li><span class="done-check">✓</span> <span><strong>Triaged 31 emails</strong> — handled 27, flagged 4 for you with drafts ready. Your inbox is clean.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2: LISTING PRESENTATION -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">10:42p</span>
+                    <span class="feed-icon">🏠</span>
+                    <span class="feed-summary"><strong>Saw your listing appointment tomorrow</strong> — pulled comps and built 3 CMA options <span class="feed-tag t-pipeline">pipeline</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">CMA — 847 Spruce Dr (I saw the Henderson meeting on your calendar for 10am)</div>
+                        <div class="cma-preview">
+                            <div class="cma-card">
+                                <div class="cma-label">Conservative</div>
+                                <div class="cma-price">$485,000</div>
+                                <div class="cma-detail">Based on 3 sold comps<br>Avg 28 days on market<br>Price/sqft: $245</div>
+                            </div>
+                            <div class="cma-card" style="border-color: #6366F1;">
+                                <div class="cma-label" style="color: #6366F1;">★ Recommended</div>
+                                <div class="cma-price">$510,000</div>
+                                <div class="cma-detail">Market match<br>Accounts for recent rate drop<br>Price/sqft: $258</div>
+                            </div>
+                            <div class="cma-card">
+                                <div class="cma-label">Aggressive</div>
+                                <div class="cma-price">$535,000</div>
+                                <div class="cma-detail">Assumes spring demand<br>Best-case: multiple offers<br>Price/sqft: $271</div>
+                            </div>
+                        </div>
+                        <div class="dl">Comps used</div>
+                        <div class="dr"><span>821 Spruce Dr — Sold $498K (12 days)</span><span class="muted">0.1mi</span></div>
+                        <div class="dr"><span>903 Pine Ct — Sold $515K (22 days)</span><span class="muted">0.3mi</span></div>
+                        <div class="dr"><span>714 Elm Way — Sold $492K (31 days)</span><span class="muted">0.2mi</span></div>
+                        <div class="dr"><span>1102 Oak — Active $529K (8 days)</span><span class="muted">0.4mi</span></div>
+                        <div class="dl">Talking points</div>
+                        <div class="dr"><span>→ Inventory up 12% — pricing right matters more than ever</span></div>
+                        <div class="dr"><span>→ Rate drop bringing buyers back — showing activity up 18% this week</span></div>
+                        <div class="dr"><span>→ Their upgrades (kitchen '24, roof '23) support premium pricing</span></div>
+                        <span class="action-btn">Open Full Presentation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3: RATE DROP → SOCIAL + BUYER TEXTS -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">2:15a</span>
+                    <span class="feed-icon">📉</span>
+                    <span class="feed-summary"><strong>Noticed rates dropped overnight</strong> — drafted social posts + buyer texts <span class="feed-tag t-content">content</span> <span class="feed-tag t-crm">crm</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Rates moved at 2am — I drafted posts for all 3 platforms (scheduled for 8am)</div>
+                        <div class="social-preview">
+                            <div class="social-var">
+                                <div class="var-label">Instagram</div>
+                                Mortgage rates just dipped to 6.09% — lowest in 3 weeks. On a $450K loan, that's ~$47/mo less than last month. The trend is your friend. 📉 DM me to run numbers.
+                            </div>
+                            <div class="social-var">
+                                <div class="var-label">Facebook</div>
+                                Good news for buyers this morning ☕ Rates dropped to 6.09%. If you've been on the fence, this is worth a conversation. I can run exact numbers for any property in 5 minutes.
+                            </div>
+                            <div class="social-var">
+                                <div class="var-label">LinkedIn</div>
+                                CPI came in light yesterday → rates responded. 30Y at 6.09%. For my real estate friends: your fence-sitter buyers need to hear from you today.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dc">
+                        <div class="dl">You have 4 pre-approved buyers — I ran the numbers for each one</div>
+                        <div class="draft">💬 <strong>James & Priya Patel:</strong> "Hey James — rates just dropped to 6.09%. On that Maple Dr house you liked, your payment would be $2,847/mo instead of $2,894. Want to revisit?"</div>
+                        <div class="draft">💬 <strong>The Martins:</strong> "David — good news. Rates dipped overnight. At $625K your monthly just dropped about $60. Let's talk at our 9am."</div>
+                        <div class="draft">💬 <strong>Rachel Kim:</strong> "Hey Rachel! Rates hit 6.09% this morning. Remember that townhome on Birch? Monthly would be $1,940 now. Worth another look?"</div>
+                        <div class="draft">💬 <strong>Tom & Ana Reeves:</strong> "Morning Tom — rates dropped again (6.09%). Your pre-approval still has 3 weeks left. Let's find something before it expires."</div>
+                        <span class="action-btn amber">Send All 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4: MORNING BRIEF -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">6:30a</span>
+                    <span class="feed-icon">☀️</span>
+                    <span class="feed-summary"><strong>Morning brief delivered</strong> — 4 meetings, 2 tasks due, rate drop context <span class="feed-tag t-intel">intel</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Your day at a glance</div>
+                        <div class="dr"><span>📅 9:00a — Buyer consult (The Martins) — <em>prep brief ready</em></span></div>
+                        <div class="dr"><span>📅 10:00a — <strong>Listing appointment (Hendersons)</strong> — <em>CMA ready</em></span></div>
+                        <div class="dr"><span>📅 1:00p — Inspection walkthrough, 742 Oak St</span></div>
+                        <div class="dr"><span>📅 3:30p — Team sync</span></div>
+                        <div class="dl">Tasks due</div>
+                        <div class="dr"><span>📋 Appraisal docs — 118 Elm (upload by noon)</span></div>
+                        <div class="dr"><span>📋 Inspection response — 742 Oak (⚠️ expires tomorrow)</span></div>
+                        <div class="dl">Market context</div>
+                        <div class="dr"><span>📉 30Y mortgage: 6.09% (↓0.12% from yesterday)</span></div>
+                        <div class="dr"><span>📊 CPI came in light — markets expect rate cuts by June</span></div>
+                        <div class="dr"><span>🏠 3 new listings in your farm area overnight</span></div>
+                        <div style="margin-top: 14px; padding: 10px 14px; background: #F0FDF4; border-radius: 8px; font-size: 0.85rem; color: #166534;">💪 You're walking into today fully loaded. Henderson CMA is ready, buyer texts are queued, and your inbox is clean. Go get it.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5: INBOX TRIAGE -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">6:31a</span>
+                    <span class="feed-icon">📧</span>
+                    <span class="feed-summary"><strong>Inbox triaged</strong> — 31 emails processed, 4 need you, drafts ready <span class="feed-tag t-email">email</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Needs your attention</div>
+                        <div class="dr"><span>🔴 <strong>Tom Rivera</strong> — Wants comps for Southpark (draft reply with 4 comps ready)</span></div>
+                        <div class="dr"><span>🔴 <strong>Sarah Chen (lender)</strong> — Updated pre-approval for the Martins</span></div>
+                        <div class="dr"><span>🟡 <strong>HOA board</strong> — Requesting docs for 118 Elm closing</span></div>
+                        <div class="dr"><span>🟡 <strong>Henderson</strong> — Confirming 10am tomorrow (already replied ✓)</span></div>
+                        <div class="dl">Auto-handled (27 emails)</div>
+                        <div class="dr"><span>✅ 14 newsletters & marketing — archived</span></div>
+                        <div class="dr"><span>✅ 6 calendar confirmations — noted</span></div>
+                        <div class="dr"><span>✅ 4 showing feedback surveys — logged to CRM</span></div>
+                        <div class="dr"><span>✅ 3 CC'd threads — no action needed</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6: LEAD RESPONSE -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">9:02a</span>
+                    <span class="feed-icon">⚡</span>
+                    <span class="feed-summary"><strong>New lead — responded in 47 seconds</strong> while you were in a meeting <span class="feed-tag t-lead">lead</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Incoming lead (Zillow)</div>
+                        <div class="dr"><span>👤 <strong>James & Priya Patel</strong> — First-time buyers</span></div>
+                        <div class="dr"><span>🏠 Interested in: 2847 Maple Dr ($485,000)</span></div>
+                        <div class="dr"><span>💬 "We love the layout but wondering about the school district"</span></div>
+                        <div class="dl">Response sent automatically</div>
+                        <div class="draft">Hi James and Priya! Great eye on 2847 Maple — it's a standout in that neighborhood. School district is Jefferson County (rated 8/10), and the elementary is a 5-min walk. I can pull more details and set up a showing this week if you're interested. What days work best?</div>
+                        <div class="dr" style="margin-top: 8px;"><span>⏱️ Response time: <strong>47 seconds</strong></span><span class="muted">Industry avg: 5 hours</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7: ZESTIMATE SPIKE -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">10:15a</span>
+                    <span class="feed-icon">📈</span>
+                    <span class="feed-summary"><strong>Past client home value spiked 8%</strong> — outreach text drafted <span class="feed-tag t-crm">crm</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Spotted this while checking your sphere — Lisa's home value jumped</div>
+                        <div class="dr"><span>🏠 742 Vine St — purchased at $465,000</span></div>
+                        <div class="dr"><span>📈 Current estimated value: <strong>$502,000</strong> (+8.0%)</span></div>
+                        <div class="dr"><span>📊 Driven by: 3 recent sales on her street above $500K</span></div>
+                        <div class="dl">Draft text</div>
+                        <div class="draft draft-alt">Hey Lisa! Quick heads up — homes on your street have been selling above $500K lately. Your place has probably appreciated nicely since August. Not saying sell 😄 but thought you'd like to know your investment is doing great. Let me know if you ever want an updated number!</div>
+                        <div class="dr" style="margin-top: 8px;"><span>🎯 <strong>Why this matters:</strong> Lisa referred 2 clients in '24. This keeps you top of mind.</span></div>
+                        <span class="action-btn">Send Text</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8: NEW LISTING MATCHED TO BUYERS -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">11:30a</span>
+                    <span class="feed-icon">🏡</span>
+                    <span class="feed-summary"><strong>New listing just hit — I matched it to 3 of your buyers</strong> <span class="feed-tag t-pipeline">pipeline</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">New listing detected</div>
+                        <div class="dr"><span>🏠 <strong>1420 Birch Lane</strong> — $589,000 · 4bd/3ba · 2,400 sqft</span></div>
+                        <div class="dr"><span>🏫 Cherry Hills Elementary (9/10) · 12 min commute downtown</span></div>
+                        <div class="dl">Matched buyers</div>
+                        <div class="draft">💬 <strong>The Martins:</strong> "David — a new one just hit that checks every box. 1420 Birch: 4bd, Cherry Hills Elementary, under your budget at $589K. I'm previewing it this afternoon. Want me to grab a video walkthrough for you?"</div>
+                        <div class="draft">💬 <strong>Rachel Kim:</strong> "Rachel — 1420 Birch just listed. It's the 4bd layout you wanted with the yard. $589K. Want to see it Saturday before the open house?"</div>
+                        <div class="draft">💬 <strong>The Nguyens:</strong> "Hi Linh — new listing at 1420 Birch, same school district as 742 Oak. Worth a look as a backup? $589K, 4bd/3ba."</div>
+                        <span class="action-btn amber">Send All 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9: SPHERE × LISTING CROSS-REFERENCE -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">11:31a</span>
+                    <span class="feed-icon">🔗</span>
+                    <span class="feed-summary"><strong>Wait — Maria Santos lives 2 doors from that new listing</strong> <span class="feed-tag t-crm">crm</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">Connection found</div>
+                        <div class="dr"><span>🏠 New listing: 1420 Birch Lane ($589,000)</span></div>
+                        <div class="dr"><span>👤 Your contact: <strong>Maria Santos</strong> lives at 1416 Birch Lane</span></div>
+                        <div class="dr"><span>📅 Maria closed with you Feb '25. Birthday: June 12</span></div>
+                        <div class="dr"><span>📊 Maria's est. value: $545K → similar homes now listing at $589K</span></div>
+                        <div class="dl">Draft text</div>
+                        <div class="draft draft-alt">Hey Maria! Heads up — your neighbor at 1420 just listed for $589K. That's great news for your home value 📈. Not sure if you've thought about it, but your place could probably list in that range too. Either way, exciting stuff for the neighborhood! Hope year two on Birch is treating you well.</div>
+                        <div class="dr" style="margin-top: 8px;"><span>🎯 <strong>Potential listing lead</strong> — she's been there 1 year, no mortgage (paid cash)</span></div>
+                        <span class="action-btn">Send Text</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10: INSPECTION DEADLINE -->
+            <div class="feed-item">
+                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
+                    <span class="feed-time">1:00p</span>
+                    <span class="feed-icon">⚠️</span>
+                    <span class="feed-summary"><strong>Inspection report came in — I read all 23 pages for you</strong> <span class="feed-tag t-pipeline">pipeline</span> <span class="feed-tag t-action">action needed</span></span>
+                    <span class="feed-chevron">›</span>
+                </div>
+                <div class="feed-detail">
+                    <div class="dc">
+                        <div class="dl">742 Oak St — I pulled the 5 things that actually matter out of 23 pages</div>
+                        <div class="dr"><span>🔴 <strong>Electrical panel</strong> — Double-tapped breakers, needs licensed electrician (~$400)</span></div>
+                        <div class="dr"><span>🔴 <strong>Water heater</strong> — Past expected life, recommend replacement (~$1,200)</span></div>
+                        <div class="dr"><span>🟡 <strong>Roof flashing</strong> — Minor gap at chimney, sealant needed (~$150)</span></div>
+                        <div class="dr"><span>🟡 <strong>Grading</strong> — Negative slope at foundation, re-grade recommended (~$500)</span></div>
+                        <div class="dr"><span>🟢 <strong>HVAC</strong> — Working but older (2014). No immediate action, budget for future</span></div>
+                        <div class="dl">Draft repair request</div>
+                        <div class="draft">Per the inspection report dated Feb 12, buyers request the following repairs prior to closing: (1) Electrical panel — correct double-tapped breakers by licensed electrician; (2) Water heater replacement; (3) Roof flashing repair at chimney. Estimated total: $1,750. Buyers willing to accept seller credit in lieu of repairs.</div>
+                        <div class="dr" style="margin-top: 8px;"><span>⚠️ <strong>Deadline:</strong> Inspection contingency expires tomorrow (Friday) 5pm</span></div>
+                        <span class="action-btn amber">Review & Send to Listing Agent</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BELOW THE FEED -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Connects to everything you use</h2>
+            <p class="sub">No new apps. Asqend plugs into your existing workflow.</p>
+            <div class="connects-grid">
+                <div class="connect-chip">📧 Gmail / Outlook</div>
+                <div class="connect-chip">📅 Google Calendar</div>
+                <div class="connect-chip">💬 iMessage / SMS</div>
+                <div class="connect-chip">📱 Instagram / Facebook</div>
+                <div class="connect-chip">👥 Your CRM</div>
+                <div class="connect-chip">🏠 MLS / Zillow</div>
+                <div class="connect-chip">🔍 Market Data</div>
+                <div class="connect-chip">📝 Task Management</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="prose-block">
+                <h2 style="text-align:left; margin-bottom: 24px;">This isn't a chatbot.</h2>
+                <p>Chatbots wait for you to ask questions. Then they give you text. Then they forget everything.</p>
+                <p><strong>Asqend thinks, then acts.</strong> It notices you have a listing appointment and builds the CMA. It catches a rate drop at 2am and drafts buyer texts with exact payment savings. It spots that your past client's home value jumped — and writes the outreach before you even know about it.</p>
+                <p>It doesn't wait to be asked. It sees what needs to happen and does it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2>Chatbot vs. Asqend</h2>
+            <p class="sub">One gives answers. The other gets work done.</p>
+            <div class="comp-table">
+                <div class="comp-row comp-head"><div></div><div>Chatbot</div><div>Asqend</div></div>
+                <div class="comp-row"><div>Builds listing presentations overnight</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Texts your buyers when rates drop</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Responds to leads while you're busy</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Matches new listings to your buyers</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Alerts you when a client's home value spikes</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Summarizes inspection reports + drafts repair requests</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Remembers every client detail forever</div><div>❌</div><div>✅</div></div>
+                <div class="comp-row"><div>Works 24/7 without being asked</div><div>❌</div><div>✅</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>What would your morning look like?</h2>
+            <p>Connect your accounts. Wake up to work already done.</p>
+            <a href="#" class="cta-button cta-lg" onclick="openWaitlist(); return false;">Get Early Access</a>
+        </div>
+    </section>
+    <script>
+        // ============================================
+        // TALLY WAITLIST FORM
+        // ============================================
+        // TODO: Replace 'YOUR_TALLY_FORM_ID' with your actual Tally form ID
+        // 1. Go to tally.so and create a waitlist form (Name, Email, "What do you do?")
+        // 2. Publish it
+        // 3. Go to Share → Popup → copy the form ID from the URL
+        // 4. Replace below
+        //
+        // Example: if your form URL is https://tally.so/r/abc123
+        //          your form ID is 'abc123'
+        // ============================================
+        function openWaitlist() {
+            Tally.openPopup('YOUR_TALLY_FORM_ID', {
+                layout: 'modal',
+                width: 500,
+                emoji: {
+                    text: '👋',
+                    animation: 'wave'
+                },
+                autoClose: 3000,
+                hideTitle: false,
+                overlay: true,
+                onSubmit: function(payload) {
+                    // Optional: track conversion
+                    console.log('Waitlist signup:', payload);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
