@@ -509,24 +509,22 @@
         function submitWaitlist(e) {
             e.preventDefault();
             var email = document.getElementById('waitlist-email').value;
-            // Send to hello@asqend.com via mailto (opens nothing, just records)
-            // Using a simple fetch to a mailto-based endpoint or just email directly
-            var subject = encodeURIComponent('Asqend Waitlist: ' + email);
-            var body = encodeURIComponent('New waitlist signup:\n\nEmail: ' + email + '\nTime: ' + new Date().toISOString());
             
             // Hide form, show success
             document.getElementById('waitlist-form').style.display = 'none';
             document.getElementById('waitlist-success').style.display = 'block';
             
-            // Send the email notification in background
-            var img = new Image();
-            img.src = 'https://app.asqend.com/api/waitlist?email=' + encodeURIComponent(email) + '&t=' + Date.now();
-            
-            // Also open mailto as fallback (hidden)
-            var a = document.createElement('a');
-            a.href = 'mailto:hello@asqend.com?subject=' + subject + '&body=' + body;
-            // Don't actually open it - just log
-            console.log('Waitlist signup:', email);
+            // Send notification via formsubmit.co (free, no signup, forwards to hello@asqend.com)
+            fetch('https://formsubmit.co/ajax/hello@asqend.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    _subject: 'Asqend Waitlist: ' + email,
+                    message: 'New waitlist signup from asqend.com',
+                    time: new Date().toISOString()
+                })
+            }).catch(function() {});
             
             setTimeout(closeWaitlist, 2500);
         }
