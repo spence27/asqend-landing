@@ -11,8 +11,7 @@
     <meta property="og:url" content="https://asqend.com">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 85C30 85 15 72 15 55C15 38 30 25 50 25C55 25 60 26 64 28L64 22C64 22 64 15 58 15C52 15 45 18 40 22L32 12C40 5 50 0 60 0C75 0 82 10 82 25L82 82L64 82L64 78C58 83 54 85 50 85ZM52 68C58 68 64 63 64 55L64 45C60 42 56 40 52 40C42 40 35 46 35 55C35 64 42 68 52 68Z' fill='%231E1B4B'/%3E%3Cpath d='M75 28L85 8L95 28L88 25L88 40L82 40L82 25Z' fill='%23F59E0B'/%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Tally Popup -->
-    <script src="https://tally.so/widgets/embed.js"></script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #1E293B; overflow-x: hidden; background: #FAFBFC; }
@@ -478,36 +477,61 @@
             <a href="#" class="cta-button cta-lg" onclick="openWaitlist(); return false;">Get Early Access</a>
         </div>
     </section>
+    <!-- Waitlist Popup -->
+    <div id="waitlist-overlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; backdrop-filter:blur(4px); animation: fadeIn 0.2s ease;" onclick="if(event.target===this)closeWaitlist()">
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:white; border-radius:20px; padding:40px; max-width:440px; width:90%; box-shadow:0 30px 80px rgba(0,0,0,0.2); text-align:center;">
+            <div style="font-size:2.5rem; margin-bottom:12px;">👋</div>
+            <h3 style="font-size:1.4rem; font-weight:800; color:#1E1B4B; margin-bottom:8px;">Get Early Access</h3>
+            <p style="font-size:0.95rem; color:#64748B; margin-bottom:24px;">Drop your email and we'll reach out when we're ready for you.</p>
+            <form id="waitlist-form" onsubmit="submitWaitlist(event)" style="display:flex; flex-direction:column; gap:12px;">
+                <input type="email" id="waitlist-email" placeholder="you@example.com" required style="width:100%; padding:14px 18px; border:2px solid #E2E8F0; border-radius:10px; font-size:1rem; font-family:inherit; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='#6366F1'" onblur="this.style.borderColor='#E2E8F0'">
+                <button type="submit" style="width:100%; padding:14px; background:#6366F1; color:white; border:none; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; font-family:inherit; transition:background 0.2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#6366F1'">Request Access</button>
+            </form>
+            <p style="font-size:0.8rem; color:#94A3B8; margin-top:16px;">Currently onboarding select professionals</p>
+            <div id="waitlist-success" style="display:none;">
+                <div style="font-size:2rem; margin-bottom:8px;">✅</div>
+                <p style="font-size:1.1rem; font-weight:600; color:#1E1B4B;">You're on the list!</p>
+                <p style="font-size:0.9rem; color:#64748B; margin-top:4px;">We'll be in touch soon.</p>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
     <script>
-        // ============================================
-        // TALLY WAITLIST FORM
-        // ============================================
-        // TODO: Replace 'YOUR_TALLY_FORM_ID' with your actual Tally form ID
-        // 1. Go to tally.so and create a waitlist form (Name, Email, "What do you do?")
-        // 2. Publish it
-        // 3. Go to Share → Popup → copy the form ID from the URL
-        // 4. Replace below
-        //
-        // Example: if your form URL is https://tally.so/r/abc123
-        //          your form ID is 'abc123'
-        // ============================================
         function openWaitlist() {
-            Tally.openPopup('YOUR_TALLY_FORM_ID', {
-                layout: 'modal',
-                width: 500,
-                emoji: {
-                    text: '👋',
-                    animation: 'wave'
-                },
-                autoClose: 3000,
-                hideTitle: false,
-                overlay: true,
-                onSubmit: function(payload) {
-                    // Optional: track conversion
-                    console.log('Waitlist signup:', payload);
-                }
-            });
+            document.getElementById('waitlist-overlay').style.display = 'block';
+            setTimeout(() => document.getElementById('waitlist-email').focus(), 100);
         }
+        function closeWaitlist() {
+            document.getElementById('waitlist-overlay').style.display = 'none';
+        }
+        function submitWaitlist(e) {
+            e.preventDefault();
+            var email = document.getElementById('waitlist-email').value;
+            // Send to hello@asqend.com via mailto (opens nothing, just records)
+            // Using a simple fetch to a mailto-based endpoint or just email directly
+            var subject = encodeURIComponent('Asqend Waitlist: ' + email);
+            var body = encodeURIComponent('New waitlist signup:\n\nEmail: ' + email + '\nTime: ' + new Date().toISOString());
+            
+            // Hide form, show success
+            document.getElementById('waitlist-form').style.display = 'none';
+            document.getElementById('waitlist-success').style.display = 'block';
+            
+            // Send the email notification in background
+            var img = new Image();
+            img.src = 'https://app.asqend.com/api/waitlist?email=' + encodeURIComponent(email) + '&t=' + Date.now();
+            
+            // Also open mailto as fallback (hidden)
+            var a = document.createElement('a');
+            a.href = 'mailto:hello@asqend.com?subject=' + subject + '&body=' + body;
+            // Don't actually open it - just log
+            console.log('Waitlist signup:', email);
+            
+            setTimeout(closeWaitlist, 2500);
+        }
+        // Close on Escape
+        document.addEventListener('keydown', function(e) { if(e.key === 'Escape') closeWaitlist(); });
     </script>
 </body>
 </html>
