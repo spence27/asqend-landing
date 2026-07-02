@@ -166,6 +166,17 @@
   .step h3{font-size:16px;font-weight:600;letter-spacing:-0.01em;margin-bottom:6px}
   .step p{font-size:14px;color:var(--text-secondary);line-height:1.6}
 
+  /* integrations */
+  .integrations{padding:64px 0;background:#fff}
+  .integrations-grid{display:grid;grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr);gap:48px;align-items:start}
+  .integrations .lead{font-size:16px;color:var(--text-secondary);line-height:1.65;max-width:32em}
+  .source-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+  .source-group{border-top:1px solid var(--border-light);padding-top:14px}
+  .source-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+  .source-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .source-chip{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);padding:6px 10px;font-size:13px;font-weight:600;color:var(--text-primary);white-space:nowrap}
+  .source-note{grid-column:1/-1;font-size:12.5px;color:var(--text-muted);line-height:1.55;padding-top:2px}
+
   /* ledger */
   .ledger-sec{padding:72px 0;background:var(--bg-secondary)}
   .ledger-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
@@ -177,8 +188,9 @@
   .ledger-title{font-size:14px;font-weight:700}
   .ledger-sub{font-size:12px;color:var(--text-muted)}
   .l-row{display:grid;grid-template-columns:16px 1fr auto;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border-light);align-items:start}
-  .l-row.ghost{opacity:.55}
+  .l-row.ghost{opacity:.7}
   .l-dot{width:8px;height:8px;border-radius:50%;background:var(--success);margin-top:6px}
+  .example-label{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:3px}
   .l-move{font-size:13.5px;font-weight:600}
   .l-out{font-size:12.5px;color:var(--text-muted);margin-top:2px}
   .l-out a{color:var(--accent);text-decoration:none;font-weight:500}
@@ -195,10 +207,16 @@
   .diff-item{font-size:14.5px;font-weight:600;padding:14px 0 14px 14px;border-left:2px solid var(--accent)}
   .diff-item small{display:block;font-weight:400;color:var(--text-muted);margin-top:2px;font-size:13px}
 
-  /* who + close */
+  /* who + trust + close */
   .who{padding:72px 0 56px;text-align:center;background:var(--bg-secondary);border-top:1px solid var(--border-light)}
   .who p{font-size:17.5px;max-width:44em;margin:0 auto;line-height:1.6;color:var(--text-secondary)}
   .who p strong{font-weight:600;color:var(--text-primary)}
+  .data-trust{padding:58px 0;background:var(--bg-secondary);border-top:1px solid var(--border-light)}
+  .trust-grid{display:grid;grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr);gap:48px;align-items:start}
+  .trust-intro{font-size:15.5px;color:var(--text-secondary);line-height:1.65;max-width:31em}
+  .trust-points{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px}
+  .trust-point{border-left:2px solid var(--accent);padding-left:14px;font-size:14px;color:var(--text-secondary);line-height:1.55}
+  .trust-point strong{display:block;color:var(--text-primary);font-weight:600;margin-bottom:2px}
   .close{padding:8px 0 88px;text-align:center;background:var(--bg-secondary);border-top:none}
   .close h2{max-width:22em;margin:0 auto 12px}
   .close p{color:var(--text-secondary);max-width:36em;margin:0 auto 26px;font-size:15.5px}
@@ -211,8 +229,8 @@
 
   @media (max-width:900px){
     .hero{grid-template-columns:1fr;gap:40px;padding:28px 0 56px}
-    .why-grid,.ledger-grid{grid-template-columns:1fr;gap:22px}
-    .steps{grid-template-columns:1fr}
+    .why-grid,.integrations-grid,.ledger-grid,.trust-grid{grid-template-columns:1fr;gap:22px}
+    .steps,.source-grid,.trust-points{grid-template-columns:1fr}
     .diff-row{grid-template-columns:1fr 1fr;gap:14px}
     .nav-link{display:none}
     footer .wrap{align-items:flex-start}
@@ -242,7 +260,7 @@
         <a class="btn lg" href="#pilot">Start your 2-week pilot</a>
         <a class="see" href="#how">See how it works ↓</a>
       </div>
-      <p class="trust"><span>Installs on the tools you already run</span> · <span>Live in two weeks</span> · <span>You approve every move</span></p>
+      <p class="trust"><span>Connects to authorized systems</span> · <span>2-week pilot on real accounts</span> · <span>You approve every move</span></p>
     </div>
 
     <div>
@@ -316,11 +334,11 @@
   <div class="wrap why-grid">
     <div>
       <p class="kicker">The problem</p>
-      <h2>Why you’re the last to know.</h2>
+      <h2>You’re the last to know.</h2>
     </div>
     <div>
-      <p>Every problem is visible somewhere, early — a quiet account, a slipping deal, a meeting you weren’t in. But news gets softened on its way up. By the time it reaches you, <strong>it’s a fire with a story attached.</strong></p>
-      <p>Asqend doesn’t read the summary. It reads the raw signals — usage, calls, pipeline, billing — so you hear about things at the size they actually are.</p>
+      <p>Every problem is visible somewhere, early — a quiet account, a slipping deal, a meeting you weren’t in. The issue is not that your team missed it. Signals get softened on the way up. By the time it reaches you, <strong>it’s a fire with a story attached.</strong></p>
+      <p>Asqend reads the raw business signals — CRM, meetings, product usage, billing, and authorized comms — so you hear about things at the size they actually are.</p>
     </div>
   </div>
 </section>
@@ -332,18 +350,59 @@
       <div class="step">
         <span class="n">1</span>
         <h3>Connect your tools.</h3>
-        <p>CRM, notetaker, product analytics, billing. Your meetings give it eyes on day one.</p>
+        <p>Start with the systems you authorize: CRM, meetings, product analytics, billing, and comms.</p>
       </div>
       <div class="step">
         <span class="n">2</span>
-        <h3>Asqend watches everything, all the time.</h3>
-        <p>Every account, every deal, every conversation — the way you would if you could be everywhere.</p>
+        <h3>Asqend watches business signals continuously.</h3>
+        <p>Accounts, deals, usage, and conversations become operating context — the way you would if you could be everywhere.</p>
       </div>
       <div class="step">
         <span class="n">3</span>
         <h3>You get the moves that matter.</h3>
         <p>A couple of things that need your judgement. A short daily review you can do out loud. A report that shows what each approved move earned.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="integrations" aria-labelledby="integrations-title">
+  <div class="wrap integrations-grid">
+    <div>
+      <p class="kicker">Integrations</p>
+      <h2 id="integrations-title">Connects where the business already runs.</h2>
+      <p class="lead">The pilot starts with the highest-signal systems you authorize, then adds sources only when they improve decisions.</p>
+    </div>
+    <div class="source-grid" aria-label="Example authorized source systems">
+      <div class="source-group">
+        <div class="source-title">CRM</div>
+        <div class="source-chips">
+          <span class="source-chip">HubSpot</span>
+          <span class="source-chip">Salesforce</span>
+        </div>
+      </div>
+      <div class="source-group">
+        <div class="source-title">Meetings</div>
+        <div class="source-chips">
+          <span class="source-chip">Granola</span>
+          <span class="source-chip">Fathom</span>
+        </div>
+      </div>
+      <div class="source-group">
+        <div class="source-title">Product and billing</div>
+        <div class="source-chips">
+          <span class="source-chip">PostHog</span>
+          <span class="source-chip">Billing system</span>
+        </div>
+      </div>
+      <div class="source-group">
+        <div class="source-title">Comms</div>
+        <div class="source-chips">
+          <span class="source-chip">Slack</span>
+          <span class="source-chip">Gmail</span>
+        </div>
+      </div>
+      <p class="source-note">Connector availability is scoped during setup. These are examples of systems Asqend can be configured around, not required tools.</p>
     </div>
   </div>
 </section>
@@ -365,6 +424,7 @@
         <div class="l-row ghost">
           <span class="l-dot"></span>
           <div>
+            <div class="example-label">Example receipt</div>
             <div class="l-move">Re-engagement plan — at-risk account</div>
             <div class="l-out">Approved day 4 · exec call rebooked, account recovered · <a href="#" tabindex="-1">View receipt →</a></div>
           </div>
@@ -373,7 +433,7 @@
         <div class="l-empty">
           <p>This section is empty on purpose. We publish outcomes, not adjectives — and we don’t have your permission to brag yet. <b>Your two-week pilot writes the first entries.</b></p>
         </div>
-        <div class="l-foot">Illustrative entry — no customer data appears on this page</div>
+        <div class="l-foot">Example receipt — no customer data appears on this page</div>
       </div>
     </div>
   </div>
@@ -393,6 +453,22 @@
 <section class="who">
   <div class="wrap">
     <p>Built for <strong>CEOs and their exec teams at B2B SaaS companies</strong> — the people who own outcomes across more deals, accounts, and meetings than anyone can personally watch, and who don’t want surveillance to get visibility back.</p>
+  </div>
+</section>
+
+<section class="data-trust" aria-labelledby="data-trust-title">
+  <div class="wrap trust-grid">
+    <div>
+      <p class="kicker">Data trust</p>
+      <h2 id="data-trust-title">Built for sensitive operating context.</h2>
+      <p class="trust-intro">Asqend only works if the business can trust what it connects. Pilot scope, access, and retention are explicit before systems are connected.</p>
+    </div>
+    <div class="trust-points">
+      <p class="trust-point"><strong>No model training on customer data.</strong> Customer context is processed to provide the service, not to train third-party models.</p>
+      <p class="trust-point"><strong>Human access requires consent.</strong> Customer content is only reviewed for implementation, support, or debugging with explicit approval.</p>
+      <p class="trust-point"><strong>Export and deletion on request.</strong> Offboarding includes customer-controlled export and deletion paths, subject to security and contract requirements.</p>
+      <p class="trust-point"><strong>Security review ready.</strong> DPA-level commitments, tenant isolation, and a SOC 2 roadmap are handled during pilot scoping.</p>
+    </div>
   </div>
 </section>
 
