@@ -153,7 +153,7 @@
   h2{font-weight:700;font-size:clamp(24px,2.6vw,30px);letter-spacing:-0.025em;line-height:1.2;margin-bottom:14px}
 
   /* why */
-  .why{padding:72px 0;background:var(--bg-secondary)}
+  .why{padding:56px 0 58px;background:var(--bg-secondary)}
   .why-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
   .why p{font-size:16px;color:var(--text-secondary);margin-bottom:14px;line-height:1.65}
   .why p strong{color:var(--text-primary);font-weight:600}
@@ -166,16 +166,17 @@
   .step h3{font-size:16px;font-weight:600;letter-spacing:-0.01em;margin-bottom:6px}
   .step p{font-size:14px;color:var(--text-secondary);line-height:1.6}
 
-  /* integrations */
-  .integrations{padding:64px 0;background:#fff}
-  .integrations-grid{display:grid;grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr);gap:48px;align-items:start}
-  .integrations .lead{font-size:16px;color:var(--text-secondary);line-height:1.65;max-width:32em}
-  .source-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
-  .source-group{border-top:1px solid var(--border-light);padding-top:14px}
-  .source-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
-  .source-chips{display:flex;flex-wrap:wrap;gap:8px}
-  .source-chip{display:inline-flex;align-items:center;border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);padding:6px 10px;font-size:13px;font-weight:600;color:var(--text-primary);white-space:nowrap}
-  .source-note{grid-column:1/-1;font-size:12.5px;color:var(--text-muted);line-height:1.55;padding-top:2px}
+  /* connectors */
+  .connectors{padding:56px 0 60px;background:#fff}
+  .connectors-grid{display:grid;grid-template-columns:minmax(0,4.7fr) minmax(0,7.3fr);gap:54px;align-items:center}
+  .connectors h2{max-width:14em;margin-bottom:14px}
+  .connectors .lead{font-size:16px;color:var(--text-secondary);line-height:1.65;max-width:33em}
+  .logo-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .logo-tile{height:64px;border:1px solid var(--border-light);border-radius:10px;background:#fff;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:10px;padding:0 14px;min-width:0}
+  .logo-tile img{width:26px;height:26px;object-fit:contain;flex:0 0 auto}
+  .logo-tile span{font-size:13.5px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .logo-tile.more{justify-content:center;background:var(--bg-secondary);border-style:dashed}
+  .logo-tile.more span{color:var(--text-secondary)}
 
   /* ledger */
   .ledger-sec{padding:72px 0;background:var(--bg-secondary)}
@@ -229,8 +230,9 @@
 
   @media (max-width:900px){
     .hero{grid-template-columns:1fr;gap:40px;padding:28px 0 56px}
-    .why-grid,.integrations-grid,.ledger-grid,.trust-grid{grid-template-columns:1fr;gap:22px}
-    .steps,.source-grid,.trust-points{grid-template-columns:1fr}
+    .why-grid,.connectors-grid,.ledger-grid,.trust-grid{grid-template-columns:1fr;gap:22px}
+    .steps,.trust-points{grid-template-columns:1fr}
+    .logo-wall{grid-template-columns:1fr 1fr;gap:10px}
     .diff-row{grid-template-columns:1fr 1fr;gap:14px}
     .nav-link{display:none}
     footer .wrap{align-items:flex-start}
@@ -366,43 +368,44 @@
   </div>
 </section>
 
-<section class="integrations" aria-labelledby="integrations-title">
-  <div class="wrap integrations-grid">
+<section class="connectors" aria-labelledby="connectors-title">
+  <div class="wrap connectors-grid">
     <div>
-      <p class="kicker">Integrations</p>
-      <h2 id="integrations-title">Connects where the business already runs.</h2>
-      <p class="lead">The pilot starts with the highest-signal systems you authorize, then adds sources only when they improve decisions.</p>
+      <h2 id="connectors-title">Asqend connects to the tools your business already runs.</h2>
+      <p class="lead">Start with the systems you authorize. CRM, meetings, product usage, billing, and comms become one operating signal.</p>
     </div>
-    <div class="source-grid" aria-label="Example authorized source systems">
-      <div class="source-group">
-        <div class="source-title">CRM</div>
-        <div class="source-chips">
-          <span class="source-chip">HubSpot</span>
-          <span class="source-chip">Salesforce</span>
-        </div>
+    <div class="logo-wall" aria-label="Tools Asqend connects to">
+      <div class="logo-tile">
+        <img src="/assets/logos/hubspot.png" alt="" decoding="async">
+        <span>HubSpot</span>
       </div>
-      <div class="source-group">
-        <div class="source-title">Meetings</div>
-        <div class="source-chips">
-          <span class="source-chip">Granola</span>
-          <span class="source-chip">Fathom</span>
-        </div>
+      <div class="logo-tile">
+        <img src="/assets/logos/salesforce.png" alt="" decoding="async">
+        <span>Salesforce</span>
       </div>
-      <div class="source-group">
-        <div class="source-title">Product and billing</div>
-        <div class="source-chips">
-          <span class="source-chip">PostHog</span>
-          <span class="source-chip">Billing system</span>
-        </div>
+      <div class="logo-tile">
+        <img src="/assets/logos/posthog.png" alt="" decoding="async">
+        <span>PostHog</span>
       </div>
-      <div class="source-group">
-        <div class="source-title">Comms</div>
-        <div class="source-chips">
-          <span class="source-chip">Slack</span>
-          <span class="source-chip">Gmail</span>
-        </div>
+      <div class="logo-tile">
+        <img src="/assets/logos/granola.png" alt="" decoding="async">
+        <span>Granola</span>
       </div>
-      <p class="source-note">Connector availability is scoped during setup. These are examples of systems Asqend can be configured around, not required tools.</p>
+      <div class="logo-tile">
+        <img src="/assets/logos/fathom.png" alt="" decoding="async">
+        <span>Fathom</span>
+      </div>
+      <div class="logo-tile">
+        <img src="/assets/logos/slack.png" alt="" decoding="async">
+        <span>Slack</span>
+      </div>
+      <div class="logo-tile">
+        <img src="/assets/logos/gmail.png" alt="" decoding="async">
+        <span>Gmail</span>
+      </div>
+      <div class="logo-tile more">
+        <span>and many more</span>
+      </div>
     </div>
   </div>
 </section>
