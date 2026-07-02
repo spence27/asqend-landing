@@ -1,548 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asqend — Your AI assistant that actually does things</title>
-    <meta name="description" content="Asqend connects to your email, calendar, CRM, and tools — then does the work. Not answers. Work.">
-    <meta property="og:title" content="Asqend — Your AI assistant that actually does things">
-    <meta property="og:description" content="While you slept, your assistant noticed things, made decisions, and got work done.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://asqend.com">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 85C30 85 15 72 15 55C15 38 30 25 50 25C55 25 60 26 64 28L64 22C64 22 64 15 58 15C52 15 45 18 40 22L32 12C40 5 50 0 60 0C75 0 82 10 82 25L82 82L64 82L64 78C58 83 54 85 50 85ZM52 68C58 68 64 63 64 55L64 45C60 42 56 40 52 40C42 40 35 46 35 55C35 64 42 68 52 68Z' fill='%231E1B4B'/%3E%3Cpath d='M75 28L85 8L95 28L88 25L88 40L82 40L82 25Z' fill='%23F59E0B'/%3E%3C/svg%3E">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asqend — find out what’s wrong while it’s still cheap to fix</title>
+<meta name="description" content="Asqend watches your deals, accounts, meetings, and billing — and brings you the problem while it's still small, with the solution ready for you to approve.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Asqend — find out what’s wrong while it’s still cheap to fix">
+<meta property="og:description" content="Asqend watches your deals, accounts, meetings, and billing — and brings you the problem while it's still small, with the solution ready for you to approve.">
+<meta property="og:site_name" content="Asqend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Asqend — find out what’s wrong while it’s still cheap to fix">
+<meta name="twitter:description" content="Asqend watches your deals, accounts, meetings, and billing — and brings you the problem while it's still small, with the solution ready for you to approve.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Asqend product tokens — from src/app/globals.css */
+    --bg-primary:#ffffff;
+    --bg-secondary:#f9fafb;
+    --bg-tertiary:#f3f4f6;
+    --text-primary:#1f2937;
+    --text-secondary:#4b5563;
+    --text-muted:#6b7280;
+    --accent:#6366f1;
+    --accent-hover:#4f46e5;
+    --accent-light:#eef2ff;
+    --success:#16a34a;
+    --success-light:#dcfce7;
+    --warning:#f59e0b;
+    --warning-light:#fef3c7;
+    --warning-fg:#78350f;
+    --border:#d7dee8;
+    --border-light:#f3f4f6;
+    --ink:#111827;
+    --navy:#101828;
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:16px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
+    --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg-primary);color:var(--text-primary);
+    font-family:"Inter",system-ui,sans-serif;
+    font-feature-settings:"cv11","ss01","ss03";
+    font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+  .num{font-variant-numeric:tabular-nums}
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; color: #1E293B; overflow-x: hidden; background: #FAFBFC; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  /* nav */
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+  .brand{font-weight:700;font-size:20px;letter-spacing:-0.02em;text-decoration:none;color:var(--ink)}
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .nav-link{font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none}
+  .nav-link:hover{color:var(--text-primary)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-weight:600;font-size:14px;height:40px;padding:0 20px;
+    border-radius:10px;transition:background .15s ease;white-space:nowrap;
+  }
+  .btn:hover{background:#1f2937}
+  .btn.lg{height:44px;padding:0 24px;font-size:15px}
+  .btn.outline{background:#fff;color:var(--text-primary);border:1px solid var(--border)}
+  .btn.outline:hover{background:var(--bg-secondary)}
 
-        header { background: white; padding: 16px 0; border-bottom: 1px solid #E2E8F0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); background: rgba(255,255,255,0.9); }
-        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 22px; color: #1E1B4B; }
-        .nav-right { display: flex; align-items: center; gap: 16px; }
-        .nav-login { color: #64748B; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
-        .nav-login:hover { color: #1E1B4B; }
-        .cta-button { background: #6366F1; color: white; padding: 10px 24px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; cursor: pointer; border: none; }
-        .cta-button:hover { background: #4F46E5; }
-        .cta-lg { padding: 14px 36px; font-size: 1rem; }
+  /* hero */
+  .hero{display:grid;grid-template-columns:minmax(0,11fr) minmax(0,10fr);gap:56px;align-items:center;padding:56px 0 80px}
+  h1{font-weight:700;letter-spacing:-0.032em;font-size:clamp(34px,3.9vw,50px);line-height:1.08}
+  .sub{margin-top:20px;font-size:17px;color:var(--text-secondary);max-width:33em;line-height:1.6}
+  .sub strong{color:var(--text-primary);font-weight:600}
+  .cta-row{margin-top:30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .see{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none}
+  .see:hover{color:var(--accent-hover)}
+  .trust{margin-top:18px;font-size:13px;color:var(--text-muted)}
+  .trust span{white-space:nowrap}
 
-        .hero { padding: 80px 0 40px; text-align: center; }
-        .hero h1 { font-size: 3rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; line-height: 1.3; letter-spacing: -0.03em; }
-        .hero p { font-size: 1.15rem; color: #64748B; max-width: 540px; margin: 0 auto 16px; }
-        .hero-sub { font-size: 0.85rem; color: #94A3B8; margin-bottom: 40px; }
+  /* product mock — mirrors the Operating Center surface */
+  .mock{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);overflow:hidden;
+  }
+  .mock-head{padding:16px 20px 14px;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:flex-start}
+  .mock-title{font-size:16px;font-weight:700;letter-spacing:-0.01em}
+  .mock-subtitle{font-size:12.5px;color:var(--text-muted);margin-top:1px}
+  .mock-day{font-size:12px;color:var(--text-muted);font-weight:500}
+  .mock-body{padding:14px 14px 16px;position:relative;min-height:352px;background:var(--bg-secondary)}
 
-        /* === FEED === */
-        .mock-ui { max-width: 820px; margin: 0 auto 80px; background: white; border-radius: 16px; border: 1px solid #E2E8F0; box-shadow: 0 20px 60px rgba(0,0,0,0.08); overflow: hidden; }
-        .mock-titlebar { background: #F8FAFC; border-bottom: 1px solid #E2E8F0; padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
-        .mock-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .mock-dot.r { background: #FCA5A5; } .mock-dot.y { background: #FDE68A; } .mock-dot.g { background: #86EFAC; }
-        .mock-title { margin-left: 12px; font-size: 0.85rem; color: #94A3B8; font-weight: 500; }
-        .mock-stats { margin-left: auto; display: flex; gap: 20px; }
-        .mock-stat { font-size: 0.75rem; color: #94A3B8; }
-        .mock-stat strong { color: #6366F1; font-weight: 700; }
+  .banner{
+    background:var(--warning-light);border:1px solid #f2dc9b;border-radius:var(--radius-md);
+    padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .banner p{font-size:13px;color:var(--warning-fg)}
+  .banner p b{font-weight:700}
+  .banner .btn{height:30px;padding:0 12px;font-size:12.5px;border-radius:8px}
 
-        .feed-item { border-bottom: 1px solid #F1F5F9; cursor: pointer; transition: background 0.15s; }
-        .feed-item:last-child { border-bottom: none; }
-        .feed-item:hover { background: #FAFBFC; }
-        .feed-item.expanded { background: #F8FAFC; }
-        .feed-header { display: flex; gap: 14px; padding: 14px 24px; align-items: center; }
-        .feed-time { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #94A3B8; width: 52px; flex-shrink: 0; }
-        .feed-icon { font-size: 1rem; flex-shrink: 0; width: 20px; text-align: center; }
-        .feed-summary { flex: 1; font-size: 0.9rem; color: #334155; }
-        .feed-summary strong { font-weight: 600; color: #1E1B4B; }
-        .feed-tag { display: inline-block; font-size: 0.65rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
-        .t-done { background: #D1FAE5; color: #065F46; }
-        .t-email { background: #DBEAFE; color: #1D4ED8; }
-        .t-content { background: #FCE7F3; color: #BE185D; }
-        .t-crm { background: #D1FAE5; color: #065F46; }
-        .t-intel { background: #FEF3C7; color: #92400E; }
-        .t-lead { background: #FEE2E2; color: #991B1B; }
-        .t-pipeline { background: #E0E7FF; color: #4338CA; }
-        .t-action { background: #FEF3C7; color: #92400E; }
-        .feed-chevron { color: #CBD5E1; font-size: 0.8rem; transition: transform 0.2s; flex-shrink: 0; }
-        .feed-item.expanded .feed-chevron { transform: rotate(90deg); }
+  .row-card{
+    background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);
+    padding:12px 14px;margin-top:10px;box-shadow:var(--shadow-sm);
+  }
+  .row-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+  .row-title{font-size:14px;font-weight:600;letter-spacing:-0.005em}
+  .row-meta{font-size:12.5px;color:var(--text-muted);margin-top:3px;line-height:1.45}
+  .chip{
+    display:inline-flex;align-items:center;font-size:11.5px;font-weight:500;
+    border-radius:999px;padding:2px 9px;white-space:nowrap;
+  }
+  .chip.indigo{background:var(--accent-light);color:var(--accent-hover)}
+  .chip.green{background:var(--success-light);color:#15803d}
+  .row-actions{display:flex;gap:8px;margin-top:10px;align-items:center}
+  .row-actions .btn{height:28px;padding:0 12px;font-size:12px;border-radius:7px}
+  .receipt-link{font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;margin-left:auto}
 
-        .feed-detail { display: none; padding: 0 24px 16px 90px; }
-        .feed-item.expanded .feed-detail { display: block; }
-        .dc { background: white; border: 1px solid #E2E8F0; border-radius: 10px; padding: 16px 20px; font-size: 0.85rem; color: #475569; line-height: 1.6; }
-        .dc + .dc { margin-top: 8px; }
-        .dl { font-size: 0.7rem; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
-        .dl:not(:first-child) { margin-top: 14px; }
-        .dr { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #F8FAFC; font-size: 0.85rem; }
-        .dr:last-of-type { border-bottom: none; }
-        .dr .muted { color: #94A3B8; }
-        .draft { background: #F8FAFC; border-radius: 6px; padding: 10px 14px; margin-top: 8px; font-style: italic; border-left: 3px solid #6366F1; font-size: 0.85rem; line-height: 1.5; }
-        .draft-alt { border-left-color: #F59E0B; }
-        .action-btn { display: inline-block; background: #6366F1; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; margin-top: 10px; cursor: pointer; }
-        .action-btn.amber { background: #F59E0B; }
-        .done-list { list-style: none; padding: 0; }
-        .done-list li { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid #F8FAFC; font-size: 0.85rem; align-items: flex-start; }
-        .done-list li:last-child { border-bottom: none; }
-        .done-check { color: #22C55E; font-weight: 700; flex-shrink: 0; }
-        .social-preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-        .social-var { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 10px; font-size: 0.78rem; color: #475569; line-height: 1.4; }
-        .social-var .var-label { font-size: 0.65rem; font-weight: 700; color: #6366F1; margin-bottom: 4px; }
-        .cma-preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-        .cma-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 12px; text-align: center; }
-        .cma-card .cma-price { font-size: 1.1rem; font-weight: 800; color: #1E1B4B; }
-        .cma-card .cma-label { font-size: 0.7rem; color: #94A3B8; margin-top: 2px; }
-        .cma-card .cma-detail { font-size: 0.75rem; color: #64748B; margin-top: 6px; line-height: 1.4; }
+  .triage-row{
+    margin-top:10px;background:#fff;border:1px dashed var(--border);border-radius:var(--radius-md);
+    padding:11px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .triage-row .t-label{font-size:13px;font-weight:600}
+  .triage-row .t-sub{font-size:12px;color:var(--text-muted);margin-top:1px}
+  .mic{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text-secondary);white-space:nowrap}
+  .mic svg{width:13px;height:13px;stroke:var(--text-muted)}
 
-        /* Sections */
-        .section { padding: 80px 0; }
-        .section-alt { background: white; }
-        .section h2 { text-align: center; font-size: 2rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; }
-        .section .sub { text-align: center; font-size: 1.05rem; color: #64748B; max-width: 550px; margin: 0 auto 48px; }
+  /* condensing animation */
+  .noise{position:absolute;left:14px;right:14px;top:14px}
+  .noise-row{height:24px;border-radius:8px;background:#eceef1;margin-bottom:8px;transition:opacity .5s ease,transform .5s ease}
+  .noise-row:nth-child(2n){width:93%}
+  .noise-row:nth-child(3n){width:85%}
+  .signal{opacity:0;transition:opacity .6s ease .1s}
+  .mock.done .noise-row{opacity:0;transform:translateY(-5px)}
+  .mock.done .signal{opacity:1}
+  .replay{
+    background:none;border:none;cursor:pointer;margin-top:8px;float:right;
+    font-size:11px;color:var(--text-muted);text-decoration:underline;font-family:inherit;
+  }
 
-        .connects-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; max-width: 700px; margin: 0 auto; }
-        .connect-chip { background: white; border: 1px solid #E2E8F0; border-radius: 10px; padding: 14px 22px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #334155; font-size: 0.9rem; transition: all 0.2s; }
-        .connect-chip:hover { border-color: #6366F1; }
+  /* section scaffolding */
+  section{border-top:1px solid var(--border-light)}
+  .kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+  h2{font-weight:700;font-size:clamp(24px,2.6vw,30px);letter-spacing:-0.025em;line-height:1.2;margin-bottom:14px}
 
-        .prose-block { max-width: 640px; margin: 0 auto; }
-        .prose-block p { font-size: 1.05rem; color: #475569; margin-bottom: 16px; }
-        .prose-block p strong { color: #1E1B4B; }
+  /* why */
+  .why{padding:72px 0;background:var(--bg-secondary)}
+  .why-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  .why p{font-size:16px;color:var(--text-secondary);margin-bottom:14px;line-height:1.65}
+  .why p strong{color:var(--text-primary);font-weight:600}
 
-        .comp-table { max-width: 680px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0; }
-        .comp-row { display: grid; grid-template-columns: 1fr 90px 90px; }
-        .comp-head { background: #1E1B4B; color: white; font-weight: 600; font-size: 0.85rem; }
-        .comp-head > div, .comp-row > div { padding: 12px 18px; }
-        .comp-row > div { border-bottom: 1px solid #F1F5F9; font-size: 0.88rem; }
-        .comp-row > div:nth-child(2), .comp-row > div:nth-child(3) { text-align: center; font-size: 1rem; }
-        .comp-row:last-child > div { border-bottom: none; }
+  /* how */
+  .how{padding:72px 0}
+  .steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:10px}
+  .step{border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px;background:#fff;box-shadow:var(--shadow-sm)}
+  .step .n{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--accent-light);color:var(--accent-hover);font-size:12.5px;font-weight:700;margin-bottom:12px}
+  .step h3{font-size:16px;font-weight:600;letter-spacing:-0.01em;margin-bottom:6px}
+  .step p{font-size:14px;color:var(--text-secondary);line-height:1.6}
 
-        .final-cta { padding: 100px 0; text-align: center; background: linear-gradient(180deg, #FAFBFC 0%, #E0E7FF 100%); }
-        .final-cta h2 { font-size: 2.2rem; font-weight: 800; color: #1E1B4B; margin-bottom: 16px; }
-        .final-cta p { font-size: 1.05rem; color: #64748B; margin-bottom: 32px; }
+  /* ledger */
+  .ledger-sec{padding:72px 0;background:var(--bg-secondary)}
+  .ledger-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  .ledger-sec .lead{font-size:16px;color:var(--text-secondary);line-height:1.65}
+  .ledger-sec .lead strong{color:var(--text-primary);font-weight:600}
+  .no-board{margin-top:14px;font-size:13px;color:var(--text-muted)}
+  .ledger-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden}
+  .ledger-head{padding:14px 18px;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between;align-items:baseline}
+  .ledger-title{font-size:14px;font-weight:700}
+  .ledger-sub{font-size:12px;color:var(--text-muted)}
+  .l-row{display:grid;grid-template-columns:16px 1fr auto;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border-light);align-items:start}
+  .l-row.ghost{opacity:.55}
+  .l-dot{width:8px;height:8px;border-radius:50%;background:var(--success);margin-top:6px}
+  .l-move{font-size:13.5px;font-weight:600}
+  .l-out{font-size:12.5px;color:var(--text-muted);margin-top:2px}
+  .l-out a{color:var(--accent);text-decoration:none;font-weight:500}
+  .l-earned{font-size:14px;font-weight:700;color:var(--success);text-align:right}
+  .l-earned small{display:block;font-weight:500;font-size:11px;color:var(--text-muted)}
+  .l-empty{padding:22px 18px}
+  .l-empty p{font-size:14.5px;color:var(--text-secondary);line-height:1.6}
+  .l-empty b{color:var(--text-primary);font-weight:600}
+  .l-foot{padding:10px 18px;background:var(--bg-secondary);font-size:11px;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase}
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .feed-detail { padding-left: 24px; }
-            .mock-stats { display: none; }
-            .social-preview, .cma-preview { grid-template-columns: 1fr; }
-        }
-    </style>
+  /* differentiators */
+  .diff{padding:56px 0}
+  .diff-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .diff-item{font-size:14.5px;font-weight:600;padding:14px 0 14px 14px;border-left:2px solid var(--accent)}
+  .diff-item small{display:block;font-weight:400;color:var(--text-muted);margin-top:2px;font-size:13px}
+
+  /* who + close */
+  .who{padding:72px 0 56px;text-align:center;background:var(--bg-secondary);border-top:1px solid var(--border-light)}
+  .who p{font-size:17.5px;max-width:44em;margin:0 auto;line-height:1.6;color:var(--text-secondary)}
+  .who p strong{font-weight:600;color:var(--text-primary)}
+  .close{padding:8px 0 88px;text-align:center;background:var(--bg-secondary);border-top:none}
+  .close h2{max-width:22em;margin:0 auto 12px}
+  .close p{color:var(--text-secondary);max-width:36em;margin:0 auto 26px;font-size:15.5px}
+
+  footer{border-top:1px solid var(--border-light);padding:24px 0;font-size:13px;color:var(--text-muted)}
+  footer .wrap{display:flex;justify-content:space-between}
+  footer a{text-decoration:none;color:var(--text-muted)}
+  footer a:hover{color:var(--text-primary)}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;gap:40px;padding:28px 0 56px}
+    .why-grid,.ledger-grid{grid-template-columns:1fr;gap:22px}
+    .steps{grid-template-columns:1fr}
+    .diff-row{grid-template-columns:1fr 1fr;gap:14px}
+    .nav-link{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .noise-row,.signal{transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="/logo.svg" alt="Asqend" height="44" style="height:44px;">
-            </div>
-            <div class="nav-right">
-                <a href="https://app.asqend.com" class="nav-login">Log In</a>
-                <a href="#" class="cta-button" onclick="openWaitlist(); return false;">Get Early Access</a>
-            </div>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>You went to bed.<br>Your assistant kept going.</h1>
-            <p>While you slept, your AI assistant noticed things, made decisions, and got work done. Here's what you woke up to.</p>
-            <div class="hero-sub">↓ Click any item to see the work</div>
-        </div>
-    </section>
+<div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#">asqend</a>
+    <div class="nav-right">
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="btn" href="#pilot">Start a pilot</a>
+    </div>
+  </nav>
 
-    <div class="container">
-        <div class="mock-ui">
-            <div class="mock-titlebar">
-                <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
-                <span class="mock-title">Asqend — Overnight Activity</span>
-                <div class="mock-stats">
-                    <span class="mock-stat"><strong>4</strong> workflows completed</span>
-                    <span class="mock-stat"><strong>31</strong> emails handled</span>
-                    <span class="mock-stat"><strong>~2hrs</strong> saved</span>
-                </div>
-            </div>
-
-            <!-- 1: OVERNIGHT REPORT — ALREADY OPEN -->
-            <div class="feed-item expanded">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">6:30a</span>
-                    <span class="feed-icon">🌙</span>
-                    <span class="feed-summary"><strong>While you slept, I got a few things done</strong> <span class="feed-tag t-done">overnight recap</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Here's what happened overnight</div>
-                        <ul class="done-list">
-                            <li><span class="done-check">✓</span> <span><strong>Noticed you have a listing appointment tomorrow</strong> — pulled comps, built 3 CMA variations for the Hendersons so you're ready to walk in cold</span></li>
-                            <li><span class="done-check">✓</span> <span><strong>Caught a rate drop overnight</strong> — 30Y hit 6.09%. Drafted social posts for 3 platforms and personalized texts for your 4 pre-approved buyers with their exact payment savings</span></li>
-                            <li><span class="done-check">✓</span> <span><strong>Saw you have an open house Saturday</strong> — put together the marketing package: social teaser, neighborhood one-pager, and a sign-in sheet with your QR code</span></li>
-                            <li><span class="done-check">✓</span> <span><strong>Triaged 31 emails</strong> — handled 27, flagged 4 for you with drafts ready. Your inbox is clean.</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2: LISTING PRESENTATION -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">10:42p</span>
-                    <span class="feed-icon">🏠</span>
-                    <span class="feed-summary"><strong>Saw your listing appointment tomorrow</strong> — pulled comps and built 3 CMA options <span class="feed-tag t-pipeline">pipeline</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">CMA — 847 Spruce Dr (I saw the Henderson meeting on your calendar for 10am)</div>
-                        <div class="cma-preview">
-                            <div class="cma-card">
-                                <div class="cma-label">Conservative</div>
-                                <div class="cma-price">$485,000</div>
-                                <div class="cma-detail">Based on 3 sold comps<br>Avg 28 days on market<br>Price/sqft: $245</div>
-                            </div>
-                            <div class="cma-card" style="border-color: #6366F1;">
-                                <div class="cma-label" style="color: #6366F1;">★ Recommended</div>
-                                <div class="cma-price">$510,000</div>
-                                <div class="cma-detail">Market match<br>Accounts for recent rate drop<br>Price/sqft: $258</div>
-                            </div>
-                            <div class="cma-card">
-                                <div class="cma-label">Aggressive</div>
-                                <div class="cma-price">$535,000</div>
-                                <div class="cma-detail">Assumes spring demand<br>Best-case: multiple offers<br>Price/sqft: $271</div>
-                            </div>
-                        </div>
-                        <div class="dl">Comps used</div>
-                        <div class="dr"><span>821 Spruce Dr — Sold $498K (12 days)</span><span class="muted">0.1mi</span></div>
-                        <div class="dr"><span>903 Pine Ct — Sold $515K (22 days)</span><span class="muted">0.3mi</span></div>
-                        <div class="dr"><span>714 Elm Way — Sold $492K (31 days)</span><span class="muted">0.2mi</span></div>
-                        <div class="dr"><span>1102 Oak — Active $529K (8 days)</span><span class="muted">0.4mi</span></div>
-                        <div class="dl">Talking points</div>
-                        <div class="dr"><span>→ Inventory up 12% — pricing right matters more than ever</span></div>
-                        <div class="dr"><span>→ Rate drop bringing buyers back — showing activity up 18% this week</span></div>
-                        <div class="dr"><span>→ Their upgrades (kitchen '24, roof '23) support premium pricing</span></div>
-                        <span class="action-btn">Open Full Presentation</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3: RATE DROP → SOCIAL + BUYER TEXTS -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">2:15a</span>
-                    <span class="feed-icon">📉</span>
-                    <span class="feed-summary"><strong>Noticed rates dropped overnight</strong> — drafted social posts + buyer texts <span class="feed-tag t-content">content</span> <span class="feed-tag t-crm">crm</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Rates moved at 2am — I drafted posts for all 3 platforms (scheduled for 8am)</div>
-                        <div class="social-preview">
-                            <div class="social-var">
-                                <div class="var-label">Instagram</div>
-                                Mortgage rates just dipped to 6.09% — lowest in 3 weeks. On a $450K loan, that's ~$47/mo less than last month. The trend is your friend. 📉 DM me to run numbers.
-                            </div>
-                            <div class="social-var">
-                                <div class="var-label">Facebook</div>
-                                Good news for buyers this morning ☕ Rates dropped to 6.09%. If you've been on the fence, this is worth a conversation. I can run exact numbers for any property in 5 minutes.
-                            </div>
-                            <div class="social-var">
-                                <div class="var-label">LinkedIn</div>
-                                CPI came in light yesterday → rates responded. 30Y at 6.09%. For my real estate friends: your fence-sitter buyers need to hear from you today.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dc">
-                        <div class="dl">You have 4 pre-approved buyers — I ran the numbers for each one</div>
-                        <div class="draft">💬 <strong>James & Priya Patel:</strong> "Hey James — rates just dropped to 6.09%. On that Maple Dr house you liked, your payment would be $2,847/mo instead of $2,894. Want to revisit?"</div>
-                        <div class="draft">💬 <strong>The Martins:</strong> "David — good news. Rates dipped overnight. At $625K your monthly just dropped about $60. Let's talk at our 9am."</div>
-                        <div class="draft">💬 <strong>Rachel Kim:</strong> "Hey Rachel! Rates hit 6.09% this morning. Remember that townhome on Birch? Monthly would be $1,940 now. Worth another look?"</div>
-                        <div class="draft">💬 <strong>Tom & Ana Reeves:</strong> "Morning Tom — rates dropped again (6.09%). Your pre-approval still has 3 weeks left. Let's find something before it expires."</div>
-                        <span class="action-btn amber">Send All 4</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4: MORNING BRIEF -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">6:30a</span>
-                    <span class="feed-icon">☀️</span>
-                    <span class="feed-summary"><strong>Morning brief delivered</strong> — 4 meetings, 2 tasks due, rate drop context <span class="feed-tag t-intel">intel</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Your day at a glance</div>
-                        <div class="dr"><span>📅 9:00a — Buyer consult (The Martins) — <em>prep brief ready</em></span></div>
-                        <div class="dr"><span>📅 10:00a — <strong>Listing appointment (Hendersons)</strong> — <em>CMA ready</em></span></div>
-                        <div class="dr"><span>📅 1:00p — Inspection walkthrough, 742 Oak St</span></div>
-                        <div class="dr"><span>📅 3:30p — Team sync</span></div>
-                        <div class="dl">Tasks due</div>
-                        <div class="dr"><span>📋 Appraisal docs — 118 Elm (upload by noon)</span></div>
-                        <div class="dr"><span>📋 Inspection response — 742 Oak (⚠️ expires tomorrow)</span></div>
-                        <div class="dl">Market context</div>
-                        <div class="dr"><span>📉 30Y mortgage: 6.09% (↓0.12% from yesterday)</span></div>
-                        <div class="dr"><span>📊 CPI came in light — markets expect rate cuts by June</span></div>
-                        <div class="dr"><span>🏠 3 new listings in your farm area overnight</span></div>
-                        <div style="margin-top: 14px; padding: 10px 14px; background: #F0FDF4; border-radius: 8px; font-size: 0.85rem; color: #166534;">💪 You're walking into today fully loaded. Henderson CMA is ready, buyer texts are queued, and your inbox is clean. Go get it.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5: INBOX TRIAGE -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">6:31a</span>
-                    <span class="feed-icon">📧</span>
-                    <span class="feed-summary"><strong>Inbox triaged</strong> — 31 emails processed, 4 need you, drafts ready <span class="feed-tag t-email">email</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Needs your attention</div>
-                        <div class="dr"><span>🔴 <strong>Tom Rivera</strong> — Wants comps for Southpark (draft reply with 4 comps ready)</span></div>
-                        <div class="dr"><span>🔴 <strong>Sarah Chen (lender)</strong> — Updated pre-approval for the Martins</span></div>
-                        <div class="dr"><span>🟡 <strong>HOA board</strong> — Requesting docs for 118 Elm closing</span></div>
-                        <div class="dr"><span>🟡 <strong>Henderson</strong> — Confirming 10am tomorrow (already replied ✓)</span></div>
-                        <div class="dl">Auto-handled (27 emails)</div>
-                        <div class="dr"><span>✅ 14 newsletters & marketing — archived</span></div>
-                        <div class="dr"><span>✅ 6 calendar confirmations — noted</span></div>
-                        <div class="dr"><span>✅ 4 showing feedback surveys — logged to CRM</span></div>
-                        <div class="dr"><span>✅ 3 CC'd threads — no action needed</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6: LEAD RESPONSE -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">9:02a</span>
-                    <span class="feed-icon">⚡</span>
-                    <span class="feed-summary"><strong>New lead — responded in 47 seconds</strong> while you were in a meeting <span class="feed-tag t-lead">lead</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Incoming lead (Zillow)</div>
-                        <div class="dr"><span>👤 <strong>James & Priya Patel</strong> — First-time buyers</span></div>
-                        <div class="dr"><span>🏠 Interested in: 2847 Maple Dr ($485,000)</span></div>
-                        <div class="dr"><span>💬 "We love the layout but wondering about the school district"</span></div>
-                        <div class="dl">Response sent automatically</div>
-                        <div class="draft">Hi James and Priya! Great eye on 2847 Maple — it's a standout in that neighborhood. School district is Jefferson County (rated 8/10), and the elementary is a 5-min walk. I can pull more details and set up a showing this week if you're interested. What days work best?</div>
-                        <div class="dr" style="margin-top: 8px;"><span>⏱️ Response time: <strong>47 seconds</strong></span><span class="muted">Industry avg: 5 hours</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7: ZESTIMATE SPIKE -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">10:15a</span>
-                    <span class="feed-icon">📈</span>
-                    <span class="feed-summary"><strong>Past client home value spiked 8%</strong> — outreach text drafted <span class="feed-tag t-crm">crm</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Spotted this while checking your sphere — Lisa's home value jumped</div>
-                        <div class="dr"><span>🏠 742 Vine St — purchased at $465,000</span></div>
-                        <div class="dr"><span>📈 Current estimated value: <strong>$502,000</strong> (+8.0%)</span></div>
-                        <div class="dr"><span>📊 Driven by: 3 recent sales on her street above $500K</span></div>
-                        <div class="dl">Draft text</div>
-                        <div class="draft draft-alt">Hey Lisa! Quick heads up — homes on your street have been selling above $500K lately. Your place has probably appreciated nicely since August. Not saying sell 😄 but thought you'd like to know your investment is doing great. Let me know if you ever want an updated number!</div>
-                        <div class="dr" style="margin-top: 8px;"><span>🎯 <strong>Why this matters:</strong> Lisa referred 2 clients in '24. This keeps you top of mind.</span></div>
-                        <span class="action-btn">Send Text</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8: NEW LISTING MATCHED TO BUYERS -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">11:30a</span>
-                    <span class="feed-icon">🏡</span>
-                    <span class="feed-summary"><strong>New listing just hit — I matched it to 3 of your buyers</strong> <span class="feed-tag t-pipeline">pipeline</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">New listing detected</div>
-                        <div class="dr"><span>🏠 <strong>1420 Birch Lane</strong> — $589,000 · 4bd/3ba · 2,400 sqft</span></div>
-                        <div class="dr"><span>🏫 Cherry Hills Elementary (9/10) · 12 min commute downtown</span></div>
-                        <div class="dl">Matched buyers</div>
-                        <div class="draft">💬 <strong>The Martins:</strong> "David — a new one just hit that checks every box. 1420 Birch: 4bd, Cherry Hills Elementary, under your budget at $589K. I'm previewing it this afternoon. Want me to grab a video walkthrough for you?"</div>
-                        <div class="draft">💬 <strong>Rachel Kim:</strong> "Rachel — 1420 Birch just listed. It's the 4bd layout you wanted with the yard. $589K. Want to see it Saturday before the open house?"</div>
-                        <div class="draft">💬 <strong>The Nguyens:</strong> "Hi Linh — new listing at 1420 Birch, same school district as 742 Oak. Worth a look as a backup? $589K, 4bd/3ba."</div>
-                        <span class="action-btn amber">Send All 3</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 9: SPHERE × LISTING CROSS-REFERENCE -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">11:31a</span>
-                    <span class="feed-icon">🔗</span>
-                    <span class="feed-summary"><strong>Wait — Maria Santos lives 2 doors from that new listing</strong> <span class="feed-tag t-crm">crm</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">Connection found</div>
-                        <div class="dr"><span>🏠 New listing: 1420 Birch Lane ($589,000)</span></div>
-                        <div class="dr"><span>👤 Your contact: <strong>Maria Santos</strong> lives at 1416 Birch Lane</span></div>
-                        <div class="dr"><span>📅 Maria closed with you Feb '25. Birthday: June 12</span></div>
-                        <div class="dr"><span>📊 Maria's est. value: $545K → similar homes now listing at $589K</span></div>
-                        <div class="dl">Draft text</div>
-                        <div class="draft draft-alt">Hey Maria! Heads up — your neighbor at 1420 just listed for $589K. That's great news for your home value 📈. Not sure if you've thought about it, but your place could probably list in that range too. Either way, exciting stuff for the neighborhood! Hope year two on Birch is treating you well.</div>
-                        <div class="dr" style="margin-top: 8px;"><span>🎯 <strong>Potential listing lead</strong> — she's been there 1 year, no mortgage (paid cash)</span></div>
-                        <span class="action-btn">Send Text</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 10: INSPECTION DEADLINE -->
-            <div class="feed-item">
-                <div class="feed-header" onclick="this.parentElement.classList.toggle('expanded')">
-                    <span class="feed-time">1:00p</span>
-                    <span class="feed-icon">⚠️</span>
-                    <span class="feed-summary"><strong>Inspection report came in — I read all 23 pages for you</strong> <span class="feed-tag t-pipeline">pipeline</span> <span class="feed-tag t-action">action needed</span></span>
-                    <span class="feed-chevron">›</span>
-                </div>
-                <div class="feed-detail">
-                    <div class="dc">
-                        <div class="dl">742 Oak St — I pulled the 5 things that actually matter out of 23 pages</div>
-                        <div class="dr"><span>🔴 <strong>Electrical panel</strong> — Double-tapped breakers, needs licensed electrician (~$400)</span></div>
-                        <div class="dr"><span>🔴 <strong>Water heater</strong> — Past expected life, recommend replacement (~$1,200)</span></div>
-                        <div class="dr"><span>🟡 <strong>Roof flashing</strong> — Minor gap at chimney, sealant needed (~$150)</span></div>
-                        <div class="dr"><span>🟡 <strong>Grading</strong> — Negative slope at foundation, re-grade recommended (~$500)</span></div>
-                        <div class="dr"><span>🟢 <strong>HVAC</strong> — Working but older (2014). No immediate action, budget for future</span></div>
-                        <div class="dl">Draft repair request</div>
-                        <div class="draft">Per the inspection report dated Feb 12, buyers request the following repairs prior to closing: (1) Electrical panel — correct double-tapped breakers by licensed electrician; (2) Water heater replacement; (3) Roof flashing repair at chimney. Estimated total: $1,750. Buyers willing to accept seller credit in lieu of repairs.</div>
-                        <div class="dr" style="margin-top: 8px;"><span>⚠️ <strong>Deadline:</strong> Inspection contingency expires tomorrow (Friday) 5pm</span></div>
-                        <span class="action-btn amber">Review & Send to Listing Agent</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+  <section class="hero" style="border-top:none">
+    <div>
+      <h1>You rarely find out what’s wrong while it’s still cheap to fix.</h1>
+      <p class="sub">The dashboards are green. The pipeline review went fine. And somewhere in the business, something is quietly going sideways. Asqend watches your deals, accounts, meetings, and billing — and brings you the problem while it’s still small, <strong>with the solution ready for you to approve.</strong></p>
+      <div class="cta-row">
+        <a class="btn lg" href="#pilot">Start your 2-week pilot</a>
+        <a class="see" href="#how">See how it works ↓</a>
+      </div>
+      <p class="trust"><span>Installs on the tools you already run</span> · <span>Live in two weeks</span> · <span>You approve every move</span></p>
     </div>
 
-    <!-- BELOW THE FEED -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Connects to everything you use</h2>
-            <p class="sub">No new apps. Asqend plugs into your existing workflow.</p>
-            <div class="connects-grid">
-                <div class="connect-chip">📧 Gmail / Outlook</div>
-                <div class="connect-chip">📅 Google Calendar</div>
-                <div class="connect-chip">💬 iMessage / SMS</div>
-                <div class="connect-chip">📱 Instagram / Facebook</div>
-                <div class="connect-chip">👥 Your CRM</div>
-                <div class="connect-chip">🏠 MLS / Zillow</div>
-                <div class="connect-chip">🔍 Market Data</div>
-                <div class="connect-chip">📝 Task Management</div>
+    <div>
+      <div class="mock" id="mock" aria-label="Product preview: the Operating Center surfaces two decisions that need you and a daily triage batch">
+        <div class="mock-head">
+          <div>
+            <div class="mock-title">Operating Center</div>
+            <div class="mock-subtitle">What needs you today.</div>
+          </div>
+          <span class="mock-day">Tuesday</span>
+        </div>
+        <div class="mock-body">
+          <div class="noise" aria-hidden="true">
+            <div class="noise-row"></div><div class="noise-row"></div><div class="noise-row"></div>
+            <div class="noise-row"></div><div class="noise-row"></div><div class="noise-row"></div>
+            <div class="noise-row"></div><div class="noise-row"></div><div class="noise-row"></div>
+            <div class="noise-row"></div>
+          </div>
+          <div class="signal">
+            <div class="banner">
+              <p><b>2 decisions</b> need you — everything else is handled or in triage</p>
+              <a class="btn" href="#pilot" tabindex="-1">Review</a>
             </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="prose-block">
-                <h2 style="text-align:left; margin-bottom: 24px;">This isn't a chatbot.</h2>
-                <p>Chatbots wait for you to ask questions. Then they give you text. Then they forget everything.</p>
-                <p><strong>Asqend thinks, then acts.</strong> It notices you have a listing appointment and builds the CMA. It catches a rate drop at 2am and drafts buyer texts with exact payment savings. It spots that your past client's home value jumped — and writes the outreach before you even know about it.</p>
-                <p>It doesn't wait to be asked. It sees what needs to happen and does it.</p>
+            <div class="row-card">
+              <div class="row-top">
+                <div>
+                  <div class="row-title">Acme has gone quiet</div>
+                  <div class="row-meta">Usage down 38% · no exec contact in 3 weeks · re-engagement plan ready for your approval</div>
+                </div>
+                <span class="chip indigo">Customer Rescue</span>
+              </div>
+              <div class="row-actions">
+                <a class="btn outline" href="#" tabindex="-1">Review</a>
+                <a class="btn" href="#" tabindex="-1">Approve</a>
+                <a class="receipt-link" href="#" tabindex="-1">View evidence →</a>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <section class="section section-alt">
-        <div class="container">
-            <h2>Chatbot vs. Asqend</h2>
-            <p class="sub">One gives answers. The other gets work done.</p>
-            <div class="comp-table">
-                <div class="comp-row comp-head"><div></div><div>Chatbot</div><div>Asqend</div></div>
-                <div class="comp-row"><div>Builds listing presentations overnight</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Texts your buyers when rates drop</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Responds to leads while you're busy</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Matches new listings to your buyers</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Alerts you when a client's home value spikes</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Summarizes inspection reports + drafts repair requests</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Remembers every client detail forever</div><div>❌</div><div>✅</div></div>
-                <div class="comp-row"><div>Works 24/7 without being asked</div><div>❌</div><div>✅</div></div>
+            <div class="row-card">
+              <div class="row-top">
+                <div>
+                  <div class="row-title">Beta Co deal stalled 9 days</div>
+                  <div class="row-meta">Proposal unopened · follow-up ready for your sign-off</div>
+                </div>
+                <span class="chip green">Pipeline</span>
+              </div>
+              <div class="row-actions">
+                <a class="btn outline" href="#" tabindex="-1">Review</a>
+                <a class="btn" href="#" tabindex="-1">Approve</a>
+                <a class="receipt-link" href="#" tabindex="-1">View evidence →</a>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <section class="final-cta">
-        <div class="container">
-            <h2>What would your morning look like?</h2>
-            <p>Connect your accounts. Wake up to work already done.</p>
-            <a href="#" class="cta-button cta-lg" onclick="openWaitlist(); return false;">Get Early Access</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="background: white; border-top: 1px solid #E2E8F0; padding: 32px 0; margin-top: 40px;">
-        <div class="container">
-            <div style="text-align: center; font-size: 0.85rem; color: #64748B;">
-                <p style="margin: 0;">
-                    © 2026 SD Consulting LLC. All rights reserved. | 
-                    <a href="/terms.html" style="color: #6366F1; text-decoration: none; margin: 0 4px;">Terms of Service</a> | 
-                    <a href="/privacy.html" style="color: #6366F1; text-decoration: none; margin: 0 4px;">Privacy Policy</a>
-                </p>
+            <div class="triage-row">
+              <div>
+                <div class="t-label">Triage <span class="num">(8)</span></div>
+                <div class="t-sub">Smaller calls, batched for your daily review</div>
+              </div>
+              <span class="mic">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                review out loud
+              </span>
             </div>
+          </div>
         </div>
-    </footer>
-    
-    <!-- Waitlist Popup -->
-    <div id="waitlist-overlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; backdrop-filter:blur(4px); animation: fadeIn 0.2s ease;" onclick="if(event.target===this)closeWaitlist()">
-        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:white; border-radius:20px; padding:40px; max-width:440px; width:90%; box-shadow:0 30px 80px rgba(0,0,0,0.2); text-align:center;">
-            <div style="font-size:2.5rem; margin-bottom:12px;">👋</div>
-            <h3 style="font-size:1.4rem; font-weight:800; color:#1E1B4B; margin-bottom:8px;">Get Early Access</h3>
-            <p style="font-size:0.95rem; color:#64748B; margin-bottom:24px;">Drop your email and we'll reach out when we're ready for you.</p>
-            <form id="waitlist-form" onsubmit="submitWaitlist(event)" style="display:flex; flex-direction:column; gap:12px;">
-                <input type="email" id="waitlist-email" placeholder="you@example.com" required style="width:100%; padding:14px 18px; border:2px solid #E2E8F0; border-radius:10px; font-size:1rem; font-family:inherit; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='#6366F1'" onblur="this.style.borderColor='#E2E8F0'">
-                <button type="submit" style="width:100%; padding:14px; background:#6366F1; color:white; border:none; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; font-family:inherit; transition:background 0.2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#6366F1'">Request Access</button>
-            </form>
-            <p style="font-size:0.8rem; color:#94A3B8; margin-top:16px;">Currently onboarding select professionals</p>
-            <div id="waitlist-success" style="display:none;">
-                <div style="font-size:2rem; margin-bottom:8px;">✅</div>
-                <p style="font-size:1.1rem; font-weight:600; color:#1E1B4B;">You're on the list!</p>
-                <p style="font-size:0.9rem; color:#64748B; margin-top:4px;">We'll be in touch soon.</p>
-            </div>
-        </div>
+      </div>
+      <button class="replay" id="replay" type="button">replay</button>
     </div>
-    <style>
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    </style>
-    <script>
-        function openWaitlist() {
-            document.getElementById('waitlist-overlay').style.display = 'block';
-            setTimeout(() => document.getElementById('waitlist-email').focus(), 100);
-        }
-        function closeWaitlist() {
-            document.getElementById('waitlist-overlay').style.display = 'none';
-        }
-        function submitWaitlist(e) {
-            e.preventDefault();
-            var email = document.getElementById('waitlist-email').value;
-            
-            // Hide form, show success
-            document.getElementById('waitlist-form').style.display = 'none';
-            document.getElementById('waitlist-success').style.display = 'block';
-            
-            // Send notification via formsubmit.co (free, no signup, forwards to hello@asqend.com)
-            fetch('https://formsubmit.co/ajax/hello@asqend.com', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: email,
-                    _subject: 'Asqend Waitlist: ' + email,
-                    message: 'New waitlist signup from asqend.com',
-                    time: new Date().toISOString()
-                })
-            }).catch(function() {});
-            
-            setTimeout(closeWaitlist, 2500);
-        }
-        // Close on Escape
-        document.addEventListener('keydown', function(e) { if(e.key === 'Escape') closeWaitlist(); });
-    </script>
+  </section>
+</div>
+
+<section class="why">
+  <div class="wrap why-grid">
+    <div>
+      <p class="kicker">The problem</p>
+      <h2>Why you’re the last to know.</h2>
+    </div>
+    <div>
+      <p>Every problem is visible somewhere, early — a quiet account, a slipping deal, a meeting you weren’t in. But news gets softened on its way up. By the time it reaches you, <strong>it’s a fire with a story attached.</strong></p>
+      <p>Asqend doesn’t read the summary. It reads the raw signals — usage, calls, pipeline, billing — so you hear about things at the size they actually are.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Connect your tools.</h3>
+        <p>CRM, notetaker, product analytics, billing. Your meetings give it eyes on day one.</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>Asqend watches everything, all the time.</h3>
+        <p>Every account, every deal, every conversation — the way you would if you could be everywhere.</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>You get the moves that matter.</h3>
+        <p>A couple of things that need your judgement. A short daily review you can do out loud. A report that shows what each approved move earned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ledger-sec">
+  <div class="wrap ledger-grid">
+    <div>
+      <p class="kicker">The AI question</p>
+      <h2>An AI strategy needs a ledger.</h2>
+      <p class="lead">Sooner or later, someone asks what you’re doing with AI — your board, your investors, your boss. Most answers are stories. Yours can be a ledger: every move Asqend proposed, you approved, and what it earned. <strong>Outcomes, not anecdotes. Not an AI story — an AI line item.</strong></p>
+      <p class="no-board">No board? The ledger is still the point — you’ll know exactly what it’s worth.</p>
+    </div>
+    <div>
+      <div class="ledger-card">
+        <div class="ledger-head">
+          <span class="ledger-title">Ledger of moves</span>
+          <span class="ledger-sub">every entry has a receipt</span>
+        </div>
+        <div class="l-row ghost">
+          <span class="l-dot"></span>
+          <div>
+            <div class="l-move">Re-engagement plan — at-risk account</div>
+            <div class="l-out">Approved day 4 · exec call rebooked, account recovered · <a href="#" tabindex="-1">View receipt →</a></div>
+          </div>
+          <div class="l-earned num">+$48,000<small>ARR retained</small></div>
+        </div>
+        <div class="l-empty">
+          <p>This section is empty on purpose. We publish outcomes, not adjectives — and we don’t have your permission to brag yet. <b>Your two-week pilot writes the first entries.</b></p>
+        </div>
+        <div class="l-foot">Illustrative entry — no customer data appears on this page</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diff">
+  <div class="wrap">
+    <div class="diff-row">
+      <div class="diff-item">Tells you what to do<small>not what happened</small></div>
+      <div class="diff-item">You approve every move<small>nothing sends itself</small></div>
+      <div class="diff-item">It proves what it earned<small>every move leaves a receipt</small></div>
+      <div class="diff-item">Watches the business<small>not the people</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap">
+    <p>Built for <strong>CEOs and their exec teams at B2B SaaS companies</strong> — the people who own outcomes across more deals, accounts, and meetings than anyone can personally watch, and who don’t want surveillance to get visibility back.</p>
+  </div>
+</section>
+
+<section class="close" id="pilot">
+  <div class="wrap">
+    <h2>The pilot’s job is simple: find something you didn’t know.</h2>
+    <p>Two weeks on your real accounts. Founder-led setup, no rip-and-replace — we’re onboarding the first companies by hand.</p>
+    <a class="btn lg" href="mailto:spencer@asqend.com?subject=Pilot">Start your pilot</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Asqend</span>
+    <span><a href="mailto:spencer@asqend.com">Contact</a></span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var mock=document.getElementById('mock');
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function run(){
+      mock.classList.remove('done');
+      if(reduced){mock.classList.add('done');return}
+      setTimeout(function(){mock.classList.add('done')},900);
+    }
+    document.getElementById('replay').addEventListener('click',run);
+    run();
+  })();
+</script>
 </body>
 </html>
