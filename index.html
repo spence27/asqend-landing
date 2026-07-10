@@ -29,6 +29,7 @@
     --text-muted:#6b7280;
     --accent:#6366f1;
     --accent-hover:#4f46e5;
+    --accent-strong:#4338ca;
     --accent-light:#eef2ff;
     --success:#16a34a;
     --success-light:#dcfce7;
@@ -62,8 +63,9 @@
 
   /* nav */
   .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
-  .brand{display:inline-flex;align-items:center;text-decoration:none;color:var(--ink)}
-  .brand img{display:block;width:auto;height:38px}
+  .brand{display:inline-flex;align-items:center;gap:6px;min-height:38px;text-decoration:none;color:var(--ink)}
+  .brand img{display:block;width:22px;height:22px}
+  .brand span{font-size:14px;font-weight:500;letter-spacing:-.01em}
   .nav-right{display:flex;align-items:center;gap:24px}
   .nav-link{font-size:14px;font-weight:500;color:var(--text-secondary);text-decoration:none}
   .nav-link:hover{color:var(--text-primary)}
@@ -84,8 +86,8 @@
   .sub{margin-top:20px;font-size:17px;color:var(--text-secondary);max-width:33em;line-height:1.6}
   .sub strong{color:var(--text-primary);font-weight:600}
   .cta-row{margin-top:30px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  .see{font-size:14px;font-weight:500;color:var(--accent);text-decoration:none}
-  .see:hover{color:var(--accent-hover)}
+  .see{font-size:14px;font-weight:500;color:var(--accent-hover);text-decoration:none}
+  .see:hover{color:var(--accent-strong)}
   .trust{margin-top:18px;font-size:13px;color:var(--text-muted)}
   .trust span{white-space:nowrap}
 
@@ -123,7 +125,10 @@
   .chip.green{background:var(--success-light);color:#15803d}
   .row-actions{display:flex;gap:8px;margin-top:10px;align-items:center}
   .row-actions .btn{height:28px;padding:0 12px;font-size:12px;border-radius:7px}
-  .receipt-link{font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;margin-left:auto}
+  .receipt-link{font-size:12px;font-weight:500;color:var(--accent-hover);text-decoration:none;margin-left:auto}
+  .demo-control,.demo-link{cursor:default;user-select:none}
+  .demo-control:hover{background:var(--ink)}
+  .demo-control.outline:hover{background:#fff}
 
   .triage-row{
     margin-top:10px;background:#fff;border:1px dashed var(--border);border-radius:var(--radius-md);
@@ -136,16 +141,20 @@
 
   /* condensing animation */
   .noise{position:absolute;left:14px;right:14px;top:14px}
-  .noise-row{height:24px;border-radius:8px;background:#eceef1;margin-bottom:8px;transition:opacity .5s ease,transform .5s ease}
+  .noise-row{height:24px;border-radius:8px;background:#eceef1;margin-bottom:8px;transition:opacity .25s ease,transform .25s ease}
   .noise-row:nth-child(2n){width:93%}
   .noise-row:nth-child(3n){width:85%}
-  .signal{opacity:0;transition:opacity .6s ease .1s}
+  .signal{opacity:0;transition:opacity .35s ease .05s}
   .mock.done .noise-row{opacity:0;transform:translateY(-5px)}
   .mock.done .signal{opacity:1}
+  .mock-head-actions{display:flex;align-items:center;gap:10px}
   .replay{
-    background:none;border:none;cursor:pointer;margin-top:8px;float:right;
-    font-size:11px;color:var(--text-muted);text-decoration:underline;font-family:inherit;
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;height:32px;padding:0 9px;
+    border:1px solid var(--border-light);border-radius:8px;background:#fff;cursor:pointer;
+    font-size:11.5px;font-weight:500;color:var(--text-secondary);font-family:inherit;
   }
+  .replay:hover{background:var(--bg-secondary);color:var(--text-primary)}
+  .replay-icon{font-size:15px;line-height:1}
 
   /* section scaffolding */
   section{border-top:1px solid var(--border-light)}
@@ -194,7 +203,7 @@
   .example-label{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:3px}
   .l-move{font-size:13.5px;font-weight:600}
   .l-out{font-size:12.5px;color:var(--text-muted);margin-top:2px}
-  .l-out a{color:var(--accent);text-decoration:none;font-weight:500}
+  .l-out .demo-link{color:var(--accent-hover);font-weight:500}
   .l-earned{font-size:14px;font-weight:700;color:var(--success);text-align:right}
   .l-earned small{display:block;font-weight:500;font-size:11px;color:var(--text-muted)}
   .l-empty{padding:22px 18px}
@@ -247,7 +256,7 @@
 
 <div class="wrap">
   <nav class="nav">
-    <a class="brand" href="/" aria-label="Asqend home"><img src="/logo.svg" alt="Asqend"></a>
+    <a class="brand" href="/" aria-label="Asqend home"><img src="/icon.svg" alt="" aria-hidden="true"><span>asqend</span></a>
     <div class="nav-right">
       <a class="nav-link" href="#how">How it works</a>
       <a class="btn" href="#pilot">Start a pilot</a>
@@ -272,7 +281,10 @@
             <div class="mock-title">Operating Center</div>
             <div class="mock-subtitle">What needs you today.</div>
           </div>
-          <span class="mock-day">Tuesday</span>
+          <div class="mock-head-actions">
+            <span class="mock-day">Tuesday</span>
+            <button class="replay" id="replay" type="button" aria-label="Replay product preview"><span class="replay-icon" aria-hidden="true">↻</span> Replay</button>
+          </div>
         </div>
         <div class="mock-body">
           <div class="noise" aria-hidden="true">
@@ -284,7 +296,7 @@
           <div class="signal">
             <div class="banner">
               <p><b>2 decisions</b> need you — everything else is handled or in triage</p>
-              <a class="btn" href="#pilot" tabindex="-1">Review</a>
+              <span class="btn demo-control" aria-hidden="true">Review</span>
             </div>
             <div class="row-card">
               <div class="row-top">
@@ -295,9 +307,9 @@
                 <span class="chip indigo">Customer Rescue</span>
               </div>
               <div class="row-actions">
-                <a class="btn outline" href="#" tabindex="-1">Review</a>
-                <a class="btn" href="#" tabindex="-1">Approve</a>
-                <a class="receipt-link" href="#" tabindex="-1">View evidence →</a>
+                <span class="btn outline demo-control" aria-hidden="true">Review</span>
+                <span class="btn demo-control" aria-hidden="true">Approve</span>
+                <span class="receipt-link demo-link" aria-hidden="true">View evidence →</span>
               </div>
             </div>
             <div class="row-card">
@@ -309,9 +321,9 @@
                 <span class="chip green">Pipeline</span>
               </div>
               <div class="row-actions">
-                <a class="btn outline" href="#" tabindex="-1">Review</a>
-                <a class="btn" href="#" tabindex="-1">Approve</a>
-                <a class="receipt-link" href="#" tabindex="-1">View evidence →</a>
+                <span class="btn outline demo-control" aria-hidden="true">Review</span>
+                <span class="btn demo-control" aria-hidden="true">Approve</span>
+                <span class="receipt-link demo-link" aria-hidden="true">View evidence →</span>
               </div>
             </div>
             <div class="triage-row">
@@ -327,7 +339,6 @@
           </div>
         </div>
       </div>
-      <button class="replay" id="replay" type="button">replay</button>
     </div>
   </section>
 </div>
@@ -429,7 +440,7 @@
           <div>
             <div class="example-label">Example receipt</div>
             <div class="l-move">Re-engagement plan — at-risk account</div>
-            <div class="l-out">Approved day 4 · exec call rebooked, account recovered · <a href="#" tabindex="-1">View receipt →</a></div>
+            <div class="l-out">Approved day 4 · exec call rebooked, account recovered · <span class="demo-link">View receipt →</span></div>
           </div>
           <div class="l-earned num">+$48,000<small>ARR retained</small></div>
         </div>
@@ -493,13 +504,17 @@
 <script>
   (function(){
     var mock=document.getElementById('mock');
+    var replay=document.getElementById('replay');
+    var timer;
     var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function run(){
+      clearTimeout(timer);
       mock.classList.remove('done');
-      if(reduced){mock.classList.add('done');return}
-      setTimeout(function(){mock.classList.add('done')},900);
+      mock.setAttribute('aria-busy','true');
+      if(reduced){mock.classList.add('done');mock.removeAttribute('aria-busy');return}
+      timer=setTimeout(function(){mock.classList.add('done');mock.removeAttribute('aria-busy')},320);
     }
-    document.getElementById('replay').addEventListener('click',run);
+    replay.addEventListener('click',run);
     run();
   })();
 </script>
