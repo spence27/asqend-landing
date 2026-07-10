@@ -46,6 +46,8 @@
     --shadow-sm:0 1px 2px rgba(0,0,0,.05);
     --shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
     --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+    --section-block-space:clamp(3.5rem,6vw,4.5rem);
+    --section-flow-gap:clamp(3.5rem,5vw,4rem);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -218,16 +220,20 @@
   .diff-item small{display:block;font-weight:400;color:var(--text-muted);margin-top:2px;font-size:13px}
 
   /* who + trust + close */
-  .who{padding:72px 0 56px;text-align:center;background:var(--bg-secondary);border-top:1px solid var(--border-light)}
+  .closing-sequence{
+    display:grid;gap:var(--section-flow-gap);padding-block:var(--section-block-space);
+    background:var(--bg-secondary);border-top:1px solid var(--border-light);
+  }
+  .closing-sequence section{border-top:0}
+  .who{text-align:center}
   .who p{font-size:17.5px;max-width:44em;margin:0 auto;line-height:1.6;color:var(--text-secondary)}
   .who p strong{font-weight:600;color:var(--text-primary)}
-  .data-trust{padding:58px 0;background:var(--bg-secondary);border-top:1px solid var(--border-light)}
   .trust-grid{display:grid;grid-template-columns:minmax(0,4.5fr) minmax(0,7.5fr);gap:48px;align-items:start}
   .trust-intro{font-size:15.5px;color:var(--text-secondary);line-height:1.65;max-width:31em}
   .trust-points{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px}
   .trust-point{border-left:2px solid var(--accent);padding-left:14px;font-size:14px;color:var(--text-secondary);line-height:1.55}
   .trust-point strong{display:block;color:var(--text-primary);font-weight:600;margin-bottom:2px}
-  .close{padding:8px 0 88px;text-align:center;background:var(--bg-secondary);border-top:none}
+  .close{text-align:center}
   .close h2{max-width:22em;margin:0 auto 12px}
   .close p{color:var(--text-secondary);max-width:36em;margin:0 auto 26px;font-size:15.5px}
 
@@ -464,35 +470,37 @@
   </div>
 </section>
 
-<section class="who">
-  <div class="wrap">
-    <p>Built for <strong>CEOs and their exec teams at B2B SaaS companies</strong> — the people who own outcomes across more deals, accounts, and meetings than anyone can personally watch, and who don’t want surveillance to get visibility back.</p>
-  </div>
-</section>
-
-<section class="data-trust" aria-labelledby="data-trust-title">
-  <div class="wrap trust-grid">
-    <div>
-      <p class="kicker">Data trust</p>
-      <h2 id="data-trust-title">Built for sensitive operating context.</h2>
-      <p class="trust-intro">Asqend only works if the business can trust what it connects. Pilot scope, access, and retention are explicit before systems are connected.</p>
+<div class="closing-sequence">
+  <section class="who">
+    <div class="wrap">
+      <p>Built for <strong>CEOs and their exec teams at B2B SaaS companies</strong> — the people who own outcomes across more deals, accounts, and meetings than anyone can personally watch, and who don’t want surveillance to get visibility back.</p>
     </div>
-    <div class="trust-points">
-      <p class="trust-point"><strong>No model training on customer data.</strong> Customer context is processed to provide the service, not to train third-party models.</p>
-      <p class="trust-point"><strong>Human access requires consent.</strong> Customer content is only reviewed for implementation, support, or debugging with explicit approval.</p>
-      <p class="trust-point"><strong>Export and deletion on request.</strong> Offboarding includes customer-controlled export and deletion paths, subject to security and contract requirements.</p>
-      <p class="trust-point"><strong>Security review ready.</strong> DPA-level commitments, tenant isolation, and a SOC 2 roadmap are handled during pilot scoping.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="close" id="pilot">
-  <div class="wrap">
-    <h2>The pilot’s job is simple: find something you didn’t know.</h2>
-    <p>Two weeks on your real accounts. Founder-led setup, no rip-and-replace — we’re onboarding the first companies by hand.</p>
-    <a class="btn lg" href="mailto:spencer@asqend.com?subject=Pilot">Start your pilot</a>
-  </div>
-</section>
+  <section class="data-trust" aria-labelledby="data-trust-title">
+    <div class="wrap trust-grid">
+      <div>
+        <p class="kicker">Data trust</p>
+        <h2 id="data-trust-title">Built for sensitive operating context.</h2>
+        <p class="trust-intro">Asqend only works if the business can trust what it connects. Pilot scope, access, and retention are explicit before systems are connected.</p>
+      </div>
+      <div class="trust-points">
+        <p class="trust-point"><strong>No model training on customer data.</strong> Customer context is processed to provide the service, not to train third-party models.</p>
+        <p class="trust-point"><strong>Human access requires consent.</strong> Customer content is only reviewed for implementation, support, or debugging with explicit approval.</p>
+        <p class="trust-point"><strong>Export and deletion on request.</strong> Offboarding includes customer-controlled export and deletion paths, subject to security and contract requirements.</p>
+        <p class="trust-point"><strong>Security review ready.</strong> DPA-level commitments, tenant isolation, and a SOC 2 roadmap are handled during pilot scoping.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="pilot">
+    <div class="wrap">
+      <h2>The pilot’s job is simple: find something you didn’t know.</h2>
+      <p>Two weeks on your real accounts. Founder-led setup, no rip-and-replace — we’re onboarding the first companies by hand.</p>
+      <a class="btn lg" href="mailto:spencer@asqend.com?subject=Pilot">Start your pilot</a>
+    </div>
+  </section>
+</div>
 
 <footer>
   <div class="wrap">
