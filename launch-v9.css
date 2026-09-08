@@ -48,17 +48,18 @@
 @media(max-width:420px){.version-nine .builder-case h2{font-size:28px}.version-nine .builder-person blockquote{font-size:27px}}
 
 /* Keep the opening together, then hand off clearly to the first example. */
-.version-nine .hero {padding-top:40px;padding-bottom:0}
+.version-nine .hero {padding-top:40px;padding-bottom:0;text-align:center}
+.version-nine .hero .eyebrow {justify-content:center;margin-inline:auto;text-align:center}
 .version-nine .hero h1 {max-width:1000px;margin-top:20px;font-size:clamp(50px,5.5vw,72px);line-height:1.06}
 .version-nine .hero-deck {max-width:850px;margin-top:20px;text-wrap:balance}
 .version-nine .hero-conversion {width:fit-content;max-width:100%;margin:24px auto 0}
-.version-nine .hero-actions {margin-top:0}
-.version-nine .founder-intro {margin-top:14px;gap:10px;justify-content:flex-start}
+.version-nine .hero-actions {margin-top:0;justify-content:center}
+.version-nine .founder-intro {margin:18px auto 0;gap:10px;justify-content:center}
 .version-nine .founder-intro>img {width:40px;height:40px}
 .version-nine .founder-intro>div strong {font-size:14px}
 .version-nine .founder-intro>div span {font-size:12px}
 .version-nine .fire-section {padding-top:48px}
-.version-nine .fire-section-heading {max-width:1040px;margin:0 0 22px;text-align:left;font-size:clamp(30px,2.8vw,38px);line-height:1.2}
+.version-nine .fire-section-heading {max-width:900px;margin:0 auto 22px;text-align:center;font-size:clamp(30px,2.8vw,38px);line-height:1.2;text-wrap:balance}
 .version-nine .fire-section-heading span {color:inherit;margin-top:0}
 
 /* One reading column gives the questions a shared alignment and a clear ending. */
@@ -77,9 +78,9 @@
   .version-nine .hero {padding-top:32px}
   .version-nine .hero h1 {font-size:clamp(39px,8.4vw,56px);line-height:1.08}
   .version-nine .hero-deck {max-width:620px;margin-top:20px}
-  .version-nine .hero-conversion {width:auto;margin:24px 0 0}
+  .version-nine .hero-conversion {width:auto;margin:24px auto 0}
   .version-nine .hero-actions {margin-top:0}
-  .version-nine .founder-intro {margin-top:14px}
+  .version-nine .founder-intro {margin-top:18px}
   .version-nine .fire-section {padding-top:40px}
   .version-nine .fire-section-heading {font-size:30px;margin-bottom:22px}
   .version-nine .fire-section-heading span {display:inline}
