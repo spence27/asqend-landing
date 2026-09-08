@@ -55,7 +55,9 @@
 .version-nine .hero-conversion {width:fit-content;max-width:100%;margin:24px auto 0}
 .version-nine .hero-actions {margin-top:0;justify-content:center}
 .version-nine .hero-call-note {margin:12px 0 0;font-size:14px;line-height:1.6;font-weight:400;color:var(--body)}
-.version-nine .fire-section {padding:32px 0 36px;background:#f7f5fa;border-top:1px solid #e8e3ef}
+.version-nine .fire-section {padding:32px 0 36px;background:#f4f1f8;border-top:0}
+.version-nine .fire-section .attention-frame {border:0;border-radius:14px;box-shadow:0 1px 2px rgba(45,34,69,.05),0 14px 34px -16px rgba(45,34,69,.16)}
+.version-nine .fire-section .attention-bar {background:#fff;border-bottom:1px solid #ece8f2}
 .version-nine .strategy-section {margin-top:0}
 .version-nine .fire-section-heading {max-width:900px;margin:0 auto 22px;text-align:center;font-size:clamp(30px,2.8vw,38px);line-height:1.2;text-wrap:balance}
 .version-nine .fire-section-heading span {color:inherit;margin-top:0}
@@ -80,6 +82,7 @@
   .version-nine .hero-actions {margin-top:0}
   .version-nine .hero-call-note {max-width:320px;margin:12px auto 0}
   .version-nine .fire-section {padding:28px 0 30px}
+  .version-nine .fire-section .attention-frame {border-radius:12px;box-shadow:0 8px 20px -14px rgba(45,34,69,.16)}
   .version-nine .fire-section-heading {font-size:30px;margin-bottom:22px}
   .version-nine .fire-section-heading span {display:inline}
   .version-nine .faq {padding-block:46px 48px}
