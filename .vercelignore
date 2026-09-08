@@ -1,0 +1,7 @@
+.git
+.gitignore
+.vercel
+.vercelignore
+.env*
+node_modules
+*.log
