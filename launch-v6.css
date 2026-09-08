@@ -1,0 +1,42 @@
+/* V6: one unresolved finding, followed by the founder and the paid entry. */
+.version-six .hero {padding-bottom:46px}
+.version-six .hero-deck {max-width:770px}
+.attention-showcase {padding-bottom:0}
+.attention-frame {border:1px solid #d9d2e3;border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 20px 55px #30214c0a}
+.attention-bar {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 30px;background:#f5f3f9;border-bottom:1px solid #e3ddea}
+.attention-brand {display:flex;align-items:center;gap:8px;font-size:23px;font-weight:650;letter-spacing:-.065em}
+.attention-brand>span {font-size:14px;letter-spacing:0;font-weight:450;color:var(--body);margin-left:12px}
+.attention-status {display:flex;align-items:center;gap:8px;color:#925126;font-size:14px;font-weight:550;white-space:nowrap}
+.attention-status i {width:7px;height:7px;border-radius:50%;background:#ba6f39}
+.attention-heading {padding:35px 38px 29px}
+.attention-heading h2 {font-size:clamp(32px,3.3vw,44px);line-height:1.14;letter-spacing:-.045em;max-width:930px}
+.attention-heading h2 span {display:block;color:var(--purple);margin-top:4px}
+.attention-heading>p {font-size:17px;line-height:1.65;color:var(--body);margin-top:20px;max-width:780px}
+.attention-sources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 38px;border-block:1px solid var(--line)}
+.attention-source {padding:24px 23px 25px 0;min-width:0}
+.attention-source+.attention-source {border-left:1px solid var(--line);padding-left:25px}
+.attention-source:last-child {padding-right:0}
+.attention-source h3 {font-size:14px;font-weight:600;letter-spacing:0;line-height:1.5;color:var(--purple)}
+.attention-source h3 span {display:block;font-size:12px;color:var(--muted);font-weight:400;margin-bottom:5px}
+.attention-source blockquote {margin:14px 0 0;font-size:16px;line-height:1.6;color:var(--ink)}
+.attention-action {display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:26px 38px 29px;background:#fffaf0;margin-top:28px;border-top:1px solid #eee4cf}
+.attention-action h3 {font-size:15px;letter-spacing:0;font-weight:600;line-height:1.5;color:#775226}
+.attention-action p {font-size:16px;line-height:1.65;margin-top:7px;color:#5d5041}
+.attention-action article+article {border-left:1px solid #e8ddc7;padding-left:35px}
+.version-six .image-disclosure {font-size:12px;margin-top:14px;line-height:1.6}
+.version-six .founder-quote-section {padding-block:68px}
+.version-six .faq {padding-block:65px 75px}
+.version-six .faq h2 {font-size:38px}
+.version-six .faq .section-kicker {margin-bottom:15px}
+.version-six .faq-list details:first-child {border-top:0}
+.version-six .faq-list summary {font-size:16px}
+.version-six .faq-list p {font-size:16px}
+.interface-link {margin-top:21px;white-space:normal;text-align:left;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+.version-six #image-dialog {padding:18px}
+.version-six .image-view-note {position:static;padding-right:80px;margin:0 0 16px;font-size:14px;line-height:1.45}
+.version-six .image-view-note span {display:block;font-size:12px;margin-top:3px}
+.version-six .image-scroll {max-height:calc(100dvh - 165px)}
+@media(max-width:900px){.attention-heading{padding:29px 28px 25px}.attention-heading h2{font-size:35px}.attention-sources{margin-inline:28px}.attention-source{padding-right:19px}.attention-source+.attention-source{padding-left:19px}.attention-action{padding:25px 28px;gap:26px}.attention-action article+article{padding-left:25px}}
+@media(max-width:760px){.version-six .hero{padding-bottom:35px}.version-six .hero-deck{font-size:18px}.attention-bar{padding:16px 21px;gap:14px;flex-wrap:wrap}.attention-brand{font-size:21px}.attention-brand>span{font-size:13px;margin-left:5px}.attention-status{font-size:13px}.attention-heading{padding:26px 22px 23px}.attention-heading h2{font-size:32px;line-height:1.17}.attention-heading h2 span{margin-top:7px}.attention-heading>p{font-size:16px;margin-top:18px}.attention-sources{grid-template-columns:1fr;margin-inline:22px}.attention-source{padding:20px 0}.attention-source+.attention-source{padding:20px 0;border-left:0;border-top:1px solid var(--line)}.attention-source h3 span{display:inline;margin-right:10px}.attention-source blockquote{margin-top:9px;font-size:16px}.attention-action{grid-template-columns:1fr;gap:20px;padding:23px 22px;margin-top:23px}.attention-action article+article{padding:20px 0 0;border-left:0;border-top:1px solid #e8ddc7}.version-six .founder-quote-section{padding-block:49px}.version-six .faq{padding-block:47px 55px}.version-six .faq h2{font-size:32px}.version-six .faq-list summary{font-size:15px}.version-six .faq-list p{font-size:16px}.interface-link{margin-top:18px}.version-six .image-disclosure{font-size:12px;margin-inline:7px}}
+@media(max-width:420px){.attention-bar{gap:8px}.attention-brand>span{margin-left:3px}.attention-status{width:100%;padding-left:36px}.attention-heading h2{font-size:29px}.attention-heading{padding-inline:20px}.attention-sources{margin-inline:20px}.attention-action{padding-inline:20px}.attention-source h3 span{display:block;margin-bottom:3px}.version-six .founder-intro>div span{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

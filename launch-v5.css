@@ -1,0 +1,26 @@
+/* V5 separates the work portfolio from the primary buying story. */
+.version-five .hero {padding-bottom:42px}
+.founder-quote-section {padding-block:70px}
+.founder-quote {display:grid;grid-template-columns:92px 1fr;gap:35px;align-items:start;max-width:940px;margin:auto}
+.founder-quote>img {border-radius:50%;margin-top:5px}
+.founder-quote blockquote {margin:0;font-size:31px;line-height:1.35;letter-spacing:-.035em;font-weight:500;color:var(--ink)}
+.founder-quote p {font-size:13px;font-weight:600;margin-top:22px}
+.founder-quote p span {font-weight:400;color:var(--muted);margin-left:10px}
+.founder-quote .text-link {margin-top:19px;font-size:14px;color:var(--purple)}
+.portfolio-intro {padding-block:40px 65px}
+.back-link {display:inline-block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:46px}
+.back-link:hover {color:var(--purple)}
+.portfolio-heading {display:grid;grid-template-columns:1fr 180px;gap:70px;align-items:center}
+.portfolio-heading h1 {margin:0;text-align:left;font-size:70px;line-height:1.05;max-width:780px}
+.portfolio-heading .section-kicker {margin-bottom:20px}
+.portfolio-heading>img {border-radius:50%}
+.portfolio-deck {font-size:19px;color:var(--body);line-height:1.65;max-width:650px;margin-top:24px}
+.portfolio-page .work-section {padding-top:42px;padding-bottom:45px}
+.portfolio-page .work-provenance {margin:0 0 25px}
+.portfolio-close {text-align:center;padding-block:70px 85px}
+.portfolio-close h2 {font-size:44px}
+.portfolio-close .button {margin-top:30px}
+@media(max-width:760px){.founder-quote-section{padding-block:48px}.founder-quote{grid-template-columns:60px 1fr;gap:19px}.founder-quote>img{width:60px;height:60px}.founder-quote blockquote{font-size:25px;line-height:1.4}.founder-quote p{font-size:12px;line-height:1.6;margin-top:18px}.founder-quote p span{display:block;margin-left:0}.founder-quote .text-link{font-size:13px;margin-top:16px}.portfolio-intro{padding-block:27px 43px}.back-link{margin-bottom:33px}.portfolio-heading{grid-template-columns:1fr 85px;gap:23px;align-items:start}.portfolio-heading>img{width:85px;height:85px;margin-top:40px}.portfolio-heading h1{font-size:46px}.portfolio-heading .section-kicker{font-size:10px;letter-spacing:.06em}.portfolio-deck{font-size:16px;margin-top:22px}.portfolio-page .work-section{padding-top:30px}.portfolio-close{padding-block:52px 60px}.portfolio-close h2{font-size:34px}}
+@media(max-width:420px){.founder-quote{grid-template-columns:1fr;gap:19px}.founder-quote>img{width:58px;height:58px}.founder-quote blockquote{font-size:25px}.portfolio-heading{grid-template-columns:1fr 68px;gap:17px}.portfolio-heading>img{width:68px;height:68px}.portfolio-heading h1{font-size:40px}.portfolio-deck{font-size:15px}.portfolio-heading .section-kicker{font-size:9px}.portfolio-close h2{font-size:31px}}
+
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

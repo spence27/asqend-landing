@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Asqend app icon">
+  <defs>
+    <linearGradient id="aGrad" x1="180" y1="860" x2="700" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D1558" />
+      <stop offset="1" stop-color="#4B3FA3" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="465" y1="640" x2="915" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F07B00" />
+      <stop offset="1" stop-color="#FFE55A" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#aGrad)"
+    fill-rule="evenodd"
+    d="M433 321c-142 0-258 115-258 258 0 142 116 257 258 257 44 0 85-11 121-30v-52h116V404h-82c-42-51-106-83-177-83zm0 109c82 0 149 66 149 149s-67 148-149 148-149-66-149-148 67-149 149-149z"
+  />
+  <path
+    fill="url(#arrowGrad)"
+    d="M513 564 690 387 615 355 862 268 781 515 754 433 577 610z"
+  />
+</svg>
