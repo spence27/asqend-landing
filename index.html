@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="launch-v7.css" />
     <link rel="stylesheet" href="launch-v9.css" />
     <script src="launch-v6.js" defer></script>
-  </head>
-  <body class="version-two version-three version-four version-five version-six version-seven version-nine">
+  <link rel="stylesheet" href="launch-polish.css" /><script src="walkthrough.js" defer></script></head>
+  <body class="version-two version-three version-four version-five version-six version-seven version-nine direction-a">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="container nav" aria-label="Main navigation">
@@ -66,7 +66,7 @@
           <span class="eyebrow-dot" aria-hidden="true"></span>For the CEO
           asking, “What do we actually do with AI?”
         </p>
-        <h1>A stack of AI tools <br />is not an <span>AI strategy.</span></h1>
+        <h1>A stack of AI tools <br />is not an <span class="annotated-thesis">AI strategy.<svg viewBox="0 0 520 28" preserveAspectRatio="none" aria-hidden="true"><path d="M8 18 C128 5 294 4 508 13 M28 24 C166 12 349 12 490 19" /></svg></span></h1>
         <p class="hero-deck">
           Asqend connects what your team knows, follows what happens next, and
           brings the gaps to your attention. I help you act on what it finds
@@ -93,11 +93,11 @@
           <div class="fire-finding-heading"><h3>Your customer is waiting for a feature.<span>Product is still deciding whether to build it.</span></h3></div>
           <div class="fire-story">
             <ol class="fire-sequence" aria-label="How the customer promise passed between teams">
-              <li><h4>Sales</h4><p>Promised the functionality because it was necessary to win the deal.</p></li>
+              <li><h4>Sales</h4><p><mark class="promise-mark">Promised the functionality</mark> because it was necessary to win the deal.</p></li>
               <li><h4>Customer Success</h4><p>Brought it to Product and gave the customer a workaround.</p></li>
-              <li><h4>Product</h4><p>Agreed to look into it.</p></li>
+              <li><h4>Product</h4><p><mark class="investigate-mark">Agreed to look into it.</mark></p></li>
             </ol>
-            <div class="fire-expectation"><p>The customer believes the feature is coming. Internally, nobody has committed to delivering it.</p><p>The workaround is buying time, and each update makes it sound like the situation is being handled.</p></div>
+            <div class="fire-expectation"><div class="gap-annotation"><span aria-hidden="true">↳</span> The promise and the plan don’t match.</div><p>The customer believes the feature is coming. Internally, nobody has committed to delivering it.</p><p>The workaround is buying time, and each update makes it sound like the situation is being handled.</p></div>
           </div>
           <div class="fire-intervention"><p>You still have time to decide what you’ll deliver and have an honest conversation with the customer. <strong>But first, someone needs to show you the whole story.</strong></p></div>
         </article>
@@ -121,7 +121,7 @@
             <p>I bring that experience to your business: figuring out what’s worth building, then working with you to make it useful in the real world.</p>
             <a class="text-link" href="https://spencerdusebout.com/">More about Spencer <span aria-hidden="true">↗</span></a>
           </article>
-          <div class="builder-person"><blockquote>“I’ve built and exited companies. I want to help you make AI one of your business’s greatest strengths.”</blockquote><div class="founder-signature"><img src="assets/spencer-dusebout.jpg" width="51" height="51" alt="Spencer Dusebout" loading="lazy" /><div><strong>Spencer Dusebout</strong><span>Founder of Asqend</span></div></div></div>
+          <div class="builder-person"><img class="concept-portrait" src="assets/spencer-dusebout.jpg" width="232" height="280" alt="Spencer Dusebout" loading="lazy" /><div class="person-voice"><blockquote>“I’ve built and exited companies. I want to help you make AI one of your business’s greatest strengths.”</blockquote><div class="founder-signature"><div><strong>Spencer Dusebout</strong><span>Founder of Asqend</span></div></div></div></div>
         </div>
       </section>
       <section class="start-section" id="start">
@@ -168,7 +168,7 @@
                     We review the report together: what surfaced, why it matters
                     and what I recommend you do. You keep the report and
                     prioritized recommendations whether or not we continue.
-                  </p>
+                  </p><a class="report-jump" href="#sample-report">See what a finding looks like <span aria-hidden="true">↓</span></a>
                 </div>
               </article>
               <article>
@@ -184,7 +184,7 @@
               </article>
             </div>
           </div>
-          <div class="guarantee">
+          <div class="report-preview" id="sample-report"><div class="report-intro"><span class="section-kicker">A clearer picture. A next decision.</span><h3>The finding is only useful<br />if you know what to do next.</h3><p>A concise readout you can return to, share with your team, and act on.</p><span class="sample-label">Illustrative sample · Not a client result</span></div><article class="report-sheet" aria-label="Illustrative report excerpt"><header><span class="report-wordmark">asqend <span>/ Look-back</span></span><span>01 / Finding</span></header><h4>A promise without<br />a delivery commitment.</h4><dl><div><dt>Finding</dt><dd>The customer expects a feature. Product has agreed to investigate, but has not committed to delivery.</dd></div><div><dt>Supporting evidence</dt><dd><span class="evidence-label">Sales</span> Functionality promised to win the deal.<br /><span class="evidence-label">CS</span> Workaround offered.<br /><span class="evidence-label">Product</span> Agreed to look into it.</dd></div><div class="report-decision"><dt>Recommended next decision</dt><dd>Agree what you will deliver, then give the customer an honest update.</dd></div></dl><footer>Illustrative format · Based on the fictional scenario above</footer></article></div><div class="guarantee">
             <div class="guarantee-icon" aria-hidden="true">↶</div>
             <div>
               <h3>Useful insight, or your $1,000 back.</h3>
@@ -193,7 +193,7 @@
           </div>
         </div>
       </section>
-      <section class="faq container section" id="questions">
+      <section class="walkthrough-section container" id="walkthrough"><div class="walkthrough-copy"><span class="section-kicker">From finding to next step</span><h2>See the context.<br />Make the call.</h2><p>A closer look at how a finding brings a decision into focus.</p><button class="walkthrough-open button" type="button"><span class="play-symbol" aria-hidden="true">▶</span> Explore the walkthrough</button><p class="prototype-note">Guided screenshot walkthrough · Illustrative company data.</p></div><button class="walkthrough-poster walkthrough-open" type="button" aria-label="Explore the three-scene screenshot walkthrough"><div class="poster-top"><span>asqend / A finding, explained</span><span>3 scenes</span></div><div class="poster-window"><img src="assets/product-finding.jpg" alt="Asqend interface showing a timing conflict, with illustrative company data" loading="lazy" /></div><span class="poster-play" aria-hidden="true">▶</span><span class="poster-bottom">The finding <i>→</i> The context <i>→</i> The next decision</span></button></section><section class="faq container section" id="questions">
         <div class="faq-heading">
           <div>
             <div class="section-kicker">A few practical questions</div>
@@ -260,5 +260,5 @@
       </p>
       <div class="image-scroll"><img id="expanded-image" alt="" /></div>
     </dialog>
-  </body>
+  <dialog class="walkthrough-dialog" id="walkthrough-dialog" aria-labelledby="walkthrough-title"><div class="walkthrough-dialog-head"><div><span class="section-kicker">Screenshot walkthrough · Illustrative company data</span><h2 id="walkthrough-title">A finding, explained.</h2></div><button class="walkthrough-close" type="button" aria-label="Close walkthrough">Close ×</button></div><div class="story-screen" data-scene="0"><img src="assets/product-finding.jpg" alt="Asqend interface with illustrative company data" /><div class="story-focus" aria-hidden="true"></div></div><div class="story-caption" aria-live="polite"><span id="scene-number">01 / The finding</span><h3 id="scene-title">Two dates. One decision to make.</h3><p id="scene-text">A later customer sign-off conflicts with the close date your team is working toward.</p></div><div class="story-controls"><button type="button" id="story-play">Pause</button><div class="scene-buttons" aria-label="Walkthrough scenes"><button type="button" data-go="0" aria-pressed="true">1 · Finding</button><button type="button" data-go="1" aria-pressed="false">2 · Context</button><button type="button" data-go="2" aria-pressed="false">3 · Decision</button></div></div><p class="story-disclosure">A guided look at an Asqend interface screenshot with illustrative company data.</p></dialog></body>
 </html>
