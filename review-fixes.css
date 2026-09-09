@@ -1,0 +1,52 @@
+/* Bind the annotation to screenshot coordinates, including during zoom. */
+.story-image-plane{position:absolute;width:110%;left:-17%;top:-10%;aspect-ratio:1280/900;transform-origin:65% 25%;transition:transform 650ms ease}
+.story-screen .story-image-plane img{position:static;display:block;width:100%;height:auto;max-width:none;transform:none}
+.story-screen[data-scene="1"] .story-image-plane{transform:scale(1.2) translateY(-4%)}
+.story-screen[data-scene="2"] .story-image-plane{transform:scale(1.05) translateY(-21%)}
+.story-screen .story-focus{left:34.4%;top:16%;width:51%;height:11%;transition:top 650ms ease,height 650ms ease}
+.story-screen[data-scene="1"] .story-focus{top:27.5%;height:6.2%}
+.story-screen[data-scene="2"] .story-focus{top:53%;height:6%}
+.report-wordmark{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.report-wordmark>img{display:block;width:25px;height:25px;flex:none}
+.report-wordmark span{margin-left:1px}
+@media(max-width:760px){.story-image-plane{width:180%;left:-56%;top:-40px}.story-screen[data-scene="1"] .story-image-plane,.story-screen[data-scene="2"] .story-image-plane{transform:none}.story-screen .story-image-plane img{width:100%;left:auto;top:auto;transform:none}.report-wordmark{gap:5px}.report-wordmark>img{width:22px;height:22px}}
+@media(prefers-reduced-motion:reduce){.story-image-plane,.story-screen .story-focus{transition:none}}
+
+/* Recommended transition and personal invitation. */
+.version-nine .fire-section{padding-top:40px}
+.version-nine .fire-section-heading{font-size:28px;line-height:35px;font-weight:500;max-width:800px;margin:0 auto 24px;text-align:center}
+.version-nine .hero-call-note{font-size:14px;line-height:21px;margin-top:14px}
+@media(max-width:760px){.version-nine .fire-section{padding-top:28px}.version-nine .fire-section-heading{font-size:24px;line-height:31px;margin-bottom:20px;text-align:center}}
+
+/* Owner-selected first-screen hero: distribute space through the composition. */
+@media(min-width:761px){
+.version-nine.hero-frame .hero{min-height:calc(95svh - 96px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:64px;padding-bottom:76px}
+.version-nine .hero .eyebrow{margin-top:0;margin-bottom:0}
+.version-nine.hero-frame .hero h1{margin-top:32px;margin-bottom:0}
+.version-nine.hero-frame .hero-deck{margin-top:32px;margin-bottom:0}
+.version-nine .hero-conversion{margin-top:36px}
+.version-nine .fire-section{padding-top:64px}
+.version-nine .fire-section-heading{max-width:950px;margin-bottom:32px;font-size:30px;line-height:39px}
+}
+@media(max-width:760px){
+.version-nine.hero-frame .hero{min-height:0;padding-top:48px;padding-bottom:56px}
+.version-nine.hero-frame .hero h1{margin-top:28px}
+.version-nine.hero-frame .hero-deck{margin-top:28px}
+.version-nine .hero-conversion{margin-top:30px}
+.version-nine .hero-call-note{max-width:340px;margin-inline:auto}
+.version-nine .fire-section{padding-top:40px}
+.version-nine .fire-section-heading{margin-bottom:28px}
+}
+
+/* Larger message, not just a larger container. */
+@media(min-width:761px){
+.version-nine.hero-frame .hero{justify-content:flex-start;padding-top:clamp(56px,8vh,90px);padding-bottom:70px}
+.version-nine.hero-frame .hero h1{font-size:clamp(68px,7vw,100px);line-height:1.04;max-width:1120px;width:100%;letter-spacing:-.055em;margin-top:30px}
+.version-nine.hero-frame .hero-deck{font-size:23px;line-height:1.5;max-width:960px;margin-top:38px;text-wrap:pretty}
+.version-nine .hero-conversion{margin-top:42px}
+.version-nine .hero-actions .button{font-size:18px;min-height:66px;padding:20px 30px;gap:28px}
+.version-nine .hero-call-note{font-size:15px;line-height:24px;margin-top:18px}
+.version-nine .hero-call-note strong{font-weight:550;color:#554963}
+.version-nine .hero .eyebrow{font-size:12px;letter-spacing:.1em}
+}
+@media(min-width:761px) and (max-width:1000px){.version-nine.hero-frame .hero h1{font-size:68px}.version-nine.hero-frame .hero-deck{font-size:21px;max-width:780px}}

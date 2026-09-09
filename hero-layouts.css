@@ -1,0 +1,23 @@
+/* Two owner-requested composition studies. Same copy, different hierarchy. */
+@media(min-width:761px){
+.version-nine.hero-frame.layout-centered .hero{min-height:calc(100svh - 97px);justify-content:space-evenly;padding-top:44px;padding-bottom:52px}
+.version-nine.layout-centered .hero .eyebrow{margin:0}
+.version-nine.hero-frame.layout-centered .hero h1{font-size:clamp(76px,7.7vw,108px);max-width:1160px;margin:24px 0 0;line-height:1.02}
+.version-nine.hero-frame.layout-centered .hero-deck{font-size:24px;line-height:1.45;max-width:780px;margin:32px auto 0;text-wrap:balance}
+.version-nine.layout-centered .hero-conversion{margin:34px auto 0}
+.version-nine.layout-centered .hero-actions .button{font-size:19px;min-height:68px}
+.version-nine.layout-centered .hero-call-note{font-size:16px;line-height:25px;margin-top:18px}
+.version-nine.hero-frame.layout-left .hero{min-height:calc(100svh - 97px);align-items:flex-start;justify-content:space-evenly;text-align:left;padding:44px max(48px,calc((100% - 1240px)/2)) 52px}
+.version-nine.layout-left .hero .eyebrow{justify-content:flex-start;text-align:left;margin:0}
+.version-nine.hero-frame.layout-left .hero h1{font-size:clamp(72px,7vw,100px);max-width:1120px;margin:26px 0 0;text-align:left;line-height:1.04}
+.version-nine.hero-frame.layout-left .hero-deck{font-size:23px;line-height:1.5;max-width:730px;margin:32px 0 0;text-align:left;text-wrap:pretty}
+.version-nine.layout-left .hero-conversion{display:flex;align-items:center;gap:28px;width:auto;margin:34px 0 0}
+.version-nine.layout-left .hero-call-note{max-width:370px;text-align:left;font-size:15px;line-height:23px;margin:0}
+.version-nine.layout-left .hero-actions{margin:0;flex:none}
+.version-nine.layout-left .frame-art{width:100%;left:0;opacity:.65}
+.version-nine.layout-left .hero-call-note strong{font-weight:400}
+.version-nine.layout-left .hero-call-note{font-weight:550}
+}
+@media(min-width:761px) and (max-width:1050px){.version-nine.hero-frame.layout-centered .hero h1{font-size:72px}.version-nine.hero-frame.layout-left .hero h1{font-size:66px}.version-nine.layout-left .hero-conversion{gap:20px}.version-nine.layout-left .hero-call-note{max-width:290px}.version-nine.layout-left .hero-actions .button{font-size:16px;padding-inline:22px}}
+@media(max-width:760px){.version-nine.hero-frame.layout-centered .hero{padding-top:44px;padding-bottom:52px}.version-nine.hero-frame.layout-left .hero{text-align:left;padding-top:44px;padding-bottom:52px}.version-nine.layout-left .hero .eyebrow{text-align:left;justify-content:flex-start}.version-nine.hero-frame.layout-left .hero h1{text-align:left}.version-nine.hero-frame.layout-left .hero-deck{text-align:left}.version-nine.layout-left .hero-conversion{margin-left:0;margin-right:0}.version-nine.layout-left .hero-call-note{text-align:left}.version-nine.layout-left .frame-art{opacity:.15}}
+@media(max-width:760px){.version-nine.layout-left .hero-actions{justify-content:flex-start}.version-nine.layout-left .frame-art{display:none}}
