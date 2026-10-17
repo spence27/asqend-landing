@@ -1,0 +1,190 @@
+/* Growth guarantee and the 90-day engagement. */
+.hero-inner{padding-block:42px 34px}
+.hero h1{font-size:68px;margin-bottom:24px}
+.hero .power-word{font-size:80px}
+.hero .lede{font-size:19px;line-height:1.55;max-width:670px;margin-bottom:24px}
+.growth-promise{display:grid;grid-template-columns:78px 1fr 28px;align-items:center;gap:22px;max-width:690px;margin:0 auto 26px;padding:18px 22px;text-align:left;background:#fffefb;border:1px solid #e1d4b4;border-radius:12px;box-shadow:0 5px 18px #60452105;transition:border-color .15s,box-shadow .15s}
+.growth-promise:hover{border-color:#bba46b;box-shadow:0 5px 20px #6045210c}
+.promise-time{border-right:1px solid #e7dcc5;padding-right:20px;text-align:center;color:var(--purple)}
+.promise-time b{display:block;font-size:43px;font-weight:600;letter-spacing:-.06em;line-height:.95}
+.promise-time>span{display:block;font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.13em;margin-top:5px}
+.promise-copy strong{display:block;font-size:18px;line-height:1.4;font-weight:580;letter-spacing:-.025em}
+.promise-copy>span{display:block;font-size:15px;color:var(--purple);margin-top:3px}
+.promise-arrow{display:grid;place-items:center;align-self:center;width:28px;height:28px;font-size:22px;color:var(--purple)}
+.hero-accountability{font-size:13px;line-height:1.5;color:var(--body);margin-top:18px}
+.founder{margin-top:18px}
+.guarantee-section{background:var(--cream);border-block:1px solid #ece4d5}
+.guarantee-layout{display:grid;grid-template-columns:1.08fr 1fr;gap:84px;align-items:center;padding-block:92px}
+.guarantee-intro h2{font-size:44px;line-height:1.12;letter-spacing:-.045em}
+.guarantee-intro h2 em{font-style:normal;color:var(--purple)}
+.guarantee-intro>p:not(.eyebrow){margin-top:22px;font-size:18px;color:var(--body);line-height:1.65;max-width:44ch}
+.guarantee-intro>.textlink{display:inline-block;margin-top:26px}
+.guarantee-intro>.refund-promise{font-size:15px;line-height:1.65;color:var(--purple);margin-top:18px}
+.growth-agreement{background:#fff;border:1px solid #e5decf;border-radius:16px;padding:28px 30px 22px;box-shadow:0 10px 32px #45321a04}
+.agreement-heading{font-size:15px;font-weight:600;margin-bottom:8px}
+.growth-agreement li{display:grid;grid-template-columns:25px 1fr;gap:14px;padding-block:20px;border-bottom:1px solid #eee9df}
+.growth-agreement li:last-child{border-bottom:0}
+.agreement-number{font-size:12px;letter-spacing:.02em;color:#9a8759;font-weight:600;padding-top:2px}
+.growth-agreement h3{font-size:18px;letter-spacing:-.025em}
+.growth-agreement li p{font-size:15px;line-height:1.6;color:var(--body);margin-top:7px}
+.agreement-foot{padding-top:16px;margin-top:2px;border-top:1px solid #eee9df;font-size:12px;line-height:1.5;color:var(--soft)}
+#offer>.lede{max-width:65ch}
+.phase{padding:26px 24px 24px}
+.phase>small{display:flex;align-items:center;gap:12px;min-height:23px;margin-bottom:10px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:550}
+.phase h3{font-size:24px;margin-bottom:16px}
+.phase-guaranteed{background:var(--purple);border-color:var(--purple);box-shadow:0 14px 30px #49368a12}
+.phase-guaranteed:nth-child(2){border-top-color:var(--gold)}
+.phase-guaranteed h3{color:#fff}
+.phase-guaranteed li{color:#eee8fa}
+.phase-guaranteed li:before{background:var(--gold)}
+.phase-guaranteed small{color:var(--gold)}
+.phase-tag{font-size:9px;letter-spacing:.05em;border:1px solid #ffdf985c;border-radius:4px;padding:3px 5px;line-height:1}
+@media(max-width:1100px){.site-header nav{gap:20px;font-size:13px}.guarantee-layout{gap:44px}.guarantee-intro h2{font-size:38px}}
+@media(min-width:761px) and (max-height:740px){
+  .hero-inner{padding-top:24px}
+  .hero h1{font-size:58px;margin-bottom:20px}
+  .hero .power-word{font-size:68px}
+  .hero .lede{font-size:18px;margin-bottom:18px}
+  .growth-promise{margin-bottom:20px;padding-block:15px}
+}
+@media(max-width:1000px) and (min-width:761px){.hero h1{font-size:62px}.hero .power-word{font-size:74px}.phases{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.phase{padding:20px 18px}.phase h3{font-size:21px}.phase li{font-size:14px}.phase>small{flex-wrap:wrap;gap:5px}.guarantee-layout{gap:32px}.growth-agreement{padding:24px}}
+@media(max-width:760px){
+  .hero-inner{padding-block:32px 30px}
+  .hero h1{font-size:39px;margin-bottom:22px}
+  .hero .power-word{font-size:51px}
+  .hero .lede{font-size:16px;line-height:1.6;margin-bottom:22px;max-width:42ch}
+  .hero .eyebrow{font-size:10px;letter-spacing:.035em}
+  .growth-promise{grid-template-columns:53px 1fr 16px;gap:13px;padding:16px 13px;margin-bottom:24px;border-radius:10px}
+  .promise-time{padding-right:13px}.promise-time b{font-size:34px}.promise-time>span{font-size:9px}
+  .promise-copy strong{font-size:15px;line-height:1.35;letter-spacing:-.02em}
+  .promise-copy>span{font-size:12px;line-height:1.45;margin-top:5px}
+  .promise-arrow{font-size:19px;width:16px}
+  .hero .actions{gap:16px}.hero .actions>.button{width:100%;max-width:380px}
+  .hero-accountability{font-size:12px;max-width:32ch;margin:18px auto 0}
+  .founder{margin-top:20px;flex-direction:row;font-size:11.5px;text-align:left;gap:10px;max-width:320px;margin-inline:auto}
+  .founder img{flex-shrink:0}.founder strong{display:block}
+  .guarantee-layout{grid-template-columns:1fr;gap:30px;padding-block:60px}
+  .guarantee-intro h2{font-size:34px;line-height:1.12;max-width:14ch}
+  .guarantee-intro>p:not(.eyebrow){font-size:16px;margin-top:18px}
+  .guarantee-intro>.textlink{margin-top:22px;font-size:14px}
+  .growth-agreement{padding:24px 22px 20px;border-radius:12px}
+  .growth-agreement li{padding-block:17px}
+  .growth-agreement li p{font-size:14.5px}
+  .phase{padding:24px}.phases{gap:16px;margin-top:30px}
+  .phase>small{margin-bottom:8px}.phase h3{margin-bottom:12px}
+  #offer>.lede{font-size:17px}
+}
+@media(max-width:370px){.hero h1{font-size:34px}.hero .power-word{font-size:46px}.promise-copy strong{font-size:14px}.growth-promise{gap:10px;grid-template-columns:48px 1fr 12px}.hero .eyebrow{font-size:8.5px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.growth-promise{transition:none}}
+
+/* Public product experience, before the illustrative sales workflow. */
+.track-record{background:#fff;border-block:1px solid var(--line)}
+.track-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;padding-block:68px}
+.track-copy h2{font-size:34px;line-height:1.14;max-width:19ch}
+.track-copy>p:not(.eyebrow){font-size:16px;line-height:1.65;color:var(--body);margin-top:16px;max-width:55ch}
+.track-copy>.textlink{display:inline-block;margin-top:22px;font-size:14px}
+.product-example{border:1px solid #ded5ec;background:#fcfbfe;border-radius:14px;overflow:hidden}
+.product-example-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;background:var(--lav);border-bottom:1px solid #e5dded}
+.product-example-head>span{font-size:16px;font-weight:650;letter-spacing:-.02em;color:var(--purple)}
+.product-example-head small{font-size:10px;color:var(--soft);text-transform:uppercase;letter-spacing:.06em}
+.product-flow{padding:8px 24px}
+.product-flow li{position:relative;display:grid;grid-template-columns:15px 1fr;gap:16px;padding-block:14px}
+.flow-dot{width:9px;height:9px;border:2px solid var(--purple);background:#fcfbfe;border-radius:50%;margin-top:6px;z-index:1}
+.product-flow li:not(:last-child):before{content:'';position:absolute;left:4px;top:24px;bottom:-20px;width:1px;background:#d9cee8}
+.product-flow strong{display:block;font-size:14px;line-height:1.4;font-weight:600}
+.product-flow li div>span{display:block;font-size:13px;color:var(--body);margin-top:4px;line-height:1.5}
+.product-example>a{display:flex;justify-content:space-between;padding:13px 24px;border-top:1px solid #e5dded;font-size:13px;font-weight:550;color:var(--purple)}
+.product-example>a:hover{background:var(--lav)}
+
+/* One specific example of judgment, with the fictional scenario labeled. */
+.sales>.section{padding-block:76px}
+.sales-intro{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end}
+.sales-intro>.lede{margin:0;max-width:44ch;font-size:18px}
+.example-label{font-size:11px;color:#746b81;margin-top:30px;margin-bottom:12px}
+.workflow-compare{display:grid;grid-template-columns:.78fr 1.22fr;gap:24px;align-items:start}
+.before-panel,.with-panel{border:1px solid #ded6e7;border-radius:14px;overflow:hidden;background:#fff}
+.workflow-head{padding:22px 26px;border-bottom:1px solid var(--line)}
+.workflow-head>span{display:block;font-size:12px;color:var(--soft);margin-bottom:7px}
+.workflow-head h3{font-size:23px;letter-spacing:-.035em}
+.with-panel{border-color:#cfc3e6;box-shadow:0 18px 40px #49368a0b}
+.with-panel .workflow-head{background:var(--purple);color:#fff;border-bottom-color:var(--purple)}
+.with-panel .workflow-head>span{color:#ddd3f0}
+.before-body{padding:24px 26px}
+.task-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.crm-task{font-size:16px;font-weight:550;margin-top:9px}
+.old-draft{font-size:16px;line-height:1.6;color:var(--body);padding:20px;margin-top:22px;border:1px dashed #d9d1e2;border-radius:8px;background:#fbfafc}
+.missing-context{font-size:14px;line-height:1.6;color:var(--body);margin-top:26px}
+.missing-context strong{display:block;font-weight:600;color:var(--ink);margin-bottom:7px}
+.workflow-steps{padding:0 26px}
+.workflow-steps>li{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}
+.workflow-steps>li:last-child{border-bottom:0}
+.step-number{font-size:11px;color:var(--purple);font-weight:650;padding-top:3px}
+.workflow-steps h4{font-size:16px;letter-spacing:-.02em;line-height:1.4;font-weight:600;margin:0 0 7px}
+.workflow-steps p{font-size:14px;color:var(--body);line-height:1.6}
+.workflow-steps blockquote{margin:12px 0 0;padding:12px 16px;border-left:3px solid #c9af59;background:#fffcf6;font-size:15px;line-height:1.55;color:var(--ink)}
+.workflow-steps .new-draft{padding:15px 17px;background:var(--lav);border:1px solid #e5ddef;border-radius:8px;color:var(--ink);font-size:15px;margin-top:12px}
+.workflow-steps .human-step{font-size:12px;color:var(--purple);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
+.human-step>span{flex-shrink:0;font-size:14px}
+.sales-scope{font-size:17px;color:var(--body);max-width:62ch;text-align:center;margin:32px auto 22px}
+.sales-action{text-align:center}
+.example-switch{display:none}
+
+/* Make the full engagement tangible without promising a fixed project count. */
+.guarantee-layout{padding-block:76px}
+#offer.section{padding-block:80px}
+.phase h3{font-size:22px}
+.delivery-summary{border-block:1px solid var(--line);padding-block:26px;margin-top:32px}
+.delivery-summary>h3{font-size:17px;letter-spacing:-.02em;margin-bottom:20px}
+.delivery-summary dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin:0}
+.delivery-summary dt{font-size:14px;font-weight:650;color:var(--purple);margin-bottom:8px}
+.delivery-summary dd{margin:0;font-size:14px;line-height:1.65;color:var(--body)}
+.split p{font-size:15px}
+.magic{font-size:25px;line-height:1.35;max-width:38ch;margin-inline:auto}
+.proof .container{padding-block:64px}
+.faq-wrap{gap:50px}
+
+@media(max-width:1000px){
+  .track-grid{gap:36px;grid-template-columns:1fr 1fr}
+  .track-copy h2{font-size:30px}
+  .sales-intro{gap:36px}
+  .workflow-compare{grid-template-columns:.85fr 1.15fr;gap:18px}
+  .workflow-head,.before-body{padding:20px}
+  .workflow-steps{padding-inline:20px}
+  .workflow-steps>li{grid-template-columns:18px 1fr;gap:10px}
+  .workflow-head h3{font-size:21px}
+}
+@media(max-width:760px){
+  .track-grid{grid-template-columns:1fr;gap:26px;padding-block:48px}
+  .track-copy h2{font-size:29px;max-width:22ch}
+  .track-copy>p:not(.eyebrow){font-size:15px;margin-top:14px}
+  .track-copy>.textlink{margin-top:18px}
+  .product-example-head{padding:16px 20px}
+  .product-flow{padding:6px 20px}
+  .product-flow li{padding-block:12px}
+  .product-example>a{padding-inline:20px}
+  .sales>.section{padding-block:48px}
+  .sales-intro{grid-template-columns:1fr;gap:18px}
+  .sales-intro h2 br{display:none}
+  .sales-intro>.lede{font-size:16px;max-width:none}
+  .example-label{font-size:10px;margin-top:22px;margin-bottom:12px}
+  .workflow-compare{grid-template-columns:1fr;gap:14px}
+  .sales-example.is-interactive .example-switch{display:flex;border:1px solid #d9d0e4;border-radius:8px;padding:4px;gap:4px;margin-bottom:14px;background:#eae5f0}
+  .example-switch button{flex:1;font:550 13px/1.4 Inter,Arial,sans-serif;border:0;border-radius:5px;padding:10px 14px;background:transparent;color:#6d617d;cursor:pointer;min-height:40px}
+  .example-switch button[aria-pressed=true]{background:#fff;color:var(--purple);box-shadow:0 2px 4px #49368a0a}
+  .example-switch button:focus-visible{outline:3px solid #b69742;outline-offset:2px}
+  .sales-example.is-interactive[data-view=with] .before-panel{display:none}
+  .sales-example.is-interactive[data-view=before] .with-panel{display:none}
+  .workflow-head{padding:20px}.workflow-head h3{font-size:23px}
+  .workflow-steps{padding-inline:18px}
+  .workflow-steps>li{padding-block:20px}
+  .workflow-steps blockquote,.workflow-steps .new-draft{font-size:14px}
+  .sales-scope{font-size:15px;text-align:left;margin-top:24px}
+  .sales-action .button{width:100%;max-width:380px}
+  .guarantee-layout{padding-block:48px}
+  #offer.section{padding-block:48px}
+  .delivery-summary{margin-top:26px;padding-block:24px}
+  .delivery-summary dl{grid-template-columns:1fr;gap:22px}
+  .delivery-summary dt{margin-bottom:6px}
+  .magic{font-size:23px}
+  .proof .container{padding-block:48px}
+}
