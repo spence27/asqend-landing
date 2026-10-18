@@ -1,0 +1,117 @@
+/* Two illustrative sales workflows, within the first 30 days. */
+.sales-growth>.section{padding-block:84px}
+.sales-intro{display:grid;grid-template-columns:1.06fr 1fr;gap:70px;align-items:end}
+.sales-intro h2{font-size:54px;line-height:1.06}
+.sales-intro h2 em{font-style:normal;color:var(--purple)}
+.sales-intro-copy>p:first-child{font-size:22px;line-height:1.45;letter-spacing:-.025em;color:var(--ink);font-weight:520}
+.sales-intro-copy>p+p{font-size:16px;color:var(--body);line-height:1.65;margin-top:14px}
+.example-label{font-size:13px;color:#6d657a;margin-top:36px;padding-bottom:16px;border-bottom:1px solid #ded6e8}
+.deal-example{display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:start;padding-block:42px}
+.deal-example+.deal-example{border-top:1px solid #ded6e8;padding-top:48px}
+.example-index{display:block;font-size:11px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);margin-bottom:16px}
+.deal-story h3{font-size:33px;line-height:1.12;letter-spacing:-.04em;max-width:20ch}
+.deal-story>p{font-size:16px;line-height:1.7;color:var(--body);margin-top:20px}
+.rep-payoff{margin-top:25px;padding-left:18px;border-left:3px solid #c9af59}
+.rep-payoff span{display:block;font-size:11px;color:var(--body);margin-bottom:7px;text-transform:uppercase;letter-spacing:.06em}
+.rep-payoff strong{font-size:18px;line-height:1.5;letter-spacing:-.02em;font-weight:550}
+.opportunity-brief{background:#fff;border:1px solid #d3c7e4;border-radius:15px;overflow:hidden;box-shadow:0 18px 40px #49368a0b}
+.brief-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 24px;background:var(--purple);color:#fff;font-size:12px;font-weight:550}
+.brief-kind{font-size:11px;font-weight:500;color:var(--gold);border:1px solid #ffdf9850;padding:4px 7px;border-radius:4px;white-space:nowrap}
+.brief-account{display:flex;gap:12px;align-items:center;margin:24px 24px 0;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.account-mark{display:grid;place-items:center;width:42px;height:42px;flex:none;background:var(--lav);color:var(--purple);border:1px solid #e4dcee;border-radius:10px;font-size:20px;font-weight:600}
+.brief-account h4{font-size:20px;letter-spacing:-.03em;line-height:1.3;margin:0 0 4px;font-weight:600}
+.brief-account p{font-size:12px;color:var(--body)}
+.brief-evidence{margin:0;padding:6px 24px 0}
+.brief-evidence>div{display:grid;grid-template-columns:100px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid #eeebf3}
+.brief-evidence>div:last-child{border:0}
+.brief-evidence dt{font-size:12px;font-weight:600;color:var(--purple);padding-top:3px}
+.brief-evidence dd{margin:0;font-size:14px;line-height:1.55;color:var(--body)}
+.recommended-move{margin:8px 24px 20px;background:#fffcf5;border:1px solid #e9dfc4;border-radius:8px;padding:15px 17px}
+.recommended-move>span{display:block;font-size:11px;font-weight:650;letter-spacing:.045em;text-transform:uppercase;color:#786029;margin-bottom:7px}
+.recommended-move p{font-size:15px;line-height:1.6;color:var(--ink)}
+.rep-decision{display:flex;gap:9px;align-items:flex-start;padding:15px 24px;background:#faf8fc;border-top:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--purple)}
+.rep-decision>span{font-size:14px;flex:none}
+.signal-sources{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:28px}
+.signal-sources>li{display:flex;gap:10px;align-items:flex-start}
+.signal-sources>li>span{display:grid;place-items:center;flex:none;width:26px;height:26px;border:1px solid #dcd2e7;border-radius:6px;background:#faf8fd;color:var(--purple);font-size:13px;font-weight:650;line-height:1}
+.signal-sources strong{font-size:14px;font-weight:600;line-height:1.5}
+.signal-sources p{font-size:13.5px;line-height:1.55;color:var(--body);margin-top:4px}
+.sales-bottom{display:flex;justify-content:space-between;gap:44px;align-items:center;border-top:1px solid #ded6e8;margin-top:6px;padding-top:28px}
+.sales-bottom>p{font-size:14px;line-height:1.6;color:var(--body);max-width:52ch}
+.sales-bottom>.button{flex-shrink:0;font-size:14px}
+.start-now{background:var(--deep);color:#fff}
+.urgency-row{position:relative;padding-block:70px 54px;max-width:810px}
+.start-now .eyebrow{color:var(--gold)}
+.urgency-row h2{font-size:46px;line-height:1.1;color:#fff}
+.urgency-row>p:not(.eyebrow){font-size:17px;color:#d9cfea;line-height:1.65;max-width:66ch;margin-top:22px}
+.urgency-row>p.urgency-payoff{color:var(--gold);font-size:19px;font-weight:500;letter-spacing:-.01em}
+.easy-start{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;padding-block:48px 72px;border-top:1px solid #ffffff24}
+.easy-intro h2{font-size:36px;line-height:1.12;color:#fff}
+.easy-intro>p:not(.eyebrow){font-size:16px;line-height:1.7;color:#d9cfea;max-width:35ch;margin-top:20px}
+.easy-intro>.button{width:auto;max-width:100%;font-size:15px;margin-top:28px;padding:16px 24px;min-height:52px}
+.easy-steps>div{display:flex;align-items:flex-start;gap:18px;padding-block:0 24px}
+.easy-steps>div+div{border-top:1px solid #ffffff24;padding-top:22px}
+.easy-steps>div:last-child{padding-bottom:0}
+.easy-number{font-size:11px;color:var(--gold);padding-top:3px;font-weight:600;flex:none}
+.easy-steps h3{font-size:18px;letter-spacing:-.025em;color:#fff}
+.easy-steps p{font-size:14px;line-height:1.7;color:#d9cfea;margin-top:8px}
+@media(max-width:1100px){
+  .sales-intro{gap:40px}.sales-intro h2{font-size:46px}
+  .deal-example{gap:36px}.deal-story h3{font-size:30px}
+  .brief-evidence>div{grid-template-columns:85px 1fr;gap:10px}
+  .easy-start{gap:42px}
+}
+@media(max-width:1000px) and (min-width:761px){
+  .sales-intro{grid-template-columns:1fr;gap:24px}
+  .sales-intro h2 br{display:none}
+  .sales-intro-copy{max-width:620px}
+  .deal-example{grid-template-columns:1fr;gap:28px}
+  .deal-story{max-width:620px}
+  .deal-story h3{max-width:26ch}
+  .opportunity-brief{max-width:620px;width:100%}
+  .sales-bottom{align-items:flex-start;flex-direction:column;gap:22px}
+  .easy-start{gap:32px}
+}
+@media(max-width:760px){
+  .sales-growth>.section{padding-block:48px}
+  .sales-intro{grid-template-columns:1fr;gap:20px}
+  .sales-intro h2{font-size:38px}.sales-intro h2 br{display:none}
+  .sales-intro-copy>p:first-child{font-size:20px;line-height:1.45}
+  .sales-intro-copy>p+p{font-size:15px;margin-top:12px}
+  .example-label{font-size:12px;line-height:1.6;margin-top:24px;padding-bottom:16px}
+  .deal-example{grid-template-columns:1fr;gap:26px;padding-block:30px}
+  .deal-example+.deal-example{padding-top:32px}
+  .deal-story h3{font-size:29px;max-width:24ch}
+  .deal-story>p{font-size:15px;margin-top:16px}
+  .rep-payoff{margin-top:20px}.rep-payoff strong{font-size:16px}
+  .brief-heading{padding:14px 18px;font-size:11px;gap:10px}
+  .brief-kind{font-size:11px}
+  .brief-account{margin:20px 18px 0;padding-bottom:16px}
+  .brief-account h4{font-size:19px}
+  .brief-evidence{padding:4px 18px 0}
+  .brief-evidence>div{grid-template-columns:80px 1fr;gap:12px;padding-block:13px}
+  .brief-evidence dd{font-size:13.5px;line-height:1.55}
+  .brief-evidence dt{font-size:12px}
+  .recommended-move{margin:8px 18px 18px;padding:14px}
+  .recommended-move p{font-size:14px}
+  .rep-decision{padding:14px 18px;font-size:12.5px}
+  .signal-sources{gap:18px;margin-top:24px}
+  .sales-bottom{flex-direction:column;align-items:stretch;gap:20px;padding-top:24px;margin-top:0}
+  .sales-bottom>.button{width:100%;font-size:14px}
+  .urgency-row{padding-block:48px 34px}
+  .urgency-row h2{font-size:34px}.urgency-row h2 br{display:none}
+  .urgency-row>p:not(.eyebrow){font-size:16px;margin-top:20px}
+  .urgency-row>p.urgency-payoff{font-size:17px}
+  .easy-start{grid-template-columns:1fr;gap:28px;padding-block:34px 48px}
+  .easy-intro h2{font-size:30px}.easy-intro h2 br{display:none}
+  .easy-intro>p:not(.eyebrow){font-size:15px;max-width:none;margin-top:16px}
+  .easy-intro>.button{width:100%;margin-top:22px}
+  .easy-steps p{font-size:14px}.easy-steps h3{font-size:17px}
+}
+@media(max-width:370px){
+  .sales-intro h2{font-size:34px}.deal-story h3{font-size:27px}
+  .signal-sources{grid-template-columns:1fr;gap:16px}
+  .brief-heading{align-items:flex-start;flex-direction:column;gap:7px}
+  .brief-evidence>div{grid-template-columns:1fr;gap:4px}
+  .urgency-row h2{font-size:30px}
+}
