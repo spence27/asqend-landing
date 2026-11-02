@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://asqend.com/work/">
+<meta name="description" content="Five real examples of AI Spencer Dusebout has built into companies: sales, customer success, reporting, finance and ops, and company-wide AI. What got built, what broke, and what changed.">
+<title>Five real examples · Asqend</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://asqend.com/work/">
+<meta property="og:site_name" content="Asqend">
+<meta property="og:title" content="Five real examples · Asqend">
+<meta property="og:description" content="What changed when AI took over a real job, at five companies. Names redacted, references available on request.">
+<meta property="og:image" content="https://asqend.com/assets/og-head-of-ai.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Asqend: A part-time head of AI for companies that don’t have one.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/asqend-icon.svg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter.woff2" crossorigin>
+<style>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url("/assets/fonts/inter.woff2") format("woff2")}
+:root{--ink:#1d1a28;--body:#565160;--soft:#7a7483;--purple:#49368a;--purple-2:#39266f;--deep:#261945;--gold:#ffdf98;--gold-ink:#c9af59;--line:#e6e2ec;--paper:#fcfcfe;--cream:#fffcf7;--lav:#f3f0f8}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;font-size:17px;line-height:1.6;font-synthesis:none;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid #b69742;outline-offset:4px;border-radius:4px}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{font-weight:560;letter-spacing:-.045em}
+.container{width:min(1120px,calc(100% - 80px));margin-inline:auto}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.085em;text-transform:uppercase;color:var(--purple)}
+.site-header{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-block:22px}
+.wordmark{display:inline-flex;align-items:center;gap:10px;font-size:31px;font-weight:760;letter-spacing:-.08em;line-height:1}
+.wordmark img{width:40px;height:40px}
+.site-header nav{display:flex;align-items:center;gap:30px;font-size:14px}
+.site-header nav a:not(.button):hover,.site-header nav a[aria-current]{color:var(--purple)}
+.site-header nav a[aria-current]{font-weight:600}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:22px;background:var(--purple);color:#fff;border-radius:8px;padding:16px 24px;min-height:54px;font-size:16px;font-weight:550;line-height:1.3;transition:background .15s}
+.button:hover{background:var(--purple-2)}
+.button span{font-size:19px;font-weight:400;line-height:1}
+.button-sm{min-height:0;padding:10px 16px;font-size:14px;gap:14px}
+.button-gold{background:var(--gold);color:var(--deep);font-size:17px;min-height:58px}
+.button-gold:hover{background:#f5d087}
+.site-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-block:28px;font-size:13px;color:var(--soft)}
+.site-footer .wordmark{font-size:24px;color:var(--ink)}
+.site-footer .wordmark img{width:30px;height:30px}
+.site-footer nav{display:flex;gap:22px;flex-wrap:wrap;color:var(--purple)}
+.sticky-cta{display:none}
+@media(max-width:1000px){.container{width:calc(100% - 56px)}}
+@media(max-width:760px){
+  .container{width:calc(100% - 32px)}
+  .site-header{padding-block:14px}
+  .wordmark{font-size:27px}.wordmark img{width:34px;height:34px}
+  .site-header nav a:not(.button){display:none}
+  .site-footer{padding-bottom:110px}
+  .sticky-cta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;transform:translateY(160%);visibility:hidden;transition:transform .25s,visibility 0s .25s;box-shadow:0 10px 28px #1e143c4d}
+  .sticky-cta.on{transform:none;visibility:visible;transition:transform .25s}
+}
+@media(prefers-reduced-motion:reduce){.button,.sticky-cta{transition:none}}
+</style>
+<link rel="stylesheet" href="/examples.css">
+</head>
+<body>
+<header class="site-header container">
+  <a class="wordmark" href="/" aria-label="Asqend home"><img src="/assets/asqend-icon.svg" alt="" width="40" height="40"><span>asqend</span></a>
+  <nav aria-label="Main navigation">
+    <a href="/work/" aria-current="page">Real examples</a>
+    <a href="/#sales">Your first 30 days</a>
+    <a href="/#guarantee">The 30-day guarantee</a>
+    <a class="button button-sm" href="https://calendar.app.google/reG4Q89hQvt1WUia6" target="_blank" rel="noopener">Let’s talk <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="w-hero" aria-labelledby="work-title">
+    <div class="container w-hero-inner">
+      <p class="eyebrow">Five real examples</p>
+      <h1 id="work-title">What changed when AI took over <em>a real job.</em></h1>
+      <p class="w-intro">I’m Spencer Dusebout, a multi-exit founder. Here are 5 real examples of how I’ve integrated AI into companies. Due to the sensitive nature of these examples, names have been redacted. References are available upon request.</p>
+      <div class="ex-tiles" aria-label="Results">
+        <a class="ex-tile ex-lead" href="#sales"><span class="ex-area">Sales</span><span class="ex-num"><span class="ex-mark">2 → 8-10</span></span><span class="ex-cap">outbound meetings a week, per rep</span><span class="ex-title">From one deck for everyone to the demo being the pitch</span><span class="ex-go">Read the case <span aria-hidden="true">↓</span></span></a>
+        <a class="ex-tile ex-lead" href="#customer-success"><span class="ex-area">Customer success</span><span class="ex-num"><span class="ex-mark">4 saved, 2 upsold</span></span><span class="ex-cap">and 3 stalled accounts back on track, out of 16 “green” accounts with signals nobody caught</span><span class="ex-title">From hearing about it last to calling first</span><span class="ex-go">Read the case <span aria-hidden="true">↓</span></span></a>
+        <a class="ex-tile" href="#reporting"><span class="ex-area">Reporting</span><span class="ex-num"><span class="ex-mark">Days → 1 hour</span></span><span class="ex-cap">board prep, built at 3 companies</span><span class="ex-title">From a dashboard that showed zero to numbers everyone trusts</span><span class="ex-go">Read the case <span aria-hidden="true">↓</span></span></a>
+        <a class="ex-tile" href="#finance-ops"><span class="ex-area">Finance & ops</span><span class="ex-num"><span class="ex-mark"><span class="nw">3-4 days</span> → <span class="nw">sign-off</span></span></span><span class="ex-cap">month-end close, with about 100 hours of work automated every close</span><span class="ex-title">From struggling to get reporting to one Slack message away</span><span class="ex-go">Read the case <span aria-hidden="true">↓</span></span></a>
+        <a class="ex-tile" href="#company-wide-ai"><span class="ex-area">Company-wide AI</span><span class="ex-num"><span class="ex-mark">~100 people</span></span><span class="ex-cap">using it every week, each with the right permissions</span><span class="ex-title">From a license for everyone to AI everyone can use, with rules</span><span class="ex-go">Read the case <span aria-hidden="true">↓</span></span></a>
+      </div>
+      <p class="ex-companies">These come from three companies: a B2B2C software company, a 70-person B2B SaaS company and a marketing agency.</p>
+      <div class="w-guarantee"><b><span>30</span>DAYS</b><p>If one real job isn’t running and in use on your real work by day 30, I refund what you paid.</p></div>
+    </div>
+  </section>
+
+  <section class="w-case" id="sales" aria-labelledby="sales-title">
+    <div class="container w-case-head">
+      <p class="eyebrow">Sales</p>
+      <h2 id="sales-title">From one deck for everyone to the demo being the pitch</h2>
+      <p class="w-redact">Names redacted. References available on request.</p>
+    </div>
+    <div class="container w-case-body">
+      <aside class="w-glance" aria-label="Sales at a glance">
+        <p class="w-glance-title">At a glance</p>
+        <dl><div class="f result"><dt>Result</dt><dd>2 → 8-10 outbound meetings a week, per rep</dd></div><div class="f"><dt>Company</dt><dd>B2B2C software company, sales team</dd></div><div class="f"><dt>What got built</dt><dd>Signal agents that pick who to approach each week, and a report built from each prospect’s own data, hundreds a day</dd></div><div class="f"><dt>Guardrails</dt><dd>Real data only, blank before guessed. A rep approves every send.</dd></div></dl>
+      </aside>
+      <div class="w-story">
+        <p class="lead">A B2B2C software company’s reps were sending every prospect the same emails and the same deck. Real personalization took hours per account, so only the biggest deals got it, and the average rep was booking about 2 outbound meetings a week.</p>
+<p>First thing I noticed - the most persuasive thing they had was what their own product could show a prospect about the prospect’s own business, way more than any deck. That showed up late in the deal if at all, because somebody had to build it by hand. So we flipped it and made that report the first touch... basically the demo became the pitch.</p>
+<p>Here’s what got built -</p>
+<ol class="paren">
+<li><span>(1)</span><p>Agents that watch buying signals and pick who each rep goes after that week, checked against the source of truth so existing customers and open deals get skipped. Nothing worse than cold emailing your own customer.</p></li>
+<li><span>(2)</span><p>A report factory that turns a prospect’s own data into a tailored report - hundreds a day instead of a few a week.</p></li>
+<li><span>(3)</span><p>90 day sequences of owner-sent emails and call tasks, and the rep approves every single send.</p></li>
+</ol>
+<p>What broke was data quality. One enrichment pass came back with well over half the rows unmatched with any confidence. We left them blank instead of guessing, and that turned into a rule - no estimated numbers, period. The first batch of reports needed corrections too, so now a person signs off on a benchmark report and every batch gets checked against it before a prospect sees anything.</p>
+<blockquote class="pull">One wrong number in a report about someone’s own business does more damage than sending nothing at all.</blockquote>
+<p class="result">The average rep went from 2 outbound meetings a week to 8-10.</p>
+<p>I run the same machine for my own outreach now - signals, research, first drafts I approve myself.</p>
+<section class="w-thirty"><h3>Your first 30 days</h3><p>One buying signal, one thing your product can show from a prospect’s own data, one segment, and reps approving every send.</p></section>
+        <a class="w-up" href="#top">↑ All five examples</a>
+      </div>
+    </div>
+  </section>
+  <section class="w-case" id="customer-success" aria-labelledby="customer-success-title">
+    <div class="container w-case-head">
+      <p class="eyebrow">Customer success</p>
+      <h2 id="customer-success-title">From hearing about it last to calling first</h2>
+      <p class="w-redact">Names redacted. References available on request.</p>
+    </div>
+    <div class="container w-case-body">
+      <aside class="w-glance" aria-label="Customer success at a glance">
+        <p class="w-glance-title">At a glance</p>
+        <dl><div class="f result"><dt>Result</dt><dd>16 “green” accounts with signals nobody caught: 4 saved, 2 upsold, 3 back on track</dd></div><div class="f"><dt>Companies</dt><dd>A B2B2C software company (250+ accounts) and a performance-marketing agency</dd></div><div class="f"><dt>What got built</dt><dd>A monthly health report for every account, a ranked call list, and campaign checks that flag whoever owns the fix</dd></div><div class="f"><dt>Guardrails</dt><dd>Missing data gets skipped, not guessed. Every flag comes with a next move.</dd></div></dl>
+      </aside>
+      <div class="w-story">
+        <p class="lead">A B2B2C software company with 250+ accounts kept finding out a customer was in trouble at renewal. The analysts never got to accounts early, so the ones quietly trending the wrong way never got a call.</p>
+<p>First thing I found - the usage dashboards were measuring the wrong thing. They counted logins. In one cohort about a third of users touched the core feature... but nearly every team was getting value from automations running in the background that nobody logs in to look at. One of those is a coaching call and the other is an expansion call, and the dashboard couldn’t tell them apart.</p>
+<p>So we built a monthly health report for every account off the source of truth, not just the big ones, and a ranked call list for CX - who to call, why, and what to bring. Integration gaps get flagged so the team knows which accounts are only half set up. Nothing reaches a customer without a QA check, and missing data gets skipped, not guessed.</p>
+<p>Then we pointed it at the accounts everyone thought were fine. 16 of the 250+ were marked green. The signals said otherwise, so CX got to them fast.</p>
+<p class="result">4 got saved, 2 got upsold, and 3 that had stalled got back on track.</p>
+<p>It didn’t save them all. The other 7 had either churned or were down to a fighting chance - they needed this running months earlier.</p>
+<p>Same setup at a performance-marketing agency, with ad campaigns instead of accounts. Nobody had the bandwidth to check every campaign, so they heard from clients that a campaign wasn’t working before they’d looked themselves. Now every campaign gets checked against its targets - cost per lead, calls, creative - and the flag goes to whoever owns the fix with a recommended next move.</p>
+<blockquote class="pull">A flag with no recommendation is just more work for the owner.</blockquote>
+<section class="w-thirty"><h3>Your first 30 days</h3><p>One health check across every account, plus a ranked list of who to call and why, going to whoever owns the account.</p></section>
+        <a class="w-up" href="#top">↑ All five examples</a>
+      </div>
+    </div>
+  </section>
+  <section class="w-case" id="reporting" aria-labelledby="reporting-title">
+    <div class="container w-case-head">
+      <p class="eyebrow">Reporting</p>
+      <h2 id="reporting-title">From a dashboard that showed zero to numbers everyone trusts</h2>
+      <p class="w-redact">Names redacted. References available on request.</p>
+    </div>
+    <div class="container w-case-body">
+      <aside class="w-glance" aria-label="Reporting at a glance">
+        <p class="w-glance-title">At a glance</p>
+        <dl><div class="f result"><dt>Result</dt><dd>Board prep: days → about an hour</dd></div><div class="f"><dt>Companies</dt><dd>A B2B2C software company, then a 70-person B2B SaaS company and a performance-marketing agency</dd></div><div class="f"><dt>Time to build</dt><dd>About 30 days each</dd></div><div class="f"><dt>Pulls from</dt><dd>CRM, product analytics, support tickets, billing</dd></div><div class="f"><dt>Guardrails</dt><dd>Definitions written first. Late data is held back, not guessed. Every number gets a second count.</dd></div></dl>
+      </aside>
+      <div class="w-story">
+        <p class="lead">A B2B2C software company was switching CRMs mid-year. The sales reporting everyone relied on was about to break, board prep took days, and a few dashboards were already quietly wrong.</p>
+<p>First thing I found - one dashboard showed zero for a 30 day window where the real count was in the hundreds of thousands. One date filter. The chart rendered, nobody questioned it... and nothing flagged it because nothing was checking it against a second count.</p>
+<blockquote class="pull">After that I do not trust a number that only gets counted one way.</blockquote>
+<p>So before any AI went on top, we built one record per customer - pulling from the CRM, product analytics, support tickets and billing - and wrote the definitions down first. What counts as active, what counts as a closed deal, what makes an account at risk. Boring, I know, but every report and every agent after that runs off the same definitions, so two teams stop walking into the same meeting with two different numbers.</p>
+<p>What broke was the switch itself. We ran old and new side by side, and mid switch a small change in how one system answered broke lead tracking. We reproduced it and added tests - without the side by side nobody would have seen it. Two rules came out of that: if a feed is late or broken the number gets held back, not guessed, and everything gets a second count. Along the way it turned up dozens of old deals sitting in contract records that never made it into the CRM.</p>
+<p class="result">Board and investor drafts get written straight from it now. Board prep went from days to about an hour.</p>
+<p>I’ve since built the same foundation for a 70-person B2B SaaS company and a performance-marketing agency, about 30 days each. If you want to know whether you need it, ask sales and finance what revenue was last month. My guess is you get two numbers.</p>
+<section class="w-thirty"><h3>Your first 30 days</h3><p>One customer record built from your CRM and product data, the definitions written down, and one weekly report running on it.</p></section>
+        <a class="w-up" href="#top">↑ All five examples</a>
+      </div>
+    </div>
+  </section>
+  <section class="w-case" id="finance-ops" aria-labelledby="finance-ops-title">
+    <div class="container w-case-head">
+      <p class="eyebrow">Finance & ops</p>
+      <h2 id="finance-ops-title">From struggling to get reporting to one simple Slack message away</h2>
+      <p class="w-redact">Names redacted. References available on request.</p>
+    </div>
+    <div class="container w-case-body">
+      <aside class="w-glance" aria-label="Finance & ops at a glance">
+        <p class="w-glance-title">At a glance</p>
+        <dl><div class="f result"><dt>Result</dt><dd>Month-end close: 3-4 business days → sign-off, with about 100 hours of work automated every close</dd></div><div class="f"><dt>Companies</dt><dd>The back office at a B2B2C software company and at a performance-marketing agency</dd></div><div class="f"><dt>In the close</dt><dd>Bookings and commissions from the CRM and contracts, churn and cancellations, billing vs. usage, employee card spend</dd></div><div class="f"><dt>Runs weekly</dt><dd>Product usage, billing, the CEO report, goal and KPI tracking</dd></div><div class="f"><dt>Guardrails</dt><dd>Anything it isn’t sure about gets flagged and researched, not guessed. The team verifies the close.</dd></div></dl>
+      </aside>
+      <div class="w-story">
+        <p class="lead">At a B2B2C software company, month-end close took 3-4 business days. A lot of people were involved and it was stressful - most of it was just figuring out where the information was. Every other report was a request too, waiting days on an engineering ticket.</p>
+<p>First thing I found - the numbers existed. Getting them meant knowing which system, which filter and who to ask. So the job was making the question cheap.</p>
+<p>With the source of truth in place, we set up back-office channels in Slack where people ask in plain words and get the answer, within whatever they’re allowed to see. Then the weekly jobs moved onto it - product usage, billing, the CEO report, goal and KPI tracking - each one showing up on schedule with a short note on what changed since last time, which is the only part anyone reads anyway. Teams plug their own tools in. The same setup runs the back office at a performance-marketing agency.</p>
+<p>Then the close. It pulls bookings and commissions from the CRM along with the contracts, looks at churn and cancellations, and checks billing against product usage so anything that doesn’t match gets flagged. It tracks and categorizes the payments on employee cards too, highlights the ones it isn’t sure about, and researches those. The real win - finance stops waiting on sales for one number, product for another and billing for a third... it just does it.</p>
+<blockquote class="pull">No ticket, no waiting on the one person who knows where the number lives.</blockquote>
+<p class="result">Month-end close is more of a verify thing now - about 100 hours of work automated every close. It’s mostly done when it lands, and the team makes sure it’s accurate. Reports that waited days on engineering are instant in Slack.</p>
+<section class="w-thirty"><h3>Your first 30 days</h3><p>The one report your back office builds by hand every week, delivered in Slack on schedule from your live systems, plus a channel for follow-up questions.</p></section>
+        <a class="w-up" href="#top">↑ All five examples</a>
+      </div>
+    </div>
+  </section>
+  <section class="w-case" id="company-wide-ai" aria-labelledby="company-wide-ai-title">
+    <div class="container w-case-head">
+      <p class="eyebrow">Company-wide AI</p>
+      <h2 id="company-wide-ai-title">From a license for everyone to AI everyone can use, with rules</h2>
+      <p class="w-redact">Names redacted. References available on request.</p>
+    </div>
+    <div class="container w-case-body">
+      <aside class="w-glance" aria-label="Company-wide AI at a glance">
+        <p class="w-glance-title">At a glance</p>
+        <dl><div class="f result"><dt>Result</dt><dd>~100 people using it every week</dd></div><div class="f"><dt>Company</dt><dd>B2B2C software company</dd></div><div class="f"><dt>Lives in</dt><dd>Slack, with channels and permissions by department and level</dd></div><div class="f"><dt>Guardrails</dt><dd>A full audit trail (who asked, what it touched, what it did) and a written governance policy</dd></div></dl>
+      </aside>
+      <div class="w-story">
+        <p class="lead">A B2B2C software company needed AI across every team, connected to the systems people actually work in, without anyone doing something dumb with a customer list.</p>
+<p>The easy version is a license for everyone and a policy doc. That’s what most people mean when they say they rolled out AI, and it leaves every question about data and access unanswered.</p>
+<blockquote class="pull">Licenses are the easy part.</blockquote>
+<p>So we put it where everyone already works - Slack. Different channels for different teams, different permissions on each one, and access to the systems and tools that team actually needs. The customer success lead gets customer data, product usage and billing, but not the full code repo. People can bring their own tools into it, inside the same permissions. It all runs off the source of truth, so the answer someone gets in Slack on a Tuesday is the same one the board gets.</p>
+<p>Then the part that lets a CEO say yes - it’s fully auditable. Who asked, what it touched, what it did, with a written governance policy behind it.</p>
+<p class="result">About 100 people use it every week.</p>
+<p>So have I rolled out “here’s 100 Claude licenses to 100 people”? No. Have I rolled out AI that people can use across the board, with varying permissions, access to different systems and tools, and a governance policy? Yes, absolutely. People aren’t necessarily hiring for that, but they should.</p>
+<section class="w-thirty"><h3>Your first 30 days</h3><p>One or two teams, one or two systems connected, permissions and the audit trail on from day one, and a one page policy.</p></section>
+        <a class="w-up" href="#top">↑ All five examples</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-band" aria-labelledby="why-title">
+    <div class="container w-two">
+      <div>
+        <p class="eyebrow">Why this order</p>
+        <h2 id="why-title">Same three layers, built bottom up, every time</h2>
+        <p>The default AI output is pretty average. It only gets good when it’s plugged into your own data with a person checking the work. So I build it in the same order every time - one source of truth first, so your numbers mean the same thing everywhere, then AI your whole team can use with rules around who sees what, and only then the jobs that actually pay for all of it.</p><p>I’ve built that foundation at three companies now, about 30 days each.</p>
+      </div>
+      <div class="w-layers" aria-label="The three layers">
+        <div class="w-layer"><span class="n">Layer 3</span><div><div class="t">The jobs that pay for it</div><div class="l"><a href="#sales">Sales</a> · <a href="#customer-success">Customer success</a> · <a href="#finance-ops">Finance &amp; ops</a></div></div></div><div class="w-layer"><span class="n">Layer 2</span><div><div class="t">AI everyone can use, with rules</div><div class="l"><a href="#company-wide-ai">Company-wide AI</a></div></div></div><div class="w-layer base"><span class="n">Layer 1</span><div><div class="t">Numbers everyone trusts</div><div class="l"><a href="#reporting">Reporting</a></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-band lav" aria-labelledby="checks-title">
+    <div class="container">
+      <p class="eyebrow">Who checks the work</p>
+      <h2 id="checks-title">A person stays in it, every time</h2>
+      <div class="w-rules"><div class="w-rule"><b>Every number gets a second count</b><span>Checked against another source before anyone sees it.</span></div><div class="w-rule"><b>Blank before guessed</b><span>If data is late or missing, it’s held back, not made up.</span></div><div class="w-rule"><b>A person approves every send</b><span>Reps approve outreach. Nothing reaches a customer without a QA check.</span></div><div class="w-rule"><b>Everything is on the record</b><span>Who asked, what it touched, what it did, with permissions by role.</span></div></div>
+    </div>
+  </section>
+
+  <section class="w-close" aria-labelledby="close-title">
+    <div class="container w-close-grid">
+      <div>
+        <h2 id="close-title">If one real job isn’t running and in use on your real work by day 30, I refund what you paid.</h2>
+        <p>I run the same thing on myself - about 11 agents do the work up to the decision and bring the decision to one place, an app I built called Session. I’ll show you mine running on the call - it’s easier than explaining it.</p>
+      </div>
+      <div class="w-cta">
+        <a class="button button-gold" id="close-cta" href="https://calendar.app.google/reG4Q89hQvt1WUia6" target="_blank" rel="noopener">Book your 30-minute call <span aria-hidden="true">↗</span></a>
+        <small>No pitch deck. If I’m not the right fit, I’ll say so.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <a class="wordmark" href="/"><img src="/assets/asqend-icon.svg" alt="" width="30" height="30"><span>asqend</span></a>
+  <nav aria-label="Footer"><a href="/work/">Real examples</a><a href="https://app.asqend.com" target="_blank" rel="noopener">Customer sign-in ↗</a><a href="https://session.asqend.com" target="_blank" rel="noopener">Session ↗</a><a href="https://spencerdusebout.com/" target="_blank" rel="noopener">Meet Spencer ↗</a><a href="https://asqend.com/website-terms.html">Website Terms</a><a href="https://asqend.com/privacy.html">Privacy</a></nav>
+  <span>© 2026 Asqend · AI leadership + hands-on implementation.</span>
+</footer>
+
+<a class="button sticky-cta" id="sticky-cta" href="https://calendar.app.google/reG4Q89hQvt1WUia6" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">Book your 30-minute call <span aria-hidden="true">↗</span></a>
+<script>
+(function(){
+  var s=document.getElementById('sticky-cta');
+  if(!s)return;
+  var c=document.getElementById('close-cta');
+  function upd(){
+    var r=c?c.getBoundingClientRect():null;
+    var closeVisible=r&&r.top<window.innerHeight&&r.bottom>0;
+    var on=window.scrollY>window.innerHeight*.6&&!closeVisible;
+    s.classList.toggle('on',on);
+    s.setAttribute('aria-hidden',on?'false':'true');
+    s.tabIndex=on?0:-1;
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  upd();
+})();
+</script>
+</body>
+</html>
